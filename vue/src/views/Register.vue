@@ -81,6 +81,8 @@ export default {
             }
           });
       }
+    this.$router.push({name: 'accountDetails'});
+
     },
     clearErrors() {
       this.registrationErrors = false;
