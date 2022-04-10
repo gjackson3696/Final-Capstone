@@ -92,4 +92,50 @@ export default {
 };
 </script>
 
-<style></style>
+
+<style>
+
+.text-center {
+    text-align: center;
+    font-size: 20px;
+      padding: 100px;
+  border: 1px ;
+  text-align: center;
+}
+
+
+body {
+font-family: Calibri;
+}
+input[type=text], select {
+width: 25%;
+padding: 5px 0px;
+margin-left: auto;
+margin-right: auto;
+display: list-item;
+margin-bottom: 1rem;
+border: 4px double #39A9DB;
+border-radius: 8px;
+box-sizing: border-box;
+cursor: pointer;
+}
+input[type=password] {
+width: 25%;
+display: list-item;
+padding: 5px 0px;
+margin-left: auto;
+margin-right: auto;
+border: 4px double #39A9DB;
+border-radius: 8px;
+box-sizing: border-box;
+cursor: pointer;
+ margin-bottom: 1rem;
+}
+div.container {
+border-radius: 10px;
+background-color: #39A9DB;
+padding: 40px;
+}
+</style>
+
+

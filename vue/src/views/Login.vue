@@ -74,3 +74,13 @@ export default {
   }
 };
 </script>
+<style>
+
+.form-signin {
+    text-align: center;
+    font-size: 20px;
+      padding: 40px;
+  border: 1px ;
+  text-align: center;
+}
+</style>
