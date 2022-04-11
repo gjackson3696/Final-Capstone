@@ -36,14 +36,21 @@ export default {
                     workoutGoal: "",
                     workoutProfile: ""
                 },
-            };
+            }; 
         },
 }
 </script>
 
 <style>
+
 .createdForm {
     text-align: center;
     font-size: 20px;
+      padding: 40px;
+  border: 1px ;
+  text-align: center;
 }
+
+
+
 </style>
