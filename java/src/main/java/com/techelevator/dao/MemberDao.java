@@ -17,11 +17,17 @@ public interface MemberDao {
 
     boolean setProfile(Map<String,String> profile);
 
+    boolean addProfileDetail(String key, String value);
+
     boolean updateProfileDetail(String key, String value);
 
     boolean removeProfileDetail(String key);
 
     boolean setGoals(Map<String,String> goals);
 
-    boolean setGoals();
+    boolean addGoal(String key, String value);
+
+    boolean updateGoal(String key, String value);
+
+    boolean removeGoal(String key, String value);
 }
