@@ -19,7 +19,49 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+    classList: [
+      {
+        id: "1",
+        name: "HIIT",
+        instructor: "Gary",
+        date: "12/12/22",
+        startTime: "1600",
+        lengthInMinutes: "60"
+      },
+      {
+        id: "2",
+        name: "Yoga",
+        instructor: "Alex",
+        date: "12/12/22",
+        startTime: "1600",
+        lengthInMinutes: "60"
+      },
+      {
+        id: "3",
+        name: "The Power Building",
+        instructor: "Semir",
+        date: "12/12/22",
+        startTime: "1600",
+        lengthInMinutes: "90"
+      },
+      {
+        id: "4",
+        name: "Show Me How To Run ",
+        instructor: "Luke",
+        date: "12/12/22",
+        startTime: "1600",
+        lengthInMinutes: "90"
+      },
+      {
+        id: "5",
+        name: "Coding and the Brain",
+        instructor: "Scrum Lord Matt",
+        date: "12/12/22",
+        startTime: "1600",
+        lengthInMinutes: "50"
+      }
+    ]
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
