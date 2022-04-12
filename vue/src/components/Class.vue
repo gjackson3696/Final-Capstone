@@ -15,7 +15,10 @@ export default {
   data() {
     return {};
   },
-  props: [ 'classItem', 'Calendar' ]
+
+  props: [ 'classItem' ],
+  
+
 };
 </script>
 

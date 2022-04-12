@@ -2,7 +2,7 @@
   <form class="createdForm"> 
       <div>
             <label for="firstName" >First Name</label>
-            <input for="firsName"  type="text"/>
+            <input for="firsName"  type="text"/> 
       </div>
          <div class="createdForm">
             <label for="lastName" >Last Name</label>
@@ -13,13 +13,11 @@
             <input for="email"  type="text"/>
       </div>
         <div class="createdForm">
-            <label for="workoutGoal" >Workout Goals</label>
-            <input for="workoutGoal"  type="text"/>
+            <button type="button" class="btn btn-light">Enter goals for yourself to track benchmarks and measure progress!</button>
       </div>
         
            <div class="createdForm">
-            <label for="workoutProfile" required>Workout Profile</label>
-            <input for="workoutProfile"  type="text"/>
+            <button type="button" class="btn btn-light">View your fitness profile.</button>
       </div>
   </form>
 </template>
@@ -41,7 +39,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .createdForm {
     text-align: center;
