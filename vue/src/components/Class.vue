@@ -1,6 +1,11 @@
 <template>
   <div>
-<p>{{ classItem.id }} {{ classItem.name }}  {{ classItem.instructor }}  {{ classItem.date }}  {{ classItem.startTime }} {{ classItem.lengthInMinuets }} </p>
+    <div>{{ classItem.id }} {{ classItem.name }}  {{ classItem.instructor }}  {{ classItem.date }}  {{ classItem.startTime }} {{ classItem.lengthInMinuets }} 
+
+    </div>
+   <div> 
+      {{Calendar}}
+  </div>
   </div>
 </template>
 
@@ -10,7 +15,7 @@ export default {
   data() {
     return {};
   },
-  props: [ 'classItem' ]
+  props: [ 'classItem', 'Calendar' ]
 };
 </script>
 
