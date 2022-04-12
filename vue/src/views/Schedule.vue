@@ -19,9 +19,8 @@ import NavBar from '../components/NavBar.vue'
 export default {
       name: "Schedule",
       components: { ClassCard, NavBar},
-
-}
-
+     
+      }
 </script>
 
 <style>
