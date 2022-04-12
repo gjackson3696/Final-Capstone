@@ -10,7 +10,8 @@ export default {
   data() {
     return {};
   },
-  props: [ 'classItem' ]
+  props: [ 'classItem' ],
+  
 };
 </script>
 

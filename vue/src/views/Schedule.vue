@@ -1,15 +1,20 @@
 <template>
 <div>
   <h2 class="calendar">Schedule of Classes</h2>
+  <calendar />
+  <div class="main">
+  </div>
   <class v-bind:classItem="item" v-for="item in this.$store.state.classList" :key="item.id"/>
-  
 </div>
 </template>
 
 <script>
 import Class from '../components/Class.vue'
+import Calendar from '../components/Calendar.vue'
 export default {
-      components: { Class },
+      name: "Schedule",
+      components: { Class, Calendar },
+
 }
 
 </script>
@@ -23,4 +28,3 @@ export default {
   border: 1;
   padding: 2;
 }
-</style>
