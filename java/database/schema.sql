@@ -13,7 +13,7 @@ DROP SEQUENCE IF EXISTS seq_member_id;
 DROP SEQUENCE IF EXISTS seq_class_id;
 DROP SEQUENCE IF EXISTS seq_profile_id;
 DROP SEQUENCE IF EXISTS seq_goals_id;
-DROP SEQUENCE IF EXISTS seq_workouts_id;
+DROP SEQUENCE IF EXISTS seq_workout_id;
 
 CREATE SEQUENCE seq_user_id
   INCREMENT BY 1
@@ -45,7 +45,7 @@ CREATE SEQUENCE seq_goals_id
   NO MAXVALUE
   CACHE 1;
 
-CREATE SEQUENCE seq_workouts_id
+CREATE SEQUENCE seq_workout_id
   INCREMENT BY 1
   START WITH 5001
   NO MAXVALUE
@@ -122,7 +122,7 @@ CREATE TABLE goals (
 );
 
 CREATE TABLE workouts (
-	workouts_id int DEFAULT nextval('seq_workouts_id'::regclass) NOT NULL,
+	workout_id int DEFAULT nextval('seq_workout_id'::regclass) NOT NULL,
 	member_id int NOT NULL,
 	name varchar(50) NOT NULL,
 	domain varchar(50) NOT NULL,
@@ -131,7 +131,7 @@ CREATE TABLE workouts (
 	workoutTime varchar(25),
 	rounds varchar(10),
 	completed boolean DEFAULT false,
-	CONSTRAINT PK_workouts PRIMARY KEY (workouts_id),
+	CONSTRAINT PK_workouts PRIMARY KEY (workout_id),
 	CONSTRAINT FK_workouts_member_id FOREIGN KEY (member_id) REFERENCES members (member_id)
 );
 
@@ -162,5 +162,8 @@ INSERT INTO classes (class_name,instructor_name,start_date,start_time,length_min
 INSERT INTO classes (class_name,instructor_name,start_date,start_time,length_minutes) VALUES ('The Power Building','Semir','2022-04-28','17:00:00',90);
 INSERT INTO classes (class_name,instructor_name,start_date,start_time,length_minutes) VALUES ('Show Me How To Run','Luke','2022-04-29','16:00:00',90);
 INSERT INTO classes (class_name,instructor_name,start_date,start_time,length_minutes) VALUES ('Coding Core Workout','Scrum Lord Matt','2022-04-30','14:00:00',60);
+
+INSERT INTO members (user_id,first_name,last_name,email) VALUES (2,'Gary','Jackson','gjacksondev@gmail.com');
+
 
 COMMIT TRANSACTION;

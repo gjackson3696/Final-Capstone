@@ -55,7 +55,7 @@ public class JdbcMemberDao implements MemberDao{
 
     @Override
     public Member create(Member member) {
-        String insertMember = "INSERT INTO members (user_id,first_name,last_name,email) "+
+        String insertMember = "INSERT INTO members ( ) "+
                 "VALUES (?,?,?,?) RETURNING member_id;";
         member.setMemberId(jdbcTemplate.queryForObject(insertMember,Long.class,
                 member.getUserId(),member.getFirstName(),member.getLastName(),member.getEmail()));
