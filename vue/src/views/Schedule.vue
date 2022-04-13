@@ -1,16 +1,11 @@
 <template>
   <div>
     <h2 class="calendar">Schedule of Classes</h2>
-      <weekday-selector />
-    <div class="card-container">
-      <class-card
-        class="class-card"
-        v-bind:classItem="item"
-        v-for="item in classFilter"
-        :key="item.id"
-      />
+        <weekday-selector />
+        <div class="card-container">
+          <class-card class="class-card" v-bind:classItem="item" v-for="item in classFilter" :key="item.id"/>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -38,10 +33,10 @@ export default {
       classService.getClasses().then(response => {
         this.classList = response.data;
       })
-    }
-  },
+    },
   created() {
     this.getClassList();
+  },
   }
 }
 </script>
@@ -68,6 +63,5 @@ body {
 .card-container {
   display: flex;
   flex-direction: row;
-
 }
 </style>
