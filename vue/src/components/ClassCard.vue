@@ -6,17 +6,15 @@
           <p class="class-items">Instructor: {{ classItem.instructor }}  </p>
           <p class="class-items">Start Time: {{ classItem.time }} </p>
           <p class="class-items">Length of Class: {{ classItem.lengthMinutes }} mins.</p>
-        <div >
-            <!-- add dynamic styling to the on click event to toggle between registered and unregister class="lightView, base-button, darkView" -->
-            <button  @click="changeText">{{ button.text }}</button>
-        </div>
+          <!-- add dynamic styling to the on click event to toggle between registered and unregister class="lightView, base-button, darkView" -->
+          <button  @click="changeText">{{ button.text }}</button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "schedule",
+  name: "class-card",
   data() {
     return {
       changeBtn: false,

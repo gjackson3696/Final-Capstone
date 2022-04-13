@@ -11,7 +11,7 @@
 <script>
 import ClassCard from "../components/ClassCard.vue";
 import WeekdaySelector from "../components/WeekdaySelector.vue";
-import classService from "../services/ClassService.js"
+import classService from "../services/ClassService.js";
 export default {
   name: "Schedule",
   data(){
@@ -33,10 +33,10 @@ export default {
       classService.getClasses().then(response => {
         this.classList = response.data;
       })
-    },
+    }
+  },
   created() {
     this.getClassList();
-  },
   }
 }
 </script>
