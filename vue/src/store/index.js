@@ -21,15 +21,16 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     classList: [{
-        id: "1",
-        name: "HIIT",
+        id: "0",
+        name: "High Intensity",
         instructor: "Gary",
+        //need to hook up to the backend in order to get the right date displaying.
         date: "12/12/22",
         startTime: "1600",
         lengthInMinutes: "60"
       },
       {
-        id: "2",
+        id: "1",
         name: "Yoga",
         instructor: "Alex",
         date: "12/12/22",
@@ -37,7 +38,7 @@ export default new Vuex.Store({
         lengthInMinutes: "60"
       },
       {
-        id: "3",
+        id: "2",
         name: "The Power Building",
         instructor: "Semir",
         date: "12/12/22",
@@ -45,7 +46,7 @@ export default new Vuex.Store({
         lengthInMinutes: "90"
       },
       {
-        id: "4",
+        id: "3",
         name: "Show Me How To Run ",
         instructor: "Luke",
         date: "12/12/22",
@@ -53,12 +54,12 @@ export default new Vuex.Store({
         lengthInMinutes: "90"
       },
       {
-        id: "5",
-        name: "Coding and the Brain",
+        id: "4",
+        name: "Coding Core Workout",
         instructor: "Scrum Lord Matt",
         date: "12/12/22",
         startTime: "1600",
-        lengthInMinutes: "50"
+        lengthInMinutes: "60"
       }
     ],
   },
