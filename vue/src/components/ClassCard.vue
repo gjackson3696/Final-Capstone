@@ -17,17 +17,21 @@ export default {
   name: "class-card",
   data() {
     return {
-      changeBtn: false,
+      registeredMember: [],
+      registered: false,
       button: {
         text: 'Register For Class'
       },
     }
   },
+  computed: {
+// compute registered changed based on weather or not the member id is in the registered members array
+  },
       methods: {
-      changeText: function() {
-        this.changeBtn = !this.changeBtn;
-        this.button.text = this.changeBtn ? 'Register For Class' : 'Unregister Me';
-      }
+      // registeredMemberId: function() {
+      //   this.changeBtn = !this.changeBtn;
+      //   this.button.text = this.changeBtn ? 'Register For Class' : 'Unregister Me';
+      // }
   },
 
   props: [ 'classItem' ], 
