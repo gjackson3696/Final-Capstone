@@ -1,10 +1,12 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.ClassDao;
+import com.techelevator.dao.ClassMembersDao;
 import com.techelevator.model.Class;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -12,9 +14,11 @@ import java.util.List;
 public class ScheduleController {
 
     private ClassDao classDao;
+    private ClassMembersDao classMembersDao;
 
-    public ScheduleController(ClassDao classDao) {
+    public ScheduleController(ClassDao classDao, ClassMembersDao classMembersDao) {
         this.classDao = classDao;
+        this.classMembersDao = classMembersDao;
     }
 
     @RequestMapping(value = "/classes", method = RequestMethod.GET)
@@ -31,6 +35,11 @@ public class ScheduleController {
     @RequestMapping(value = "/classSignUp", method = RequestMethod.DELETE)
     public void unregister(@PathVariable Long memberId, @PathVariable Long classId) {
         classDao.unregisterMember(memberId,classId);
+    }
+
+    @RequestMapping(value = "/classes/registered", method = RequestMethod.GET)
+    public List<Long> getRegisteredClassesByMemberId(@PathVariable Long memberId) {
+        return classMembersDao.getRegisteredClassesByMemberId(memberId);
     }
 
 }
