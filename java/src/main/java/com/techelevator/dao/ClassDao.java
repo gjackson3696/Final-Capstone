@@ -1,19 +1,22 @@
 package com.techelevator.dao;
 
+import com.techelevator.exceptions.ClassNotFoundException;
 import com.techelevator.model.Class;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 
 public interface ClassDao {
 
     List<Class> findAll();
 
-    Class getClassById(Long id);
+    Class getClassById(Long id) throws ClassNotFoundException;
 
-    boolean addClass(String name, String instructor, String time, String date, int lengthMinutes);
+    Class addClass(String name, String instructor, Time time, Date date, int lengthMinutes);
 
-    boolean updateClass(Class updatedClass);
+    void updateClass(Long classId, Class updatedClass) throws ClassNotFoundException;
 
-    boolean removeClass(Long id);
+    Class removeClass(Long id) throws ClassNotFoundException;
 
 }

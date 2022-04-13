@@ -1,9 +1,12 @@
 package com.techelevator.dao;
 
+import com.techelevator.exceptions.MemberNotFoundException;
 import com.techelevator.model.Member;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -18,61 +21,84 @@ public class JdbcMemberDao implements MemberDao{
 
     @Override
     public List<Member> findAll() {
-        return null;
+        List<Member> members = new ArrayList<>();
+        String sql = "SELECT * FROM members;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while(results.next()) {
+            Member member = mapRowToMember(results);
+            members.add(member);
+        }
+        return members;
     }
 
     @Override
-    public Member getMemberByMemberId(Long memberId) {
-        return null;
+    public Member getMemberByMemberId(Long memberId) throws MemberNotFoundException {
+        String sql = "SELECT * FROM members WHERE member_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql,memberId);
+        if(results.next()) {
+            return mapRowToMember(results);
+        } else {
+            throw new MemberNotFoundException(memberId);
+        }
     }
 
     @Override
-    public Member getMemberByUserId(Long memberId) {
-        return null;
+    public Member getMemberByUserId(Long userId) throws MemberNotFoundException {
+        String sql = "SELECT * FROM members WHERE user_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql,userId);
+        if(results.next()) {
+            return mapRowToMember(results);
+        } else {
+            throw new MemberNotFoundException(userId);
+        }
     }
 
     @Override
-    public boolean create(Long userId, String firstName, String lastName, String email) {
-        return false;
+    public Member create(Member member) {
+        String insertMember = "INSERT INTO members (user_id,first_name,last_name,email) "+
+                "VALUES (?,?,?,?) RETURNING member_id;";
+        member.setMemberId(jdbcTemplate.queryForObject(insertMember,Long.class,
+                member.getUserId(),member.getFirstName(),member.getLastName(),member.getEmail()));
+        return member;
     }
 
     @Override
-    public boolean setProfile(Map<String, String> profile) {
-        return false;
+    public void updateMember(Member member) throws MemberNotFoundException {
+        String update = "UPDATE members SET first_name = ?, last_name = ?, email = ? WHERE member_id = ?;";
+        try {
+            jdbcTemplate.update(update,member.getFirstName(),member.getLastName(),member.getEmail(),member.getMemberId());
+        } catch(Exception e) {
+            throw new MemberNotFoundException(member.getMemberId());
+        }
     }
 
     @Override
-    public boolean addProfileDetail(String key, String value) {
-        return false;
+    public void updateName(Long memberId, String firstName, String lastName) throws MemberNotFoundException {
+        String sql = "UPDATE members SET first_name = ?, last_name = ? WHERE member_id = ?;";
+        try {
+            jdbcTemplate.update(sql, firstName, lastName, memberId);
+        } catch(Exception e) {
+            throw new MemberNotFoundException(memberId);
+        }
     }
 
     @Override
-    public boolean updateProfileDetail(String key, String value) {
-        return false;
+    public void updateEmail(Long memberId, String email) throws MemberNotFoundException {
+        String sql = "UPDATE members SET email = ? WHERE member_id = ?;";
+        try {
+            jdbcTemplate.update(sql, email, memberId);
+        } catch(Exception e) {
+            throw new MemberNotFoundException(memberId);
+        }
     }
 
-    @Override
-    public boolean removeProfileDetail(String key) {
-        return false;
-    }
-
-    @Override
-    public boolean setGoals(Map<String, String> goals) {
-        return false;
-    }
-
-    @Override
-    public boolean addGoal(String key, String value) {
-        return false;
-    }
-
-    @Override
-    public boolean updateGoal(String key, String value) {
-        return false;
-    }
-
-    @Override
-    public boolean removeGoal(String key, String value) {
-        return false;
+    private Member mapRowToMember(SqlRowSet results) {
+        Member member = new Member();
+        member.setMemberId(results.getLong("member_id"));
+        member.setUserId(results.getLong("user_id"));
+        member.setFirstName(results.getString("first_name"));
+        member.setLastName(results.getString("last_name"));
+        member.setEmail(results.getString("email"));
+        return member;
     }
 }
