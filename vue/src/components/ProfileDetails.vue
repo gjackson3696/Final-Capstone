@@ -13,7 +13,7 @@
             <input for="email"  type="text"/>
       </div>
         <div class="createdForm">
-            <button type="button" class="btn btn-light">Enter goals for yourself to track benchmarks and measure progress!</button>
+            <button type="button" class="btn btn-light" onclick="window.location='localhost:8080/workoutGoals'">Enter goals for yourself to track benchmarks and measure progress!</button>
       </div>
         
            <div class="createdForm">
