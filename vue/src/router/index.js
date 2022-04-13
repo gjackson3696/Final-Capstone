@@ -6,6 +6,8 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import EditProfile from '../views/EditProfile.vue'
+import WorkoutGoals from '../views/ProfileGoals.vue'
+import Schedule from '../views/Schedule.vue'
 
 Vue.use(Router)
 
@@ -21,8 +23,7 @@ Vue.use(Router)
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'home',
       component: Home,
@@ -61,8 +62,25 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    // change this to require authentication when login works properly
+      {
+        path: "/workoutGoals",
+        name: "workoutGoals",
+        component: WorkoutGoals,
+        meta: {
+          requiresAuth: false
+        }
+      },
+    {
+      path: "/schedule",
+      name: "schedule",
+      component: Schedule,
+      meta: {
+        requiresAuth: false
+      }
+    },
 
-    }
   ]
 })
 
