@@ -23,13 +23,13 @@ public class ScheduleController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public void register(Long memberId, Long classId) {
+    @RequestMapping(value = "/classSignUp", method = RequestMethod.POST)
+    public void register(@PathVariable Long memberId, @PathVariable Long classId) {
         classDao.registerMember(memberId,classId);
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.DELETE)
-    public void unregister(Long memberId, Long classId) {
+    @RequestMapping(value = "/classSignUp", method = RequestMethod.DELETE)
+    public void unregister(@PathVariable Long memberId, @PathVariable Long classId) {
         classDao.unregisterMember(memberId,classId);
     }
 

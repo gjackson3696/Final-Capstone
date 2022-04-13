@@ -39,6 +39,9 @@ export default {
         this.classList = response.data;
       })
     }
+  },
+  created() {
+    this.getClassList();
   }
 }
 </script>
