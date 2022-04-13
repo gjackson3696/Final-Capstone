@@ -112,6 +112,7 @@
       v-if="showBenchmarkMovements === true"
     >
       <div name="squats">
+          <div>
         <h4>Squat Goals</h4>
         <label for="backSquat">Back Squat</label>
         <input
@@ -119,33 +120,41 @@
           name="backSquat"
           v-model="benchmarkMovements.backSquat"
         />
+      </div>
         <label for="frontSquat">Front Squat</label>
         <input
           type="text"
           name="frontSquat"
           v-model="benchmarkMovements.frontSquat"
         />
+        <div>
         <label for="zercherSquat">Zercher Squat</label>
         <input
           type="text"
           name="zercherSquat"
           v-model="benchmarkMovements.zercherSquat"
         />
+        </div>
+        <div>
         <label for="overheadSquat">Overhead Squat</label>
         <input
           type="text"
           name="overheadSquat"
           v-model="benchmarkMovements.overheadSquat"
         />
+        </div>
+        <div>
         <label for="bulgarianSplitSquat">Bulgarian Split Squat</label>
         <input
           type="text"
           name="bulgarianSplitSquat"
           v-model="benchmarkMovements.bulgarianSplitSquat"
         />
+        </div>
       </div>
       <h4>Deadlift Goals</h4>
       <div name="deadlifts">
+          <div>
         <label for="conventionalDeadlift">Conventional Deadlift</label
         >
         <input
@@ -153,96 +162,125 @@
           name="conventionalDeadlift"
           v-model="benchmarkMovements.conventionalDeadlift"
         />
+        </div>
+        <div>
         <label for="sumoDeadlift">Sumo Deadlift</label>
         <input
           type="text"
           name="sumoDeadlift"
           v-model="benchmarkMovements.sumoDeadlift"
         />
+        </div>
       </div>
       <h4>Pressing Goals</h4>
       <div name="presses">
+          <div>
         <label for="overheadPress">Overhead Press</label>
         <input
           type="text"
           name="overheadPress"
           v-model="benchmarkMovements.overheadPress"
         />
+        </div>
+        <div>
         <label for="militaryPress">Military Press</label>
         <input
           type="text"
           name="pushPress"
           v-model="benchmarkMovements.militaryPress"
         />
+        </div>
+        <div>
         <label for="pushPress">Push Press</label>
         <input
           type="text"
           name="pushPress"
           v-model="benchmarkMovements.pushPress"
         />
+        </div>
       </div>
       <h4>Olympic Lifting Goals</h4>
       <div name="olympic">
+          <div>
         <label for="squatClean">Squat Clean</label>
         <input
           type="text"
           name="squatClean"
           v-model="benchmarkMovements.squatClean"
         />
+        </div>
+        <div>
         <label for="powerClean">Power Clean</label>
         <input
           type="text"
           name="powerClean"
           v-model="benchmarkMovements.powerClean"
         />
+        </div>
+        <div>
         <label for="cleanJerk">Clean and Jerk</label>
         <input
           type="text"
           name="cleanJerk"
           v-model="benchmarkMovements.cleanJerk"
         />
+        </div>
+        <div>
         <label for="splitJerk">Split Jerk</label>
         <input
           type="text"
           name="splitJerk"
           v-model="benchmarkMovements.splitJerk"
         />
+        </div>
+        <div>
         <label for="pushJerk">Push Jerk</label>
         <input
           type="text"
           name="pushJerk"
           v-model="benchmarkMovements.pushJerk"
         />
+        </div>
+        <div>
         <label for="squatJerk">Squat Jerk</label>
         <input
           type="text"
           name="squatJerk"
           v-model="benchmarkMovements.squatJerk"
         />
+        </div>
+        <div>
         <label for="squatClean">Squat Clean</label>
         <input
           type="text"
           name="squatClean"
           v-model="benchmarkMovements.squatClean"
         />
+        </div>
+        <div>
         <label for="squatSnatch">Squat Snatch</label>
         <input
           type="text"
           name="squatSnatch"
           v-model="benchmarkMovements.squatSnatch"
         />
+        </div>
+        <div>
         <label for="powerSnatch">Power Snatch</label>
         <input
           type="text"
           name="powerSnatch"
           v-model="benchmarkMovements.powerSnatch"
         />
+        </div>
+        <div>
         <label for="snatchBalance">Snatch Balance</label>
         <input
           type="text"
           name="snatchBalance"
           v-model="benchmarkMovements.snatchBalance"
         />
+        </div>
       </div>
       <button type="submit" class="btn save">Save Movements</button>
     </form>
