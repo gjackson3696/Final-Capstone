@@ -1,20 +1,16 @@
 <template>
   <div>
-    <ul class="menu" :style="{left:positionToMove, sliderWidth}">
-      <div>
-        <li v-for="link in links" :key="link.id" @click:="sliderIndicator(link.id)" :ref="'menu-item_' + link.id">
-          <a href="#" class="menu-link">
-            <span>{{ link.text }}</span>
-          </a>
+    <ul class="menu" :style="{ left: positionToMove, sliderWidth }">
+        <li v-for="link in links" :key="link.id" @click="sliderIndicator(link.id)" v-bind:class="link.id == selectedIndex ? 'active menu-link' : '' ">
+              <div class="menu-link">{{ link.text }}</div>
         </li>
-      </div>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: "navbar",
+  name: "weekday-selector",
   data() {
     return {
       sliderPosition: 0,
@@ -52,12 +48,10 @@ export default {
       ],
     };
   },
-   methods: {
+  methods: {
     sliderIndicator(id) {
-      let element = this.$refs[`menu-item_${id}`][0];
-      this.sliderPosition = element.offsetLeft;
-      this.selectedElementWidth = element.offsetWidth;
       this.selectedIndex = id;
+      this.$store.state.weekdaySelector = id;
     },
   },
   computed: {
@@ -68,11 +62,10 @@ export default {
       return this.selectedElementWidth + "px";
     },
   },
-}
-
+};
 </script>
 
-<style >
+<style>
 :root {
   --active-color: #ffee93;
   --link-text-color: #f1faee;
@@ -85,10 +78,11 @@ export default {
   margin: 0;
   position: relative;
   background-color: var(--menu-background-color);
-  display: inline-flex;
+  display:flex;
   border-radius: 4px;
   list-style-type: none;
   overflow: hidden;
+  justify-content: space-evenly;
 }
 /* li */
 .menu-item {
@@ -106,25 +100,5 @@ export default {
 .menu-link.active {
   color: var(--active-color);
   background-color: var(--active-background-color);
-}
-/* icon */
-.menu-icon {
-  height: 1.5rem;
-  width: 1.5rem;
-  justify-content: center;
-  align-items: center;
-  display: inline-flex;
-  margin-right: 0.2rem;
-}
-/* slider */
-.menu-indicator {
-  position: absolute;
-  height: 0.25rem;
-  background-color: var(--active-color);
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  width: 3rem;
-  transition: all ease 0.5s;
 }
 </style>

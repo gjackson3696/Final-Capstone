@@ -4,8 +4,8 @@
           <p class="class-items">Change to Add Generic Workout Photos or Icons ASK PRODUCT OWNER</p>
           <p class="class-items">Class name: {{ classItem.name }} </p>
           <p class="class-items">Instructor: {{ classItem.instructor }}  </p>
-          <p class="class-items">Start Time: {{ classItem.startTime }} </p>
-          <p class="class-items">Length of Class: {{ classItem.lengthInMinutes }} mins.</p>
+          <p class="class-items">Start Time: {{ classItem.time }} </p>
+          <p class="class-items">Length of Class: {{ classItem.lengthMinutes }} mins.</p>
           <button>Register for Class</button>
     
     </div>
