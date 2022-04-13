@@ -5,21 +5,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Member {
-    private Long memberId;
+    private Long memberId, profileId, goalsId;
     @NotNull
     private Long userId;
     @NotNull
     private String firstName, lastName, email;
-    private Map<String,String> profile, goals;
 
-    public Member(Long memberId, Long userId, String firstName, String lastName, String email) {
+    public Member() { }
+
+    public Member(Long memberId, Long profileId, Long goalsId, Long userId, String firstName, String lastName, String email) {
         this.memberId = memberId;
+        this.profileId = profileId;
+        this.goalsId = goalsId;
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.profile = new HashMap<>();
-        this.goals = new HashMap<>();
     }
 
     public Long getMemberId() {
@@ -28,6 +29,22 @@ public class Member {
 
     public void setMemberId(Long memberId) {
         this.memberId = memberId;
+    }
+
+    public Long getProfileId() {
+        return profileId;
+    }
+
+    public void setProfileId(Long profileId) {
+        this.profileId = profileId;
+    }
+
+    public Long getGoalsId() {
+        return goalsId;
+    }
+
+    public void setGoalsId(Long goalsId) {
+        this.goalsId = goalsId;
     }
 
     public Long getUserId() {
@@ -62,27 +79,4 @@ public class Member {
         this.email = email;
     }
 
-    public Map<String, String> getProfile() {
-        return profile;
-    }
-
-    public void setProfile(Map<String, String> profile) {
-        this.profile = profile;
-    }
-
-    public void addProfileDetail(String key, String value) {
-        this.profile.put(key,value);
-    }
-
-    public Map<String, String> getGoals() {
-        return goals;
-    }
-
-    public void setGoals(Map<String, String> goals) {
-        this.goals = goals;
-    }
-
-    public void addGoal(String key, String value) {
-        this.goals.put(key,value);
-    }
 }

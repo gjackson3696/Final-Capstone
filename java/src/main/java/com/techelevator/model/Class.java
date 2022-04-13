@@ -2,14 +2,20 @@ package com.techelevator.model;
 
 import org.springframework.data.annotation.QueryAnnotation;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 
 public class Class {
-    @NotNull
     private Long id;
+    @NotEmpty
+    private String name, instructor;
     @NotNull
-    private String name, instructor, time, date;
+    private Time time;
+    @NotNull
+    private Date date;
     @NotNull
     private int lengthMinutes;
     private List<Long> registeredMemberIds;
@@ -40,19 +46,19 @@ public class Class {
         this.instructor = instructor;
     }
 
-    public String getTime() {
+    public Time getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Time time) {
         this.time = time;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -74,5 +80,17 @@ public class Class {
 
     public List<Long> getRegisteredMemberIds() {
         return registeredMemberIds;
+    }
+
+    @Override
+    public String toString() {
+        return "Class{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", instructor='" + instructor + '\'' +
+                ", date='" + date + '\'' +
+                ", startTime='" + time + '\'' +
+                ", lengthInMinutes='" + lengthMinutes + '\'' +
+                '}';
     }
 }

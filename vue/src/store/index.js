@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 
+
 Vue.use(Vuex)
 
 /*
@@ -12,56 +13,14 @@ Vue.use(Vuex)
 const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
 
-if(currentToken != null) {
+if (currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
 }
-
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    classList: [
-      {
-        id: "1",
-        name: "HIIT",
-        instructor: "Gary",
-        date: "12/12/22",
-        startTime: "1600",
-        lengthInMinutes: "60"
-      },
-      {
-        id: "2",
-        name: "Yoga",
-        instructor: "Alex",
-        date: "12/12/22",
-        startTime: "1600",
-        lengthInMinutes: "60"
-      },
-      {
-        id: "3",
-        name: "The Power Building",
-        instructor: "Semir",
-        date: "12/12/22",
-        startTime: "1600",
-        lengthInMinutes: "90"
-      },
-      {
-        id: "4",
-        name: "Show Me How To Run ",
-        instructor: "Luke",
-        date: "12/12/22",
-        startTime: "1600",
-        lengthInMinutes: "90"
-      },
-      {
-        id: "5",
-        name: "Coding and the Brain",
-        instructor: "Scrum Lord Matt",
-        date: "12/12/22",
-        startTime: "1600",
-        lengthInMinutes: "50"
-      }
-    ]
+    weekdaySelector: 0,
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -71,7 +30,7 @@ export default new Vuex.Store({
     },
     SET_USER(state, user) {
       state.user = user;
-      localStorage.setItem('user',JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(user));
     },
     LOGOUT(state) {
       localStorage.removeItem('token');

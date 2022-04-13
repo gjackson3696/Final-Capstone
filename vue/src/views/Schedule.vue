@@ -1,26 +1,70 @@
 <template>
-<div>
-  <h2 class="calendar">Schedule of Classes</h2>
-  <class v-bind:classItem="item" v-for="item in this.$store.state.classList" :key="item.id"/>
-  
-</div>
+  <div>
+    <h2 class="calendar">Schedule of Classes</h2>
+      <weekday-selector />
+    <div class="card-container">
+      <class-card
+        class="class-card"
+        v-bind:classItem="item"
+        v-for="item in classFilter"
+        :key="item.id"
+      />
+    </div>
+  </div>
 </template>
 
 <script>
-import Class from '../components/Class.vue'
+import ClassCard from "../components/ClassCard.vue";
+import WeekdaySelector from "../components/WeekdaySelector.vue";
+import classService from "../services/ClassService.js"
 export default {
-      components: { Class },
+  name: "Schedule",
+  data(){
+    return {
+      classList: []
+    }
+  },
+  components: { ClassCard, WeekdaySelector},
+  computed: {
+    classFilter() {
+      return this.classList.filter((classItem) => {
+        const classDate = new Date(classItem.date);
+        return this.$store.state.weekdaySelector == classDate.getDay();
+      })
+    }
+  },
+  methods: {
+    getClassList() {
+      classService.getClasses().then(response => {
+        this.classList = response.data;
+      })
+    }
+  }
 }
-
 </script>
 
-<style>
-.calendar{
+<style scoped>
+.calendar {
   text-align: center;
 }
 
 .tableCells {
   border: 1;
   padding: 2;
+}
+body {
+  height: 100%;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+
 }
 </style>

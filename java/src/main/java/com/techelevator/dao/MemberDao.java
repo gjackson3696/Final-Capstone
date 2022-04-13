@@ -1,33 +1,24 @@
 package com.techelevator.dao;
 
+import com.techelevator.exceptions.MemberNotFoundException;
 import com.techelevator.model.Member;
 
 import java.util.List;
-import java.util.Map;
 
 public interface MemberDao {
 
     List<Member> findAll();
 
-    Member getMemberByMemberId(Long memberId);
+    Member getMemberByMemberId(Long memberId) throws MemberNotFoundException;
 
-    Member getMemberByUserId(Long memberId);
+    Member getMemberByUserId(Long userId) throws MemberNotFoundException;
 
-    boolean create(Long userId, String firstName, String lastName, String email);
+    Member create(Member member);
 
-    boolean setProfile(Map<String,String> profile);
+    void updateMember(Member member) throws MemberNotFoundException;
 
-    boolean addProfileDetail(String key, String value);
+    void updateName(Long memberId, String firstName, String lastName) throws MemberNotFoundException;
 
-    boolean updateProfileDetail(String key, String value);
+    void updateEmail(Long memberId, String email) throws MemberNotFoundException;
 
-    boolean removeProfileDetail(String key);
-
-    boolean setGoals(Map<String,String> goals);
-
-    boolean addGoal(String key, String value);
-
-    boolean updateGoal(String key, String value);
-
-    boolean removeGoal(String key, String value);
 }
