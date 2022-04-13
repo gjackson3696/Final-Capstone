@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h3>Enter data for a personal workout:</h3>
-    <button v-on:click="showPersonalWorkouts = true">Add Personal Workout</button>
+    <button v-on:click="showPersonalWorkouts = !showPersonalWorkouts">Add Personal Workout</button>
 
     <form
       id="frmAddNewWorkout"
@@ -73,7 +73,7 @@
     </form>
 
     <h3>Enter goals for a standardized CrossFit Workout</h3>
-    <button v-on:click="showBenchmarkWorkouts = true">Enter Score</button>
+    <button v-on:click="showBenchmarkWorkouts = !showBenchmarkWorkouts">Enter Score</button>
 
     <form
       id="frmSaveBenchmarkWorkout"
@@ -102,7 +102,7 @@
     </form>
 
     <h3>Enter goals for individual movements (squats, olympic lifts, etc.)</h3>
-    <button v-on:click="showBenchmarkMovements = true">
+    <button v-on:click="showBenchmarkMovements = !showBenchmarkMovements">
       Enter Goals for Individual Movements
     </button>
     <h4 v-if="showBenchmarkMovements === true">Enter one rep max for each movement</h4>
