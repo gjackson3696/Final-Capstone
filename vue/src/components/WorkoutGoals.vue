@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h3>Enter data for a personal workout:</h3>
-    <button v-on:click="showPersonalWorkouts = !showPersonalWorkouts">Add Personal Workout</button>
+    <button class="btn btn-light" v-on:click="showPersonalWorkouts = !showPersonalWorkouts">Add Personal Workout</button>
 
     <form
       id="frmAddNewWorkout"
@@ -69,11 +69,11 @@
         name="checkboxRx"
         v-model="personalWorkout.completedAsPrescribed"
       />
-      <button type="submit" class="btn save">Save Workout</button>
+      <button type="submit" class="btn btn-primary">Save Workout</button>
     </form>
 
     <h3>Enter goals for a standardized CrossFit Workout</h3>
-    <button v-on:click="showBenchmarkWorkouts = !showBenchmarkWorkouts">Enter Score</button>
+    <button class="btn btn-light" v-on:click="showBenchmarkWorkouts = !showBenchmarkWorkouts">Enter Score</button>
 
     <form
       id="frmSaveBenchmarkWorkout"
@@ -98,11 +98,11 @@
           placeholder="# rounds/# reps"
         />
       </div>
-      <button type="submit" class="btn save">Save Workout</button>
+      <button type="submit" class="btn btn-primary">Save Workout</button>
     </form>
 
     <h3>Enter goals for individual movements (squats, olympic lifts, etc.)</h3>
-    <button v-on:click="showBenchmarkMovements = !showBenchmarkMovements">
+    <button class="btn btn-light" v-on:click="showBenchmarkMovements = !showBenchmarkMovements">
       Enter Goals for Individual Movements
     </button>
     <h4 v-if="showBenchmarkMovements === true">Enter one rep max for each movement</h4>
@@ -282,7 +282,7 @@
         />
         </div>
       </div>
-      <button type="submit" class="btn save">Save Movements</button>
+      <button type="submit" class="btn btn-primary">Save Movements</button>
     </form>
   </div>
 </template>
@@ -391,6 +391,26 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/goals_page.jpg);
+    background-position: 0px 0px, 50% 50%;
+    background-size: auto, cover;
+    background-attachment: scroll, fixed;
+    color: #fff;
+    justify-content: center;
+    -webkit-box-align: center;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    display: flex;
+    height: 100vh;
+    text-align: center;
+    margin-bottom: 100px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+}
 
+.btn {
+  display: .75rem
+}
 
 </style>
