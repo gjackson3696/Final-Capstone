@@ -19,4 +19,7 @@ public interface ClassDao {
 
     Class removeClass(Long id) throws ClassNotFoundException;
 
+    void registerMember(Long memberId, Long classId);
+
+    void unregisterMember(Long memberId, Long classId);
 }
