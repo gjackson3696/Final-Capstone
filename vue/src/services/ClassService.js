@@ -6,15 +6,21 @@ export default {
     },
 
     registerForClass (memberId, classId) {
-        return axios.post('/classes/register', {
+        // console.log("in classService.js", memberId)
+        axios.post('/classes/register', {
+            
             "memberId": memberId,
             "classId": classId
+            
         })
     },
     unregisterForClass(memberId, classId){
-        return axios.delete('/classes/unregister', {
-            "memberId": memberId,
-            "classId": classId
+        axios.delete('/classes/unregister', {
+            //will need to refactor (this) delete class
+            data: {
+                "memberId": memberId,
+                "classId": classId
+            }
         })
     }
 }

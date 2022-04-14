@@ -6,8 +6,8 @@
           <p class="class-items">Instructor: {{ classItem.instructor }}  </p>
           <p class="class-items">Start Time: {{ classItem.time }} </p>
           <p class="class-items">Length of Class: {{ classItem.lengthMinutes }} mins.</p>
-          <!-- add dynamic styling to the on click event to toggle between registered and unregister class="lightView, base-button, darkView" -->
-   <button  @click="toggleRegistration($store.state.memberId, classItem.id)">{{ registered ? "Unregister From Class" : "Register For Class" }}</button>
+         
+   <button @click="toggleRegistration($store.state.memberId, classItem.id)">{{ registered ? "Unregister From Class" : "Register For Class" }}</button>
           
     </div>
   </div>
@@ -39,6 +39,7 @@ export default {
                 this.registeredMemberIds = filteredIds;
           }
         }
+        //look into error code 400 and appropriate syntax to pass a variable from store into an onclick method
   },
 
   props: [ 'classItem' ], 
