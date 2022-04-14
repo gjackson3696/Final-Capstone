@@ -5,7 +5,6 @@ import com.techelevator.dao.ClassMembersDao;
 import com.techelevator.model.Class;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.yaml.snakeyaml.events.Event;
 
 import javax.validation.Valid;
 import java.sql.Date;
