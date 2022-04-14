@@ -1,12 +1,9 @@
 package com.techelevator.model;
 
-import org.springframework.data.annotation.QueryAnnotation;
-
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
 import java.sql.Time;
-import java.util.Calendar;
 import java.util.List;
 
 public class Class {
@@ -61,13 +58,6 @@ public class Class {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public Date getEndOfWeek() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        calendar.add(Calendar.DATE, 7);
-        return (Date) calendar.getTime();
     }
 
     public int getLengthMinutes() {
