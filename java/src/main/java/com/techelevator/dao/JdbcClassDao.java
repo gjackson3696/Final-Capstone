@@ -33,6 +33,19 @@ public class JdbcClassDao implements ClassDao{
     }
 
     @Override
+    public List<Class> findWeekClasses(Date startDate) {
+        List<Class> classList = new ArrayList<>();
+        String sql = "SELECT * FROM classes" +
+                "WHERE start_date <= ?+6 AND start_date >= ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql,startDate,startDate);
+        while(results.next()) {
+            Class newClass = mapRowToClass(results);
+            classList.add(newClass);
+        }
+        return classList;
+    }
+
+    @Override
     public Class getClassById(Long id) throws ClassNotFoundException {
         String sql = "SELECT * FROM classes WHERE class_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);

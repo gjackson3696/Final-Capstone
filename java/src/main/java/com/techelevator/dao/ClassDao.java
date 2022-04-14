@@ -11,6 +11,8 @@ public interface ClassDao {
 
     List<Class> findAll();
 
+    List<Class> findWeekClasses(Date startDate);
+
     Class getClassById(Long id) throws ClassNotFoundException;
 
     Class addClass(String name, String instructor, Time time, Date date, int lengthMinutes);
