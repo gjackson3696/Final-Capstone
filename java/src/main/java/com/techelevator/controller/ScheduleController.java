@@ -28,7 +28,7 @@ public class ScheduleController {
         return classDao.findAll();
     }
 
-    @RequestMapping(value = "/classes", method = RequestMethod.GET)
+    @RequestMapping(value = "/classes/week", method = RequestMethod.GET)
     public List<Class> listWeek(@RequestBody Date startDate) {
         return classDao.findWeekClasses(startDate);
     }
