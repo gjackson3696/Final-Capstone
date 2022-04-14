@@ -7,31 +7,38 @@
           <p class="class-items">Start Time: {{ classItem.time }} </p>
           <p class="class-items">Length of Class: {{ classItem.lengthMinutes }} mins.</p>
           <!-- add dynamic styling to the on click event to toggle between registered and unregister class="lightView, base-button, darkView" -->
-          <button  @click="changeText">{{ button.text }}</button>
+   <button  @click="toggleRegistration($store.state.memberId, classItem.id)">{{ registered ? "Unregister From Class" : "Register For Class" }}</button>
+          
     </div>
   </div>
 </template>
 
 <script>
+import classService from '../services/ClassService.js';
 export default {
   name: "class-card",
   data() {
     return {
-      registeredMember: [],
-      registered: false,
-      button: {
-        text: 'Register For Class'
-      },
+      registeredMemberIds: []
     }
   },
   computed: {
-// compute registered changed based on weather or not the member id is in the registered members array
+    registered(){
+      return this.registeredMemberIds.includes(this.$store.state.memberId);
+    }
   },
       methods: {
-      // registeredMemberId: function() {
-      //   this.changeBtn = !this.changeBtn;
-      //   this.button.text = this.changeBtn ? 'Register For Class' : 'Unregister Me';
-      // }
+         toggleRegistration(memberId, classId) {
+            if (!this.registered){
+              classService.registerForClass(memberId, classId);
+                this.registeredMemberIds.push(memberId);   
+            }
+            else{
+              classService.unregisterForClass(memberId, classId);
+                const filteredIds = this.registeredMemberIds.filter(element => element !== memberId);
+                this.registeredMemberIds = filteredIds;
+          }
+        }
   },
 
   props: [ 'classItem' ], 
