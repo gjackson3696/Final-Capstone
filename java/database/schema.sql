@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS class_members;
 DROP TABLE IF EXISTS profile;
 DROP TABLE IF EXISTS goals;
 DROP TABLE IF EXISTS workouts;
+DROP TABLE IF EXISTS logged_workouts;
 DROP TABLE IF EXISTS members;
 DROP TABLE IF EXISTS classes;
 DROP TABLE IF EXISTS users;
@@ -14,6 +15,7 @@ DROP SEQUENCE IF EXISTS seq_class_id;
 DROP SEQUENCE IF EXISTS seq_profile_id;
 DROP SEQUENCE IF EXISTS seq_goals_id;
 DROP SEQUENCE IF EXISTS seq_workout_id;
+DROP SEQUENCE IF EXISTS seq_logged_workout_id;
 
 CREATE SEQUENCE seq_user_id
   INCREMENT BY 1
@@ -42,6 +44,12 @@ CREATE SEQUENCE seq_profile_id
 CREATE SEQUENCE seq_goals_id
   INCREMENT BY 1
   START WITH 4001
+  NO MAXVALUE
+  CACHE 1;
+
+CREATE SEQUENCE seq_workout_id
+  INCREMENT BY 1
+  START WITH 5001
   NO MAXVALUE
   CACHE 1;
 
@@ -134,6 +142,21 @@ CREATE TABLE workouts (
 	CONSTRAINT PK_workouts PRIMARY KEY (workout_id),
 	CONSTRAINT FK_workouts_member_id FOREIGN KEY (member_id) REFERENCES members (member_id)
 );
+
+CREATE TABLE logged_workouts (
+	logged_workout_id int DEFAULT nextval('seq_logged_workout_id'::regclass) NOT NULL,
+	member_id int NOT NULL,
+	name varchar(50) NOT NULL,
+	domain varchar(50) NOT NULL,
+	structure varchar(200) NOT NULL,
+	weights varchar(50),
+	workoutTime varchar(25),
+	rounds varchar(10),
+	completed boolean DEFAULT true,
+	CONSTRAINT PK_logged_workouts PRIMARY KEY (logged_workout_id),
+	CONSTRAINT FK_logged_workouts_member_id FOREIGN KEY (member_id) REFERENCES members (member_id)
+);
+
 
 CREATE TABLE classes (
 	class_id int DEFAULT nextval('seq_class_id'::regclass) NOT NULL,
