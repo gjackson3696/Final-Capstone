@@ -24,7 +24,7 @@ export default {
     classFilter() {
       return this.classList.filter((classItem) => {
         const classDate = new Date(classItem.date);
-        return this.$store.state.weekdaySelector == classDate.getDay();
+        return this.$store.state.weekdaySelector == classDate.getDay() || this.$store.state.weekdaySelector == 7;
       })
     }
   },
@@ -42,6 +42,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 .calendar {
   text-align: center;
 }
@@ -62,6 +64,7 @@ body {
 
 .card-container {
   display: flex;
-  flex-direction: row;
+  flex-flow: column wrap;
+  justify-content: flex-start;
 }
 </style>
