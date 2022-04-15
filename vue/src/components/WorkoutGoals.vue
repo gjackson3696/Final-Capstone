@@ -366,7 +366,7 @@ export default {
     //these are just placeholders
 
     saveWorkout() {
-      apiService.saveWorkout.then((response) => {
+      apiService.saveWorkout(this.$store.state.memberId,this.personalWorkout).then((response) => {
         this.personalWorkout = response.data;
       });
       this.resetForm();

@@ -21,8 +21,12 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     weekdaySelector: 0,
-  },
+    memberId: 1001,
+    },
   mutations: {
+    //need a mutator that will mutate the memberId to populate it.
+    //SET_MEMBER_ID takes in (state, memberId) going to sets state.memberId to memberId
+    //figure out where to set the mutation.
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
       localStorage.setItem('token', token);

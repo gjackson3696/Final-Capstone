@@ -1,7 +1,5 @@
 package com.techelevator.model;
 
-import org.springframework.data.annotation.QueryAnnotation;
-
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;

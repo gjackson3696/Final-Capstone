@@ -6,28 +6,40 @@
           <p class="class-items">Instructor: {{ classItem.instructor }}  </p>
           <p class="class-items">Start Time: {{ classItem.time }} </p>
           <p class="class-items">Length of Class: {{ classItem.lengthMinutes }} mins.</p>
-          <!-- add dynamic styling to the on click event to toggle between registered and unregister class="lightView, base-button, darkView" -->
-          <button  @click="changeText">{{ button.text }}</button>
+         
+   <button @click="toggleRegistration($store.state.memberId, classItem.id)">{{ registered ? "Unregister From Class" : "Register For Class" }}</button>
+          
     </div>
   </div>
 </template>
 
 <script>
+import classService from '../services/ClassService.js';
 export default {
   name: "class-card",
   data() {
     return {
-      changeBtn: false,
-      button: {
-        text: 'Register For Class'
-      },
+      registeredMemberIds: []
+    }
+  },
+  computed: {
+    registered(){
+      return this.registeredMemberIds.includes(this.$store.state.memberId);
     }
   },
       methods: {
-      changeText: function() {
-        this.changeBtn = !this.changeBtn;
-        this.button.text = this.changeBtn ? 'Register For Class' : 'Unregister Me';
-      }
+         toggleRegistration(memberId, classId) {
+            if (!this.registered){
+              classService.registerForClass(memberId, classId);
+                this.registeredMemberIds.push(memberId);   
+            }
+            else{
+              classService.unregisterForClass(memberId, classId);
+                const filteredIds = this.registeredMemberIds.filter(element => element !== memberId);
+                this.registeredMemberIds = filteredIds;
+          }
+        }
+        //look into error code 400 and appropriate syntax to pass a variable from store into an onclick method
   },
 
   props: [ 'classItem' ], 

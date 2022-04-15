@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.sql.Date;
 import java.util.List;
 
 @RestController
@@ -26,20 +27,34 @@ public class ScheduleController {
         return classDao.findAll();
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/classes/signUp", method = RequestMethod.POST)
-    public void register(@PathVariable Long memberId, @PathVariable Long classId) {
-        classDao.registerMember(memberId,classId);
+    @RequestMapping(value = "/classes/week", method = RequestMethod.GET)
+    public List<Class> listWeek(@RequestBody Date startDate) {
+        return classDao.findWeekClasses(startDate);
     }
 
-    @RequestMapping(value = "/classes/signUp", method = RequestMethod.DELETE)
-    public void unregister(@PathVariable Long memberId, @PathVariable Long classId) {
-        classDao.unregisterMember(memberId,classId);
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(value = "/classes/register", method = RequestMethod.POST)
+    public void register(@RequestBody IDs ids) {
+        classDao.registerMember(ids.memberId,ids.classId);
+    }
+
+    @RequestMapping(value = "/classes/unregister", method = RequestMethod.DELETE)
+    public void unregister(@RequestBody IDs ids) {
+        classDao.unregisterMember(ids.memberId,ids.classId);
     }
 
     @RequestMapping(value = "/classes/registered", method = RequestMethod.GET)
-    public List<Long> getRegisteredClassesByMemberId(@PathVariable Long memberId) {
+    public List<Long> getRegisteredClassesByMemberId(@RequestBody Long memberId) {
         return classMembersDao.getRegisteredClassesByMemberId(memberId);
+    }
+
+    static class IDs {
+        Long memberId, classId;
+
+        IDs(Long memberId, Long classId) {
+            this.memberId = memberId;
+            this.classId = classId;
+        }
     }
 
 }
