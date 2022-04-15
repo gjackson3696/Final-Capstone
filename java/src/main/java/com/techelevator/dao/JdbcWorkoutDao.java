@@ -26,7 +26,7 @@ public class JdbcWorkoutDao implements WorkoutDao {
             Workout workout = mapRowToWorkout(results);
             workouts.add(workout);
         }
-        return null;
+        return workouts;
     }
 
     @Override

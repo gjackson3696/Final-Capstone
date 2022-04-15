@@ -22,26 +22,28 @@ public class WorkoutController {
         this.loggedWorkoutDao = loggedWorkoutDao;
     }
 
-    @RequestMapping(value = "/workouts", method = RequestMethod.GET)
-    public List<Workout> getWorkoutsByMemberId(@RequestBody Long memberId) {
+    @RequestMapping(value = "/workouts/{memberId}", method = RequestMethod.GET)
+    public List<Workout> getWorkoutsByMemberId(@PathVariable Long memberId) {
         return workoutDao.getWorkoutsByMemberId(memberId);
     }
 
-    @RequestMapping(value = "/workouts/logged", method = RequestMethod.GET)
-    public List<LoggedWorkout> getLoggedWorkoutsByMemberId(@RequestBody Long memberId) {
+    @RequestMapping(value = "/workouts/logged/{memberId}", method = RequestMethod.GET)
+    public List<LoggedWorkout> getLoggedWorkoutsByMemberId(@PathVariable Long memberId) {
         return loggedWorkoutDao.getLoggedWorkoutsByMemberId(memberId);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/workouts", method = RequestMethod.POST)
-    public void addNewWorkout(@Valid @RequestBody Workout workout) {
+    public Workout addNewWorkout(@Valid @RequestBody Workout workout) {
         workoutDao.addNewWorkout(workout);
+        return workout;
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/workouts/log", method = RequestMethod.POST)
-    public void logWorkout(@Valid @RequestBody LoggedWorkout workout) {
+    public LoggedWorkout logWorkout(@Valid @RequestBody LoggedWorkout workout) {
         loggedWorkoutDao.logWorkout(workout);
+        return workout;
     }
 
 }
