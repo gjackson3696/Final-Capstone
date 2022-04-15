@@ -36,6 +36,7 @@ public class ScheduleController {
     @RequestMapping(value = "/classes/register", method = RequestMethod.POST)
     public void register(@RequestBody IDs ids) {
         classDao.registerMember(ids.memberId,ids.classId);
+
     }
 
     @RequestMapping(value = "/classes/unregister", method = RequestMethod.DELETE)
@@ -43,8 +44,8 @@ public class ScheduleController {
         classDao.unregisterMember(ids.memberId,ids.classId);
     }
 
-    @RequestMapping(value = "/classes/registered", method = RequestMethod.GET)
-    public List<Long> getRegisteredClassesByMemberId(@RequestBody Long memberId) {
+    @RequestMapping(value = "/classes/registered/{memberId}", method = RequestMethod.GET)
+    public List<Long> getRegisteredClassesByMemberId(@PathVariable Long memberId) {
         return classMembersDao.getRegisteredClassesByMemberId(memberId);
     }
 

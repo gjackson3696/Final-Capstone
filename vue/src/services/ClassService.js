@@ -22,5 +22,8 @@ export default {
                 "classId": classId
             }
         })
+    },
+    getRegisteredClasses(memberId) {
+        return axios.get('/classes/registered/'+memberId);
     }
 }

@@ -1,9 +1,9 @@
 <template>
   <div>
     <h2 class="calendar">Schedule of Classes</h2>
-        <weekday-selector />
+        <weekday-selector @click="getClassList"/>
         <div class="card-container">
-          <class-card class="class-card" v-bind:classItem="item" v-for="item in classFilter" :key="item.id"/>
+          <class-card class="class-card" v-bind:classItem="item" v-for="item in classFilter" :key="item.id" />
         </div>
     </div>
 </template>
@@ -37,6 +37,9 @@ export default {
   },
   created() {
     this.getClassList();
+    this.$store.state.registeredClassIds = classService.getRegisteredClasses(this.$store.state.memberId).then(response => {
+      this.$store.commit('SET_CLASS_IDS',response.data);
+    })
   }
 }
 </script>

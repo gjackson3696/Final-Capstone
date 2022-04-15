@@ -4,6 +4,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Class {
@@ -18,7 +19,9 @@ public class Class {
     private int lengthMinutes;
     private List<Long> registeredMemberIds;
 
-    public Class() { }
+    public Class() {
+        this.registeredMemberIds = new ArrayList<>();
+    }
 
     public Long getId() {
         return id;

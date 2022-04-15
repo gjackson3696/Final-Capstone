@@ -19,24 +19,22 @@ export default {
   name: "class-card",
   data() {
     return {
-      registeredMemberIds: []
     }
   },
   computed: {
     registered(){
-      return this.registeredMemberIds.includes(this.$store.state.memberId);
+      return this.$store.state.registeredClassIds.includes(this.classItem.id);
     }
   },
       methods: {
          toggleRegistration(memberId, classId) {
             if (!this.registered){
               classService.registerForClass(memberId, classId);
-                this.registeredMemberIds.push(memberId);   
+                this.$store.commit('REGISTER_CLASS',classId);
             }
             else{
               classService.unregisterForClass(memberId, classId);
-                const filteredIds = this.registeredMemberIds.filter(element => element !== memberId);
-                this.registeredMemberIds = filteredIds;
+              this.$store.commit('UNREGISTER_CLASS',classId);
           }
         }
         //look into error code 400 and appropriate syntax to pass a variable from store into an onclick method
