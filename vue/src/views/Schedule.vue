@@ -1,6 +1,12 @@
 <template>
-  <div>
+  <div class="main-container">
     <h2 class="calendar">Schedule of Classes</h2>
+    <div>
+    <select name="calender dropdown" id="btn"></select>
+    <option value="Full Month Schedule">Full Month Schedule</option>
+    <option value="Weekly Schedule">Weekly Schedule</option>
+    <option value="2 Weeks ahead">2 Weeks ahead</option>
+    </div>
         <weekday-selector />
         <div class="card-container">
           <class-card class="class-card" v-bind:classItem="item" v-for="item in classFilter" :key="item.id"/>
@@ -42,10 +48,20 @@ export default {
 </script>
 
 <style scoped>
+#btn {
+  display: grid;
+  justify-content: center;
+  margin: 1rem;
+  align-items: center;
+}
 
 
 .calendar {
+  display: grid;
   text-align: center;
+  grid-area: schedule;
+  min-height: 100px;
+  padding: 4rem;
 }
 
 .tableCells {
@@ -56,15 +72,20 @@ body {
   height: 100%;
 }
 body {
-  font-family: "Roboto", sans-serif;
-  display: flex;
-  justify-content: left;
-  align-items: center;
+  display: grid;
+  grid-auto-columns: 2fr 2fr 2fr;
+
 }
 
 .card-container {
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: flex-start;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 20px;
+}
+
+.class-card {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 20px;
 }
 </style>
