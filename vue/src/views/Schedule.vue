@@ -1,15 +1,18 @@
 <template>
   <div class="main-container">
     <h2 class="calendar">Schedule of Classes</h2>
-    <div>
-    <select name="calender dropdown" id="btn"></select>
-    <option value="Full Month Schedule">Full Month Schedule</option>
-    <option value="Weekly Schedule">Weekly Schedule</option>
-    <option value="2 Weeks ahead">2 Weeks ahead</option>
-    </div>
-        <weekday-selector />
+
+ 
+<select name="dropdown" id="btn">
+  <option value="Mont view">Mont view</option>
+  <option value="Weekly view">Weekly view</option>
+  <option value="2 Week view">2 Week view</option>
+</select>
+
+        <weekday-selector @click="getClassList"/>
+
         <div class="card-container">
-          <class-card class="class-card" v-bind:classItem="item" v-for="item in classFilter" :key="item.id"/>
+          <class-card class="class-card" v-bind:classItem="item" v-for="item in classFilter" :key="item.id" />
         </div>
     </div>
 </template>
@@ -43,6 +46,9 @@ export default {
   },
   created() {
     this.getClassList();
+    this.$store.state.registeredClassIds = classService.getRegisteredClasses(this.$store.state.memberId).then(response => {
+      this.$store.commit('SET_CLASS_IDS',response.data);
+    })
   }
 }
 </script>
@@ -61,7 +67,7 @@ export default {
   text-align: center;
   grid-area: schedule;
   min-height: 100px;
-  padding: 4rem;
+  padding: 1rem;
 }
 
 .tableCells {

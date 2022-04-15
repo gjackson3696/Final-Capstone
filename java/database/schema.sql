@@ -171,6 +171,7 @@ CREATE TABLE classes (
 CREATE TABLE class_members (
 	class_id int NOT NULL,
 	member_id int NOT NULL,
+	CONSTRAINT PK_class_members PRIMARY KEY (class_id,member_id),
 	CONSTRAINT FK_class_mambers_class_id FOREIGN KEY (class_id) REFERENCES classes (class_id),
 	CONSTRAINT FK_class_members_member_id FOREIGN KEY (member_id) REFERENCES members (member_id)
 );

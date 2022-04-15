@@ -22,6 +22,7 @@ export default new Vuex.Store({
     user: currentUser || {},
     weekdaySelector: 0,
     memberId: 1001,
+    registeredClassIds: []
     },
   mutations: {
     //need a mutator that will mutate the memberId to populate it.
@@ -42,6 +43,15 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    REGISTER_CLASS(state,id) {
+      state.registeredClassIds.push(id);
+    },
+    UNREGISTER_CLASS(state,id) {
+      state.registeredClassIds = state.registeredClassIds.filter(element => element !== id);
+    },
+    SET_CLASS_IDS(state,ids) {
+      state.registeredClassIds = ids;
     }
   }
 })
