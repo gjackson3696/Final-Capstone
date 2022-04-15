@@ -1,86 +1,102 @@
 <template>
   <div class="container">
     <h3>Enter data for a personal workout:</h3>
-    <button class="btn btn-light" v-on:click="showPersonalWorkouts = !showPersonalWorkouts">Add Personal Workout</button>
-
+    <button
+      class="btn btn-light"
+      v-on:click="showPersonalWorkouts = !showPersonalWorkouts"
+    >
+      Add Personal Workout
+    </button>
     <form
       id="frmAddNewWorkout"
       v-on:submit.prevent="saveWorkout"
       v-if="showPersonalWorkouts === true"
     >
       <div class="field">
-        <label for="workoutName">Workout Name:</label>
         <input
+          size="50"
           type="text"
           name="workoutName"
-          placeholder="Give the workout a name"
+          placeholder="Name your workout"
           v-model="personalWorkout.workoutName"
         />
       </div>
       <div class="field" id="workoutDomain">
-        <label for="workoutDomain">Workout Domain:</label>
         <input
+          size="50"
           type="text"
           name="workoutDomain"
-          placeholder="ARMAP, For Time, EMOM, etc."
+          placeholder="Domain, i.e. ARMAP, Time, EMOM, etc."
           v-model="personalWorkout.workoutDomain"
         />
       </div>
       <div class="field">
-        <label for="workoutStructure">Workout Structure:</label>
         <input
+          size="50"
           type="text"
           name="workoutStructure"
-          placeholder="Workout details (reps, movements)"
+          placeholder="Movements/reps, i.e. 30 burpees, 20 pull ups"
           v-model="personalWorkout.workoutStructure"
         />
       </div>
       <div class="field">
-        <label for="workoutWeights">Workout Weights:</label>
         <input
+          size="50"
           type="text"
           name="workoutWeights"
-          placeholder="Weights used for movements"
+          placeholder="Goal for weights used for this workout"
           v-model="personalWorkout.workoutWeights"
         />
       </div>
       <div class="field">
-        <label for="workoutTime">Time:</label>
         <input
+          size="50"
           type="text"
           name="workoutTime"
-          placeholder="00:00:00"
+          placeholder="Time goal for this workout"
           v-model="personalWorkout.workoutTime"
         />
       </div>
       <div class="field">
-        <label for="workoutRounds">Rounds and reps completed:</label>
         <input
+          size="50"
           type="text"
           name="emailAddress"
-          placeholder="Number of rounds + number of reps for non-completed rounds"
+          placeholder="Number of rounds/reps desired"
           v-model="personalWorkout.workoutRounds"
         />
       </div>
-      <br />
-      <label for="checkboxRx">Workout completed as prescribed</label>
+      <label for="checkboxRx">As prescribed?</label>
       <input
+        id="checkboxRx"
         type="checkbox"
         name="checkboxRx"
         v-model="personalWorkout.completedAsPrescribed"
       />
-      <button type="submit" class="btn btn-primary">Save Workout</button>
+      <br />
+      <button id="saveNewWorkoutButton" type="submit" class="btn btn-primary">
+        Save Workout
+      </button>
     </form>
 
     <h3>Enter goals for a standardized CrossFit Workout</h3>
-    <button class="btn btn-light" v-on:click="showBenchmarkWorkouts = !showBenchmarkWorkouts">Enter Score</button>
+    <button
+      class="btn btn-light"
+      v-on:click="showBenchmarkWorkouts = !showBenchmarkWorkouts"
+    >
+      Enter Score
+    </button>
 
     <form
       id="frmSaveBenchmarkWorkout"
       v-on:submit.prevent="saveBenchmarkWorkout"
       v-if="showBenchmarkWorkouts === true"
     >
-      <div v-for="workout in crossfitWorkouts" v-bind:key="workout.workoutName">
+      <div
+        class="benchmark-workouts"
+        v-for="workout in crossfitWorkouts"
+        v-bind:key="workout.workoutName"
+      >
         <h4>{{ workout.workoutName }}</h4>
         <p>{{ workout.workoutDomain }}</p>
         <p>{{ workout.workoutStructure }}</p>
@@ -89,7 +105,7 @@
         <input
           type="text"
           v-bind="workout.workoutTime"
-          placeholder="Time workout completed in"
+          placeholder="Desired completion time"
         />
         <br />
         <input
@@ -102,187 +118,184 @@
     </form>
 
     <h3>Enter goals for individual movements (squats, olympic lifts, etc.)</h3>
-    <button class="btn btn-light" v-on:click="showBenchmarkMovements = !showBenchmarkMovements">
+    <button
+      class="btn btn-light"
+      v-on:click="showBenchmarkMovements = !showBenchmarkMovements"
+    >
       Enter Goals for Individual Movements
     </button>
-    <h4 v-if="showBenchmarkMovements === true">Enter one rep max for each movement</h4>
+    <h4 v-if="showBenchmarkMovements === true">
+      Enter one rep max for each movement
+    </h4>
     <form
       id="frmSaveBenchmarkMovements"
       v-on:submit.prevent="saveBenchmarkMovements"
       v-if="showBenchmarkMovements === true"
     >
-      <div name="squats">
-          <div>
-        <h4>Squat Goals</h4>
-        <label for="backSquat">Back Squat</label>
-        <input
-          type="text"
-          name="backSquat"
-          v-model="benchmarkMovements.backSquat"
-        />
-      </div>
-        <label for="frontSquat">Front Squat</label>
+      <div>
+        <div id="squats">
+          <h5>Squat Goals</h5>
+          <input
+            type="text"
+            name="backSquat"
+            v-model="benchmarkMovements.backSquat"
+            placeholder="Back Squat"
+          />
+        </div>
         <input
           type="text"
           name="frontSquat"
           v-model="benchmarkMovements.frontSquat"
+          placeholder="Front Squat"
         />
         <div>
-        <label for="zercherSquat">Zercher Squat</label>
-        <input
-          type="text"
-          name="zercherSquat"
-          v-model="benchmarkMovements.zercherSquat"
-        />
+          <input
+            type="text"
+            name="zercherSquat"
+            v-model="benchmarkMovements.zercherSquat"
+            placeholder="Zercher Squat"
+          />
         </div>
         <div>
-        <label for="overheadSquat">Overhead Squat</label>
-        <input
-          type="text"
-          name="overheadSquat"
-          v-model="benchmarkMovements.overheadSquat"
-        />
+          <input
+            type="text"
+            name="overheadSquat"
+            v-model="benchmarkMovements.overheadSquat"
+            placeholder="Overhead Squat"
+          />
         </div>
         <div>
-        <label for="bulgarianSplitSquat">Bulgarian Split Squat</label>
-        <input
-          type="text"
-          name="bulgarianSplitSquat"
-          v-model="benchmarkMovements.bulgarianSplitSquat"
-        />
+          <input
+            type="text"
+            name="bulgarianSplitSquat"
+            v-model="benchmarkMovements.bulgarianSplitSquat"
+            placeholder="Bulgarian Split Squat"
+          />
         </div>
       </div>
-      <h4>Deadlift Goals</h4>
-      <div name="deadlifts">
-          <div>
-        <label for="conventionalDeadlift">Conventional Deadlift</label
-        >
-        <input
-          type="text"
-          name="conventionalDeadlift"
-          v-model="benchmarkMovements.conventionalDeadlift"
-        />
+      <div id="deadlifts">
+        <h4>Deadlift Goals</h4>
+        <div>
+          <input
+            type="text"
+            name="conventionalDeadlift"
+            v-model="benchmarkMovements.conventionalDeadlift"
+            placeholder="Conventional Deadlift"
+          />
         </div>
         <div>
-        <label for="sumoDeadlift">Sumo Deadlift</label>
-        <input
-          type="text"
-          name="sumoDeadlift"
-          v-model="benchmarkMovements.sumoDeadlift"
-        />
+          <input
+            type="text"
+            name="sumoDeadlift"
+            v-model="benchmarkMovements.sumoDeadlift"
+            placeholder="Sumo Deadlift"
+          />
         </div>
       </div>
-      <h4>Pressing Goals</h4>
-      <div name="presses">
-          <div>
-        <label for="overheadPress">Overhead Press</label>
-        <input
-          type="text"
-          name="overheadPress"
-          v-model="benchmarkMovements.overheadPress"
-        />
+      
+      <div id="presses">
+        <h5>Pressing Goals</h5>
+        <div>
+          <input
+            type="text"
+            name="overheadPress"
+            v-model="benchmarkMovements.overheadPress"
+            placeholder="Overhead Press"
+          />
         </div>
         <div>
-        <label for="militaryPress">Military Press</label>
-        <input
-          type="text"
-          name="pushPress"
-          v-model="benchmarkMovements.militaryPress"
-        />
+          <input
+            type="text"
+            name="pushPress"
+            v-model="benchmarkMovements.militaryPress"
+            placeholder="Military Press"
+          />
         </div>
         <div>
-        <label for="pushPress">Push Press</label>
-        <input
-          type="text"
-          name="pushPress"
-          v-model="benchmarkMovements.pushPress"
-        />
+          <input
+            type="text"
+            name="pushPress"
+            v-model="benchmarkMovements.pushPress"
+            placeholder="Push Press"
+          />
         </div>
       </div>
-      <h4>Olympic Lifting Goals</h4>
-      <div name="olympic">
-          <div>
-        <label for="squatClean">Squat Clean</label>
-        <input
-          type="text"
-          name="squatClean"
-          v-model="benchmarkMovements.squatClean"
-        />
+      <div id="olympic">
+              <h5>Olympic Lifting Goals</h5>
+        <div>
+          <input
+            type="text"
+            name="squatClean"
+            v-model="benchmarkMovements.squatClean"
+            placeholder="Squat Clean"
+          />
         </div>
         <div>
-        <label for="powerClean">Power Clean</label>
-        <input
-          type="text"
-          name="powerClean"
-          v-model="benchmarkMovements.powerClean"
-        />
+          <input
+            type="text"
+            name="powerClean"
+            v-model="benchmarkMovements.powerClean"
+            placeholder="Power Clean"
+          />
         </div>
         <div>
-        <label for="cleanJerk">Clean and Jerk</label>
-        <input
-          type="text"
-          name="cleanJerk"
-          v-model="benchmarkMovements.cleanJerk"
-        />
+          <input
+            type="text"
+            name="cleanJerk"
+            v-model="benchmarkMovements.cleanJerk"
+            placeholder="Clean & Jerk"
+          />
         </div>
         <div>
-        <label for="splitJerk">Split Jerk</label>
-        <input
-          type="text"
-          name="splitJerk"
-          v-model="benchmarkMovements.splitJerk"
-        />
+          <input
+            type="text"
+            name="splitJerk"
+            v-model="benchmarkMovements.splitJerk"
+            placeholder="Split Jerk"
+          />
         </div>
         <div>
-        <label for="pushJerk">Push Jerk</label>
-        <input
-          type="text"
-          name="pushJerk"
-          v-model="benchmarkMovements.pushJerk"
-        />
+          <input
+            type="text"
+            name="pushJerk"
+            v-model="benchmarkMovements.pushJerk"
+            placeholder="Push Jerk"
+          />
         </div>
         <div>
-        <label for="squatJerk">Squat Jerk</label>
-        <input
-          type="text"
-          name="squatJerk"
-          v-model="benchmarkMovements.squatJerk"
-        />
+          <input
+            type="text"
+            name="squatJerk"
+            v-model="benchmarkMovements.squatJerk"
+            placeholder="Squat Jerk"
+          />
         </div>
         <div>
-        <label for="squatClean">Squat Clean</label>
-        <input
-          type="text"
-          name="squatClean"
-          v-model="benchmarkMovements.squatClean"
-        />
+          <input
+            type="text"
+            name="squatSnatch"
+            v-model="benchmarkMovements.squatSnatch"
+            placeholder="Squat Snatch"
+          />
         </div>
         <div>
-        <label for="squatSnatch">Squat Snatch</label>
-        <input
-          type="text"
-          name="squatSnatch"
-          v-model="benchmarkMovements.squatSnatch"
-        />
+          <input
+            type="text"
+            name="powerSnatch"
+            v-model="benchmarkMovements.powerSnatch"
+            placeholder="Power Snatch"
+          />
         </div>
         <div>
-        <label for="powerSnatch">Power Snatch</label>
-        <input
-          type="text"
-          name="powerSnatch"
-          v-model="benchmarkMovements.powerSnatch"
-        />
-        </div>
-        <div>
-        <label for="snatchBalance">Snatch Balance</label>
-        <input
-          type="text"
-          name="snatchBalance"
-          v-model="benchmarkMovements.snatchBalance"
-        />
+          <input
+            type="text"
+            name="snatchBalance"
+            v-model="benchmarkMovements.snatchBalance"
+            placeholder="Snatch Balance"
+          />
         </div>
       </div>
-      <button type="submit" class="btn btn-primary">Save Movements</button>
+            <button type="submit" class="btn btn-primary">Save Movements</button>
     </form>
   </div>
 </template>
@@ -392,25 +405,49 @@ export default {
 
 <style scoped>
 .container {
-  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/goals_page.jpg);
-    background-position: 0px 0px, 50% 50%;
-    background-size: auto, cover;
-    background-attachment: scroll, fixed;
-    color: #fff;
-    justify-content: center;
-    -webkit-box-align: center;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    display: flex;
-    height: 100vh;
-    text-align: center;
-    margin-bottom: 100px;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(../assets/goals_page.jpg);
+  background-position: 0px 0px, 50% 50%;
+  background-size: auto, cover;
+  background-attachment: scroll, fixed;
+  color: #fff;
+  justify-content: center;
+  -webkit-box-align: center;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  display: flex;
+  height: 100vh;
+  text-align: center;
+  margin-bottom: 100px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
 }
 
-.btn {
-  display: .75rem
+#frmAddNewWorkout > .field {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0 0 0;
 }
+
+#checkboxRx {
+  margin: 0 0 0 8px;
+}
+
+#frmSaveBenchmarkMovements {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  gap: 10px;
+}
+
+#frmSaveBenchmarkMovements > .btn {
+  position: absolute;
+  bottom: 0;
+  justify-content: center;
+  }
 
 </style>
