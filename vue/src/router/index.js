@@ -8,7 +8,7 @@ import store from '../store/index'
 import EditProfile from '../views/EditProfile.vue'
 import WorkoutGoals from '../views/ProfileGoals.vue'
 import Schedule from '../views/Schedule.vue'
-
+import logWorkout from '../components/logWorkout.vue'
 Vue.use(Router)
 
 /**
@@ -76,6 +76,14 @@ const router = new Router({
       path: "/schedule",
       name: "schedule",
       component: Schedule,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/logWorkout",
+      name: "logWorkout",
+      component: logWorkout,
       meta: {
         requiresAuth: false
       }
