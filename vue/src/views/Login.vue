@@ -48,8 +48,8 @@ export default {
   data() {
     return {
       user: {
-        username: "",
-        password: ""
+        username: "admin",
+        password: "password"
       },
       invalidCredentials: false
     };

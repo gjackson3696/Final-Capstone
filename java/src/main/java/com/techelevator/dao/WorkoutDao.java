@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface WorkoutDao {
 
-    List<Workout> getWorkoutsByMemberId(Long memberId);
+    List<Workout> getWorkoutsByUserId(Long userId);
 
     void addNewWorkout(Workout workout);
 

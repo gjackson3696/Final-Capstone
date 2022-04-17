@@ -18,10 +18,10 @@ public class JdbcLoggedWorkoutDao implements LoggedWorkoutDao {
     }
 
     @Override
-    public List<LoggedWorkout> getLoggedWorkoutsByMemberId(Long memberId) {
+    public List<LoggedWorkout> getLoggedWorkoutsByUserId(Long userId) {
         List<LoggedWorkout> loggedWorkouts = new ArrayList<>();
-        String sql = "SELECT * FROM logged_workouts WHERE member_id = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql,memberId);
+        String sql = "SELECT * FROM logged_workouts WHERE user_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql,userId);
         while(results.next()) {
             LoggedWorkout workout = mapRowToLoggedWorkout(results);
             loggedWorkouts.add(workout);
@@ -31,17 +31,17 @@ public class JdbcLoggedWorkoutDao implements LoggedWorkoutDao {
 
     @Override
     public void logWorkout(LoggedWorkout workout) {
-        String logWorkout = "INSERT INTO workouts (member_id,name,domain,structure," +
+        String logWorkout = "INSERT INTO workouts (user_id,name,domain,structure," +
                 "weights,workoutTime,rounds,completed) VALUES (?,?,?,?,?,?,?,?);";
-        jdbcTemplate.update(logWorkout,workout.getMemberId(),workout.getName(),
+        jdbcTemplate.update(logWorkout,workout.getUserId(),workout.getName(),
                 workout.getDomain(),workout.getStructure(),workout.getWeights(),
                 workout.getTime(),workout.getRounds(),workout.isCompleted());
     }
 
     private LoggedWorkout mapRowToLoggedWorkout(SqlRowSet rs) {
         LoggedWorkout workout = new LoggedWorkout();
-        workout.setLoggedWorkoutId(rs.getLong("logged_workout_id"));
-        workout.setMemberId(rs.getLong("member_id"));
+        workout.setWorkoutId(rs.getLong("logged_workout_id"));
+        workout.setUserId(rs.getLong("user_id"));
         workout.setName(rs.getString("name"));
         workout.setDomain(rs.getString("domain"));
         workout.setStructure(rs.getString("structure"));

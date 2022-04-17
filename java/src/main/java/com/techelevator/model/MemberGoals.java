@@ -6,20 +6,23 @@ import java.util.Map;
 
 public class MemberGoals {
     private Long goalsId;
+    private Long userId;
     @NotNull
-    private Long memberId;
-    private String backSquat="", frontSquat="", zercherSquat="", overheadSquat="", bulgarianSplitSquat="";
-    private String conventionalDeadlift="", sumoDeadlift="";
-    private String overheadPress="", militaryPress="", pushPress="";
-    private String squatClean="", powerClean="", splitJerk="", pushJerk="", squatJerk="", squatSnatch="", powerSnatch="", snatchBalance="";
+    private String backSquat, frontSquat, zercherSquat, overheadSquat, bulgarianSplitSquat;
+    @NotNull
+    private String conventionalDeadlift, sumoDeadlift;
+    @NotNull
+    private String overheadPress, militaryPress, pushPress;
+    @NotNull
+    private String squatClean, powerClean, splitJerk, pushJerk, squatJerk, squatSnatch, powerSnatch, snatchBalance;
     private Map<String,String> goals;
 
     public MemberGoals() {
         this.goals = new HashMap<>();
     }
 
-    public MemberGoals(Long memberId, String backSquat, String frontSquat, String zercherSquat, String overheadSquat, String bulgarianSplitSquat, String conventionalDeadlift, String sumoDeadlift, String overheadPress, String militaryPress, String pushPress, String squatClean, String powerClean, String splitJerk, String pushJerk, String squatJerk, String squatSnatch, String powerSnatch, String snatchBalance) {
-        this.memberId = memberId;
+    public MemberGoals(Long userId, String backSquat, String frontSquat, String zercherSquat, String overheadSquat, String bulgarianSplitSquat, String conventionalDeadlift, String sumoDeadlift, String overheadPress, String militaryPress, String pushPress, String squatClean, String powerClean, String splitJerk, String pushJerk, String squatJerk, String squatSnatch, String powerSnatch, String snatchBalance) {
+        this.userId = userId;
         this.backSquat = backSquat;
         this.frontSquat = frontSquat;
         this.zercherSquat = zercherSquat;
@@ -41,9 +44,9 @@ public class MemberGoals {
         this.goals = new HashMap<>();
     }
 
-    public MemberGoals(Long goalsId, Long memberId, String backSquat, String frontSquat, String zercherSquat, String overheadSquat, String bulgarianSplitSquat, String conventionalDeadlift, String sumoDeadlift, String overheadPress, String militaryPress, String pushPress, String squatClean, String powerClean, String splitJerk, String pushJerk, String squatJerk, String squatSnatch, String powerSnatch, String snatchBalance) {
+    public MemberGoals(Long goalsId, Long userId, String backSquat, String frontSquat, String zercherSquat, String overheadSquat, String bulgarianSplitSquat, String conventionalDeadlift, String sumoDeadlift, String overheadPress, String militaryPress, String pushPress, String squatClean, String powerClean, String splitJerk, String pushJerk, String squatJerk, String squatSnatch, String powerSnatch, String snatchBalance) {
         this.goalsId = goalsId;
-        this.memberId = memberId;
+        this.userId = userId;
         this.backSquat = backSquat;
         this.frontSquat = frontSquat;
         this.zercherSquat = zercherSquat;
@@ -65,8 +68,8 @@ public class MemberGoals {
         this.goals = new HashMap<>();
     }
 
-    public MemberGoals(Long memberId) {
-        this.memberId = memberId;
+    public MemberGoals(Long userId) {
+        this.userId = userId;
         this.goals = new HashMap<>();
         this.goals.put("backSquat",backSquat);
         this.goals.put("frontSquat",frontSquat);
@@ -96,12 +99,12 @@ public class MemberGoals {
         this.goalsId = gaolsId;
     }
 
-    public Long getMemberId() {
-        return memberId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getBackSquat() {

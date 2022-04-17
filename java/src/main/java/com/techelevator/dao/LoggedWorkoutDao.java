@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface LoggedWorkoutDao {
 
-    List<LoggedWorkout> getLoggedWorkoutsByMemberId(Long memberId);
+    List<LoggedWorkout> getLoggedWorkoutsByUserId(Long userId);
 
     void logWorkout(LoggedWorkout workout);
 }

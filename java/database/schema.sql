@@ -81,7 +81,7 @@ CREATE TABLE members (
 
 CREATE TABLE profile (
 	profile_id int DEFAULT nextval('seq_profile_id'::regclass) NOT NULL,
-	member_id int NOT NULL,
+	user_id int NOT NULL,
 	back_squat varchar(15) NOT NULL,
 	front_squat varchar(15) NOT NULL,
 	zercher_squat varchar(15) NOT NULL,
@@ -101,12 +101,12 @@ CREATE TABLE profile (
 	power_snatch varchar(15) NOT NULL,
 	snatch_balance varchar(15) NOT NULL,
 	CONSTRAINT PK_profile PRIMARY KEY (profile_id),
-	CONSTRAINT FK_profile_member_id FOREIGN KEY (member_id) REFERENCES members (member_id)
+	CONSTRAINT FK_profile_user_id FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
 
 CREATE TABLE goals (
 	goals_id int DEFAULT nextval('seq_goals_id'::regclass) NOT NULL,
-	member_id int NOT NULL,
+	user_id int NOT NULL,
 	back_squat varchar(15) NOT NULL,
 	front_squat varchar(15) NOT NULL,
 	zercher_squat varchar(15) NOT NULL,
@@ -126,12 +126,12 @@ CREATE TABLE goals (
 	power_snatch varchar(15) NOT NULL,
 	snatch_balance varchar(15) NOT NULL,
 	CONSTRAINT PK_goals PRIMARY KEY (goals_id),
-	CONSTRAINT FK_goals_member_id FOREIGN KEY (member_id) REFERENCES members (member_id)
+	CONSTRAINT FK_goals_user_id FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
 
 CREATE TABLE workouts (
 	workout_id int DEFAULT nextval('seq_workout_id'::regclass) NOT NULL,
-	member_id int NOT NULL,
+	user_id int NOT NULL,
 	name varchar(50) NOT NULL,
 	domain varchar(50) NOT NULL,
 	structure varchar(200) NOT NULL,
@@ -140,12 +140,12 @@ CREATE TABLE workouts (
 	rounds varchar(10),
 	completed boolean DEFAULT false,
 	CONSTRAINT PK_workouts PRIMARY KEY (workout_id),
-	CONSTRAINT FK_workouts_member_id FOREIGN KEY (member_id) REFERENCES members (member_id)
+	CONSTRAINT FK_workouts_user_id FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
 
 CREATE TABLE logged_workouts (
 	logged_workout_id int DEFAULT nextval('seq_logged_workout_id'::regclass) NOT NULL,
-	member_id int NOT NULL,
+	user_id int NOT NULL,
 	name varchar(50) NOT NULL,
 	domain varchar(50) NOT NULL,
 	structure varchar(200) NOT NULL,
@@ -154,7 +154,7 @@ CREATE TABLE logged_workouts (
 	rounds varchar(10),
 	completed boolean DEFAULT true,
 	CONSTRAINT PK_logged_workouts PRIMARY KEY (logged_workout_id),
-	CONSTRAINT FK_logged_workouts_member_id FOREIGN KEY (member_id) REFERENCES members (member_id)
+	CONSTRAINT FK_logged_workouts_user_id FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
 
 
