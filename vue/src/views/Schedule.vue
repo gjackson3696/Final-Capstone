@@ -1,7 +1,16 @@
 <template>
-  <div>
+  <div class="main-container">
     <h2 class="calendar">Schedule of Classes</h2>
+
+ 
+<select name="dropdown" id="btn">
+  <option value="Mont view">Mont view</option>
+  <option value="Weekly view">Weekly view</option>
+  <option value="2 Week view">2 Week view</option>
+</select>
+
         <weekday-selector @click="getClassList"/>
+
         <div class="card-container">
           <class-card class="class-card" v-bind:classItem="item" v-for="item in classFilter" :key="item.id" />
         </div>
@@ -24,7 +33,7 @@ export default {
     classFilter() {
       return this.classList.filter((classItem) => {
         const classDate = new Date(classItem.date);
-        return this.$store.state.weekdaySelector == classDate.getDay();
+        return this.$store.state.weekdaySelector == classDate.getDay() || this.$store.state.weekdaySelector == 7;
       })
     }
   },
@@ -45,8 +54,20 @@ export default {
 </script>
 
 <style scoped>
+#btn {
+  display: grid;
+  justify-content: center;
+  margin: 1rem;
+  align-items: center;
+}
+
+
 .calendar {
+  display: grid;
   text-align: center;
+  grid-area: schedule;
+  min-height: 100px;
+  padding: 1rem;
 }
 
 .tableCells {
@@ -57,14 +78,20 @@ body {
   height: 100%;
 }
 body {
-  font-family: "Roboto", sans-serif;
-  display: flex;
-  justify-content: left;
-  align-items: center;
+  display: grid;
+  grid-auto-columns: 2fr 2fr 2fr;
+
 }
 
 .card-container {
-  display: flex;
-  flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 20px;
+}
+
+.class-card {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 20px;
 }
 </style>

@@ -47,6 +47,11 @@ export default {
           id: 6,
           text: "Saturday",
         },
+        {
+          id: 7,
+          text: "All Week"
+        }
+
       ],
     };
   },
