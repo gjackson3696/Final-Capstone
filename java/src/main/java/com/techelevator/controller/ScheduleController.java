@@ -48,7 +48,7 @@ public class ScheduleController {
         String username = principal.getName();
         try {
             Long memberId = memberDao.findMemberIdByUsername(username);
-            classDao.registerMember(memberId,classId);
+            classMembersDao.registerMember(memberId,classId);
         } catch (Exception e) {
         }
     }
@@ -59,7 +59,7 @@ public class ScheduleController {
         String username = principal.getName();
         try {
             Long memberId = memberDao.findMemberIdByUsername(username);
-            classDao.unregisterMember(memberId,classId);
+            classMembersDao.unregisterMember(memberId,classId);
         } catch (Exception e) {
         }
     }
