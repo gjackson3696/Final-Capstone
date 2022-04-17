@@ -5,12 +5,16 @@ import com.techelevator.exceptions.GoalsNotFoundException;
 import com.techelevator.exceptions.MemberNotFoundException;
 import com.techelevator.model.MemberGoals;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @RestController
 @CrossOrigin
+@RequestMapping("/goals")
+@PreAuthorize("permitAll")
+//@PreAuthorize("isAuthenticated()")
 public class GoalsController {
 
     private GoalsDao goalsDao;
@@ -19,7 +23,7 @@ public class GoalsController {
         this.goalsDao = goalsDao;
     }
 
-    @RequestMapping(value = "/goals", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public MemberGoals getGoals(@PathVariable Long memberId) {
         try {
             return goalsDao.getGoalsByMemberId(memberId);
@@ -29,12 +33,12 @@ public class GoalsController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/goals", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public MemberGoals createGoals(@Valid @RequestBody MemberGoals goals) {
         return goalsDao.createGoals(goals);
     }
 
-    @RequestMapping(value = "/goals", method = RequestMethod.PUT)
+    @RequestMapping(value = "", method = RequestMethod.PUT)
     public boolean updateGoals(@Valid @RequestBody MemberGoals goals) {
         try {
             goalsDao.updateGoals(goals);

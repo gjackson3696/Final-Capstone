@@ -4,6 +4,7 @@ import com.techelevator.dao.ClassDao;
 import com.techelevator.dao.ClassMembersDao;
 import com.techelevator.model.Class;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -12,6 +13,8 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
+@RequestMapping("/classes")
+@PreAuthorize("permitAll")
 public class ScheduleController {
 
     private ClassDao classDao;
@@ -22,29 +25,32 @@ public class ScheduleController {
         this.classMembersDao = classMembersDao;
     }
 
-    @RequestMapping(value = "/classes", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public List<Class> listAll() {
         return classDao.findAll();
     }
 
-    @RequestMapping(value = "/classes/week", method = RequestMethod.GET)
+    @RequestMapping(value = "/week", method = RequestMethod.GET)
     public List<Class> listWeek(@RequestBody Date startDate) {
         return classDao.findWeekClasses(startDate);
     }
 
+    //@PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/classes/register", method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public void register(@RequestBody IDs ids) {
         classDao.registerMember(ids.memberId,ids.classId);
 
     }
 
-    @RequestMapping(value = "/classes/unregister", method = RequestMethod.DELETE)
+    //@PreAuthorize("isAuthenticated()")
+    @RequestMapping(value = "/unregister", method = RequestMethod.DELETE)
     public void unregister(@RequestBody IDs ids) {
         classDao.unregisterMember(ids.memberId,ids.classId);
     }
 
-    @RequestMapping(value = "/classes/registered/{memberId}", method = RequestMethod.GET)
+    //@PreAuthorize("isAuthenticated()")
+    @RequestMapping(value = "/registered/{memberId}", method = RequestMethod.GET)
     public List<Long> getRegisteredClassesByMemberId(@PathVariable Long memberId) {
         return classMembersDao.getRegisteredClassesByMemberId(memberId);
     }

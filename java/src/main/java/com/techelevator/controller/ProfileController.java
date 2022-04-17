@@ -1,17 +1,19 @@
 package com.techelevator.controller;
 
-import com.techelevator.dao.MemberDao;
 import com.techelevator.dao.ProfileDao;
 import com.techelevator.exceptions.ProfileNotFoundException;
 import com.techelevator.model.MemberProfile;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.net.http.HttpResponse;
 
 @RestController
 @CrossOrigin
+@RequestMapping("/profile")
+@PreAuthorize("permitAll")
+//@PreAuthorize("isAuthenticated()")
 public class ProfileController {
 
     private ProfileDao profileDao;
