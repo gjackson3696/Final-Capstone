@@ -16,13 +16,13 @@ public class JdbcProfileDao implements ProfileDao {
     }
 
     @Override
-    public MemberProfile getProfileByMemberId(Long memberId) throws ProfileNotFoundException {
-        String sql = "SELECT * FROM profile WHERE member_id = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql,memberId);
+    public MemberProfile getProfileByUserId(Long userId) throws ProfileNotFoundException {
+        String sql = "SELECT * FROM profile WHERE user_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql,userId);
         if(results.next()) {
             return mapRowToProfile(results);
         } else {
-            throw new ProfileNotFoundException(memberId);
+            throw new ProfileNotFoundException(userId);
         }
     }
 
@@ -39,14 +39,14 @@ public class JdbcProfileDao implements ProfileDao {
 
     @Override
     public MemberProfile createProfile(MemberProfile profile) {
-        String insertProfile = "INSERT INTO profile (member_id,"+
+        String insertProfile = "INSERT INTO profile (user_id,"+
                 "back_squat,front_squat,zercher_squat,overhead_squat,bulgarian_split_squat,"+
                 "conventional_deadlift,sumo_deadlift,"+
                 "overhead_press,military_press,push_press,"+
                 "squat_clean,power_clean,split_jerk,push_jerk,squat_jerk,"+
                 "squat_snatch,power_snatch,snatch_balance) "+
                 "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING profile_id;";
-        Long profileId = jdbcTemplate.queryForObject(insertProfile,Long.class,profile.getMemberId(),
+        Long profileId = jdbcTemplate.queryForObject(insertProfile,Long.class,profile.getUserId(),
                 profile.getBackSquat(),profile.getFrontSquat(),profile.getZercherSquat(),profile.getBulgarianSplitSquat(),
                 profile.getConventionalDeadlift(),profile.getSumoDeadlift(),
                 profile.getOverheadPress(),profile.getMilitaryPress(),profile.getPushPress(),
@@ -73,17 +73,17 @@ public class JdbcProfileDao implements ProfileDao {
                     profile.getOverheadPress(), profile.getMilitaryPress(), profile.getPushPress(),
                     profile.getSquatClean(), profile.getPowerClean(), profile.getSplitJerk(), profile.getPushJerk(), profile.getSquatJerk(),
                     profile.getSquatSnatch(), profile.getPowerSnatch(), profile.getSnatchBalance(),
-                    profile.getMemberId()
+                    profile.getUserId()
             );
         } catch(Exception e) {
-            throw new ProfileNotFoundException(profile.getMemberId());
+            throw new ProfileNotFoundException(profile.getUserId());
         }
     }
 
     private MemberProfile mapRowToProfile(SqlRowSet rs) {
         MemberProfile profile = new MemberProfile();
         profile.setProfileId(rs.getLong("profile_id"));
-        profile.setMemberId(rs.getLong("member_id"));
+        profile.setUserId(rs.getLong("user_id"));
         profile.setBackSquat(rs.getString("back_squat"));
         profile.setFrontSquat(rs.getString("front_squat"));
         profile.setZercherSquat(rs.getString("zercher_squat"));

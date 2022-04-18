@@ -26,4 +26,17 @@ public class JdbcClassMembersDao implements ClassMembersDao {
         }
         return registeredClasses;
     }
+
+    @Override
+    public void registerMember(Long memberId, Long classId) {
+        String sql = "INSERT INTO class_members (class_id,member_id) VALUES (?,?);";
+        jdbcTemplate.update(sql,classId,memberId);
+    }
+
+    @Override
+    public void unregisterMember(Long memberId, Long classId) {
+        String sql = "DELETE FROM class_members WHERE member_id = ? AND class_id = ?;";
+        jdbcTemplate.update(sql,memberId,classId);
+    }
+
 }

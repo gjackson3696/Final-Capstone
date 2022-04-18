@@ -9,6 +9,8 @@ public interface MemberDao {
 
     List<Member> findAll();
 
+    Long findMemberIdByUsername(String username) throws MemberNotFoundException;
+
     Member getMemberByMemberId(Long memberId) throws MemberNotFoundException;
 
     Member getMemberByUserId(Long userId) throws MemberNotFoundException;
@@ -16,9 +18,5 @@ public interface MemberDao {
     Member create(Member member);
 
     void updateMember(Member member) throws MemberNotFoundException;
-
-    void updateName(Long memberId, String firstName, String lastName) throws MemberNotFoundException;
-
-    void updateEmail(Long memberId, String email) throws MemberNotFoundException;
 
 }

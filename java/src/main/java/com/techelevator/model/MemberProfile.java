@@ -6,20 +6,23 @@ import java.util.Map;
 
 public class MemberProfile {
     private Long profileId;
+    private Long userId;
     @NotNull
-    private Long memberId;
-    private String backSquat="", frontSquat="", zercherSquat="", overheadSquat="", bulgarianSplitSquat="";
-    private String conventionalDeadlift="", sumoDeadlift="";
-    private String overheadPress="", militaryPress="", pushPress="";
-    private String squatClean="", powerClean="", splitJerk="", pushJerk="", squatJerk="", squatSnatch="", powerSnatch="", snatchBalance="";
+    private String backSquat, frontSquat, zercherSquat, overheadSquat, bulgarianSplitSquat;
+    @NotNull
+    private String conventionalDeadlift, sumoDeadlift;
+    @NotNull
+    private String overheadPress, militaryPress, pushPress;
+    @NotNull
+    private String squatClean, powerClean, splitJerk, pushJerk, squatJerk, squatSnatch, powerSnatch, snatchBalance;
     private Map<String,String> profile;
 
     public MemberProfile() {
         this.profile = new HashMap<>();
     }
 
-    public MemberProfile(Long memberId, String backSquat, String frontSquat, String zercherSquat, String overheadSquat, String bulgarianSplitSquat, String conventionalDeadlift, String sumoDeadlift, String overheadPress, String militaryPress, String pushPress, String squatClean, String powerClean, String splitJerk, String pushJerk, String squatJerk, String squatSnatch, String powerSnatch, String snatchBalance) {
-        this.memberId = memberId;
+    public MemberProfile(Long userId, String backSquat, String frontSquat, String zercherSquat, String overheadSquat, String bulgarianSplitSquat, String conventionalDeadlift, String sumoDeadlift, String overheadPress, String militaryPress, String pushPress, String squatClean, String powerClean, String splitJerk, String pushJerk, String squatJerk, String squatSnatch, String powerSnatch, String snatchBalance) {
+        this.userId = userId;
         this.backSquat = backSquat;
         this.frontSquat = frontSquat;
         this.zercherSquat = zercherSquat;
@@ -41,9 +44,9 @@ public class MemberProfile {
         this.profile = new HashMap<>();
     }
 
-    public MemberProfile(Long profileId, Long memberId, String backSquat, String frontSquat, String zercherSquat, String overheadSquat, String bulgarianSplitSquat, String conventionalDeadlift, String sumoDeadlift, String overheadPress, String militaryPress, String pushPress, String squatClean, String powerClean, String splitJerk, String pushJerk, String squatJerk, String squatSnatch, String powerSnatch, String snatchBalance) {
+    public MemberProfile(Long profileId, Long userId, String backSquat, String frontSquat, String zercherSquat, String overheadSquat, String bulgarianSplitSquat, String conventionalDeadlift, String sumoDeadlift, String overheadPress, String militaryPress, String pushPress, String squatClean, String powerClean, String splitJerk, String pushJerk, String squatJerk, String squatSnatch, String powerSnatch, String snatchBalance) {
         this.profileId = profileId;
-        this.memberId = memberId;
+        this.userId = userId;
         this.backSquat = backSquat;
         this.frontSquat = frontSquat;
         this.zercherSquat = zercherSquat;
@@ -65,8 +68,8 @@ public class MemberProfile {
         this.profile = new HashMap<>();
     }
 
-    public MemberProfile(Long memberId) {
-        this.memberId = memberId;
+    public MemberProfile(Long userId) {
+        this.userId = userId;
         this.profile = new HashMap<>();
         this.profile.put("backSquat",backSquat);
         this.profile.put("frontSquat",frontSquat);
@@ -96,12 +99,12 @@ public class MemberProfile {
         this.profileId = profileId;
     }
 
-    public Long getMemberId() {
-        return memberId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getBackSquat() {

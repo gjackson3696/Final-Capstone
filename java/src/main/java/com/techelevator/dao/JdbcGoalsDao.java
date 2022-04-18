@@ -1,14 +1,10 @@
 package com.techelevator.dao;
 
 import com.techelevator.exceptions.GoalsNotFoundException;
-import com.techelevator.exceptions.ProfileNotFoundException;
 import com.techelevator.model.MemberGoals;
-import com.techelevator.model.MemberProfile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
-
-import javax.validation.constraints.NotNull;
 
 @Service
 public class JdbcGoalsDao implements GoalsDao {
@@ -20,13 +16,13 @@ public class JdbcGoalsDao implements GoalsDao {
     }
 
     @Override
-    public MemberGoals getGoalsByMemberId(Long memberId) throws GoalsNotFoundException {
-        String sql = "SELECT * FROM goals WHERE member_id = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql,memberId);
+    public MemberGoals getGoalsByUserId(Long userId) throws GoalsNotFoundException {
+        String sql = "SELECT * FROM goals WHERE user_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql,userId);
         if(results.next()) {
             return mapRowToGoals(results);
         } else {
-            throw new GoalsNotFoundException(memberId);
+            throw new GoalsNotFoundException(userId);
         }
     }
 
@@ -43,14 +39,14 @@ public class JdbcGoalsDao implements GoalsDao {
 
     @Override
     public MemberGoals createGoals(MemberGoals goals) {
-        String insertGoals = "INSERT INTO goals (member_id,"+
+        String insertGoals = "INSERT INTO goals (user_id,"+
                 "back_squat,front_squat,zercher_squat,overhead_squat,bulgarian_split_squat,"+
                 "conventional_deadlift,sumo_deadlift,"+
                 "overhead_press,military_press,push_press,"+
                 "squat_clean,power_clean,split_jerk,push_jerk,squat_jerk,"+
                 "squat_snatch,power_snatch,snatch_balance) "+
                 "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING goals_id;";
-        Long goalsId = jdbcTemplate.queryForObject(insertGoals,Long.class,goals.getMemberId(),
+        Long goalsId = jdbcTemplate.queryForObject(insertGoals,Long.class,goals.getUserId(),
                 goals.getBackSquat(),goals.getFrontSquat(),goals.getZercherSquat(),goals.getBulgarianSplitSquat(),
                 goals.getConventionalDeadlift(),goals.getSumoDeadlift(),
                 goals.getOverheadPress(),goals.getMilitaryPress(),goals.getPushPress(),
@@ -69,7 +65,7 @@ public class JdbcGoalsDao implements GoalsDao {
                 "overhead_press = ?,military_press = ?,push_press = ?,"+
                 "squat_clean = ?,power_clean = ?,split_jerk = ?,push_jerk = ?,squat_jerk = ?,"+
                 "squat_snatch = ?,power_snatch = ?,snatch_balance = ? "+
-                "WHERE member_id = ?;";
+                "WHERE user_id = ?;";
         try {
             jdbcTemplate.update(update,
                     goals.getBackSquat(), goals.getFrontSquat(), goals.getZercherSquat(), goals.getBulgarianSplitSquat(),
@@ -77,17 +73,17 @@ public class JdbcGoalsDao implements GoalsDao {
                     goals.getOverheadPress(), goals.getMilitaryPress(), goals.getPushPress(),
                     goals.getSquatClean(), goals.getPowerClean(), goals.getSplitJerk(), goals.getPushJerk(), goals.getSquatJerk(),
                     goals.getSquatSnatch(), goals.getPowerSnatch(), goals.getSnatchBalance(),
-                    goals.getMemberId()
+                    goals.getUserId()
             );
         } catch(Exception e) {
-            throw new GoalsNotFoundException(goals.getMemberId());
+            throw new GoalsNotFoundException(goals.getUserId());
         }
     }
 
     private MemberGoals mapRowToGoals(SqlRowSet rs) {
         MemberGoals goals = new MemberGoals();
         goals.setGoalsId(rs.getLong("profile_id"));
-        goals.setMemberId(rs.getLong("member_id"));
+        goals.setUserId(rs.getLong("user_id"));
         goals.setBackSquat(rs.getString("back_squat"));
         goals.setFrontSquat(rs.getString("front_squat"));
         goals.setZercherSquat(rs.getString("zercher_squat"));

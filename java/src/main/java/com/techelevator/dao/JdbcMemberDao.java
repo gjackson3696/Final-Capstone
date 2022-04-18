@@ -32,6 +32,19 @@ public class JdbcMemberDao implements MemberDao{
     }
 
     @Override
+    public Long findMemberIdByUsername(String username) throws MemberNotFoundException {
+        String sql = "SELECT members.member_id FROM members " +
+                "JOIN users ON members.user_id = users.user_id " +
+                "WHERE users.username = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql,username);
+        if(results.next()) {
+            return results.getLong("member_id");
+        } else {
+            throw new MemberNotFoundException(username);
+        }
+    }
+
+    @Override
     public Member getMemberByMemberId(Long memberId) throws MemberNotFoundException {
         String sql = "SELECT * FROM members WHERE member_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql,memberId);
@@ -64,31 +77,11 @@ public class JdbcMemberDao implements MemberDao{
 
     @Override
     public void updateMember(Member member) throws MemberNotFoundException {
-        String update = "UPDATE members SET first_name = ?, last_name = ?, email = ? WHERE member_id = ?;";
+        String update = "UPDATE members SET first_name = ?, last_name = ?, email = ? WHERE user_id = ?;";
         try {
-            jdbcTemplate.update(update,member.getFirstName(),member.getLastName(),member.getEmail(),member.getMemberId());
+            jdbcTemplate.update(update,member.getFirstName(),member.getLastName(),member.getEmail(),member.getUserId());
         } catch(Exception e) {
             throw new MemberNotFoundException(member.getMemberId());
-        }
-    }
-
-    @Override
-    public void updateName(Long memberId, String firstName, String lastName) throws MemberNotFoundException {
-        String sql = "UPDATE members SET first_name = ?, last_name = ? WHERE member_id = ?;";
-        try {
-            jdbcTemplate.update(sql, firstName, lastName, memberId);
-        } catch(Exception e) {
-            throw new MemberNotFoundException(memberId);
-        }
-    }
-
-    @Override
-    public void updateEmail(Long memberId, String email) throws MemberNotFoundException {
-        String sql = "UPDATE members SET email = ? WHERE member_id = ?;";
-        try {
-            jdbcTemplate.update(sql, email, memberId);
-        } catch(Exception e) {
-            throw new MemberNotFoundException(memberId);
         }
     }
 

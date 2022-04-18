@@ -6,4 +6,7 @@ public interface ClassMembersDao {
 
     List<Long> getRegisteredClassesByMemberId(Long memberId);
 
+    void registerMember(Long memberId, Long classId);
+
+    void unregisterMember(Long memberId, Long classId);
 }

@@ -5,7 +5,7 @@ import com.techelevator.model.MemberProfile;
 
 public interface ProfileDao {
 
-    MemberProfile getProfileByMemberId(Long memberId) throws ProfileNotFoundException;
+    MemberProfile getProfileByUserId(Long userId) throws ProfileNotFoundException;
 
     MemberProfile getProfileByProfileId(Long profileId) throws ProfileNotFoundException;
 

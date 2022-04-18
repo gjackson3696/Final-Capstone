@@ -4,8 +4,7 @@ import javax.validation.constraints.NotNull;
 
 public class Workout {
     private Long workoutId;
-    @NotNull
-    private Long memberId;
+    private Long userId;
     @NotNull
     private String name, domain, structure;
     private String weights = "", time = "", rounds = "";
@@ -21,12 +20,12 @@ public class Workout {
         this.workoutId = workoutId;
     }
 
-    public Long getMemberId() {
-        return memberId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getName() {

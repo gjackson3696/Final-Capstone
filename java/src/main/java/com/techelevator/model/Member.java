@@ -6,7 +6,6 @@ import java.util.Map;
 
 public class Member {
     private Long memberId, profileId, goalsId;
-    @NotNull
     private Long userId;
     @NotNull
     private String firstName, lastName, email;

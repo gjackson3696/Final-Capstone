@@ -7,7 +7,7 @@ import com.techelevator.model.MemberProfile;
 
 public interface GoalsDao {
 
-    MemberGoals getGoalsByMemberId(Long memberId) throws GoalsNotFoundException;
+    MemberGoals getGoalsByUserId(Long userId) throws GoalsNotFoundException;
 
     MemberGoals getGoalsByGoalsId(Long goalsId) throws GoalsNotFoundException;
 

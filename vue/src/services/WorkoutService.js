@@ -2,17 +2,16 @@ import axios from 'axios';
 
 export default {
 
-  getWorkouts(memberId) {
-    return axios.get('/workouts/'+memberId)
+  getWorkouts() {
+    return axios.get('/workouts')
+  },
+  
+  getLoggedWorkouts() {
+    return axios.get('/workouts/logged');
   },
 
-  getLoggedWorkouts(memberId) {
-    return axios.get('/workouts/logged/'+memberId);
-  },
-
-  saveWorkout(memberId, workout) {
+  saveWorkout(workout) {
     return axios.post('/workouts', {
-      "memberId": memberId,
       "name": workout.workoutName,
       "domain": workout.workoutDomain,
       "structure": workout.workoutStructure,
@@ -23,9 +22,8 @@ export default {
     })
   },
 
-  logWorkout(memberId, workout) {
+  logWorkout(workout) {
     return axios.post('/workouts/log', {
-      "memberId": memberId,
       "name": workout.workoutName,
       "domain": workout.workoutDomain,
       "structure": workout.workoutStructure,
