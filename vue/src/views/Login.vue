@@ -41,6 +41,7 @@
 
 <script>
 import authService from "../services/AuthService";
+import memberService from "../services/MemberService";
 
 export default {
   name: "login",
@@ -62,7 +63,12 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
+            memberService.getMember().then(response => {
+              if(!response.data) {
+                this.$router.push("/accountDetails");
+              }
+            })
+            this.$router.push("/dashboard");
           }
         })
         .catch(error => {

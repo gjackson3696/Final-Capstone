@@ -28,7 +28,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -60,18 +60,17 @@ const router = new Router({
       name: "accountDetails",
       component: EditProfile,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
-    // change this to require authentication when login works properly
-      {
-        path: "/workoutGoals",
-        name: "workoutGoals",
-        component: WorkoutGoals,
-        meta: {
-          requiresAuth: false
-        }
-      },
+    {
+      path: "/workoutGoals",
+      name: "workoutGoals",
+      component: WorkoutGoals,
+      meta: {
+        requiresAuth: true
+      }
+    },
     {
       path: "/schedule",
       name: "schedule",
@@ -80,7 +79,6 @@ const router = new Router({
         requiresAuth: false
       }
     },
-
   ]
 })
 

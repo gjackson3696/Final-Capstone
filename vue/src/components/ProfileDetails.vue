@@ -1,54 +1,53 @@
 <template>
-  <form class="createdForm"> 
-      <div>
-            <label for="firstName" >First Name</label>
-            <input for="firsName"  type="text"/> 
-      </div>
-         <div class="createdForm">
-            <label for="lastName" >Last Name</label>
-            <input for="lastName"  type="text"/>
-      </div>
-         <div class="createdForm">
-            <label for="email" >Email Address</label>
-            <input for="email"  type="text"/>
-      </div>
-        <div class="createdForm">
-            <button type="button" class="btn btn-light" onclick="window.location='localhost:8080/workoutGoals'">Enter goals for yourself to track benchmarks and measure progress!</button>
-      </div>
-        
-           <div class="createdForm">
-            <button type="button" class="btn btn-light">View your fitness profile.</button>
-      </div>
-  </form>
+  <div class="profile">
+    <h2>Edit Profile Information</h2>
+    <form class="profile">
+      <label for="firstName">First Name:</label>
+      <input type="text" name="firstName" v-model="member.firstName" placeholder="First Name" />
+      <label for="lastName">Last Name:</label>
+      <input type="text" name="lastName" v-model="member.lastName" placeholder="Last Name" />
+      <label for="email">Email:</label>
+      <input type="text" name="email" v-model="member.email" placeholder="Email" />
+      <button type="submit">Save</button>
+    </form>
+
+  </div>
 </template>
 
 <script>
+import memberService from '../services/MemberService.js';
+
 export default {
-    name:'profile-details',
-        data() {
-            return {
-                createdMember: {
-                    firstName: "",
-                    lastName: "", 
-                    email: "",
-                    workoutGoal: "",
-                    workoutProfile: ""
-                },
-            }; 
-        },
+  name:'profile-details',
+  data() {
+    return {
+      member: {
+        firstName: "",
+        lastName: "", 
+        email: ""
+      }
+    }; 
+  },
+  methods: {
+      save() {
+      }
+  },
+  created() {
+      memberService.getMember().then(response => {
+          this.member = response.data;
+      })
+  }
 }
 </script>
 
 <style scoped>
 
-.createdForm {
-    text-align: center;
-    font-size: 20px;
-      padding: 40px;
+.profile {
+  text-align: center;
+  font-size: 20px;
+  padding: 40px;
   border: 1px ;
   text-align: center;
 }
-
-
 
 </style>
