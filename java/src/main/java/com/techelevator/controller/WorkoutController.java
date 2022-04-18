@@ -29,7 +29,7 @@ public class WorkoutController {
         this.userDao = userDao;
     }
 
-    @RequestMapping(value = "/{memberId}", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public List<Workout> getWorkoutsByMemberId(Principal principal) {
         String username = principal.getName();
         try {
@@ -40,7 +40,7 @@ public class WorkoutController {
         }
     }
 
-    @RequestMapping(value = "/logged/{memberId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/logged", method = RequestMethod.GET)
     public List<LoggedWorkout> getLoggedWorkoutsByMemberId(Principal principal) {
         String username = principal.getName();
         try {

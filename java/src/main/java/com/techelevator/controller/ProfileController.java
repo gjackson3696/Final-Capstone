@@ -37,13 +37,13 @@ public class ProfileController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/profile", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public MemberProfile createProfile(Principal principal, @Valid @RequestBody MemberProfile profile) {
         populateUserId(principal,profile);
         return profileDao.createProfile(profile);
     }
 
-    @RequestMapping(value = "/profile", method = RequestMethod.PUT)
+    @RequestMapping(value = "", method = RequestMethod.PUT)
     public boolean updateProfile(Principal principal, @Valid @RequestBody MemberProfile profile) {
         populateUserId(principal,profile);
         try {

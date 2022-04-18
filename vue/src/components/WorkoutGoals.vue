@@ -301,7 +301,7 @@
 </template>
 
 <script>
-import apiService from "@/services/WorkoutGoalsService.js";
+import workoutService from "@/services/WorkoutService.js";
 export default {
   name: "workout-goals",
   data() {
@@ -366,20 +366,20 @@ export default {
     //these are just placeholders
 
     saveWorkout() {
-      apiService.saveWorkout(this.$store.state.memberId,this.personalWorkout).then((response) => {
+      workoutService.saveWorkout(this.$store.state.memberId,this.personalWorkout).then((response) => {
         this.personalWorkout = response.data;
       });
       this.resetForm();
     },
 
     saveBenchmarkWorkout() {
-      apiService.saveWorkout.then((response) => {
+      workoutService.saveWorkout.then((response) => {
         this.crossfitWorkouts = response.data;
       });
     },
 
     saveBenchmarkMovements() {
-      apiService.saveWorkout.then((response) => {
+      workoutService.saveWorkout.then((response) => {
         this.benchmarkMovements = response.data;
       });
     },
