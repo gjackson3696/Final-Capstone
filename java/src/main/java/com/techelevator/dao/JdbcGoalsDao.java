@@ -47,7 +47,7 @@ public class JdbcGoalsDao implements GoalsDao {
                 "squat_snatch,power_snatch,snatch_balance) "+
                 "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING goals_id;";
         Long goalsId = jdbcTemplate.queryForObject(insertGoals,Long.class,goals.getUserId(),
-                goals.getBackSquat(),goals.getFrontSquat(),goals.getZercherSquat(),goals.getBulgarianSplitSquat(),
+                goals.getBackSquat(),goals.getFrontSquat(),goals.getZercherSquat(),goals.getOverheadSquat(),goals.getBulgarianSplitSquat(),
                 goals.getConventionalDeadlift(),goals.getSumoDeadlift(),
                 goals.getOverheadPress(),goals.getMilitaryPress(),goals.getPushPress(),
                 goals.getSquatClean(),goals.getPowerClean(),goals.getSplitJerk(),goals.getPushJerk(),goals.getSquatJerk(),
@@ -68,7 +68,7 @@ public class JdbcGoalsDao implements GoalsDao {
                 "WHERE user_id = ?;";
         try {
             jdbcTemplate.update(update,
-                    goals.getBackSquat(), goals.getFrontSquat(), goals.getZercherSquat(), goals.getBulgarianSplitSquat(),
+                    goals.getBackSquat(), goals.getFrontSquat(), goals.getZercherSquat(), goals.getOverheadSquat(), goals.getBulgarianSplitSquat(),
                     goals.getConventionalDeadlift(), goals.getSumoDeadlift(),
                     goals.getOverheadPress(), goals.getMilitaryPress(), goals.getPushPress(),
                     goals.getSquatClean(), goals.getPowerClean(), goals.getSplitJerk(), goals.getPushJerk(), goals.getSquatJerk(),

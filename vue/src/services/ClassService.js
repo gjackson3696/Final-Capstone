@@ -20,8 +20,12 @@ export default {
         axios.delete('/classes/unregister/'+classId)
     },
 
-    getRegisteredClasses() {
+    getRegisteredClassIds() {
         return axios.get('/classes/registered');
-    }
+    },
     
+    getRegisteredClasses() {
+        return axios.get('/classes/registered/details');
+    }
+
 }

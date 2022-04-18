@@ -47,7 +47,7 @@ public class JdbcProfileDao implements ProfileDao {
                 "squat_snatch,power_snatch,snatch_balance) "+
                 "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING profile_id;";
         Long profileId = jdbcTemplate.queryForObject(insertProfile,Long.class,profile.getUserId(),
-                profile.getBackSquat(),profile.getFrontSquat(),profile.getZercherSquat(),profile.getBulgarianSplitSquat(),
+                profile.getBackSquat(),profile.getFrontSquat(),profile.getZercherSquat(),profile.getOverheadSquat(),profile.getBulgarianSplitSquat(),
                 profile.getConventionalDeadlift(),profile.getSumoDeadlift(),
                 profile.getOverheadPress(),profile.getMilitaryPress(),profile.getPushPress(),
                 profile.getSquatClean(),profile.getPowerClean(),profile.getSplitJerk(),profile.getPushJerk(),profile.getSquatJerk(),
@@ -65,10 +65,10 @@ public class JdbcProfileDao implements ProfileDao {
                 "overhead_press = ?,military_press = ?,push_press = ?,"+
                 "squat_clean = ?,power_clean = ?,split_jerk = ?,push_jerk = ?,squat_jerk = ?,"+
                 "squat_snatch = ?,power_snatch = ?,snatch_balance = ? "+
-                "WHERE member_id = ?;";
+                "WHERE user_id = ?;";
         try {
             jdbcTemplate.update(update,
-                    profile.getBackSquat(), profile.getFrontSquat(), profile.getZercherSquat(), profile.getBulgarianSplitSquat(),
+                    profile.getBackSquat(), profile.getFrontSquat(), profile.getZercherSquat(), profile.getOverheadSquat(), profile.getBulgarianSplitSquat(),
                     profile.getConventionalDeadlift(), profile.getSumoDeadlift(),
                     profile.getOverheadPress(), profile.getMilitaryPress(), profile.getPushPress(),
                     profile.getSquatClean(), profile.getPowerClean(), profile.getSplitJerk(), profile.getPushJerk(), profile.getSquatJerk(),

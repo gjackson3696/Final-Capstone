@@ -21,4 +21,5 @@ public interface ClassDao {
 
     Class removeClass(Long id) throws ClassNotFoundException;
 
+    List<Class> getRegisteredClasses(Long memberId);
 }
