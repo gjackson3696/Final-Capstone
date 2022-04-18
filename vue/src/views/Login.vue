@@ -44,11 +44,13 @@
               </div>
               
             </div>
-              <button class="btn btn-block btn-secondary rounded-pill mt-3">Login</button>
+              <button class="btn btn-block btn-secondary rounded-pill mt-3">Login
+              </button>
+              <router-link :to="{ name: 'register' }">Need an account?</router-link> 
           </div>
 
 
-           <router-link :to="{ name: 'register' }">Need an account?</router-link> 
+           
   
     </form>
   </div>
@@ -111,15 +113,13 @@ body {
     background-color: #151515;
     text-align: center;
     font-size: 20px;
-    padding: 40px;
-    border: 1px ;
+    padding: 500px;
     text-align: center;
-    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     height: 100%;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 
 }
 .btn {
@@ -127,11 +127,9 @@ body {
   background : -webkit-linear-gradient(to right,)
 }
 body {
-  background: #fe8c00;
+
   background: -webkit-linear-gradient(
-    to right,
-    #151515,
-    #151515
+   
   );}
   hr {
   border-bottom: solid white 5px;}
