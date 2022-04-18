@@ -46,7 +46,7 @@ export default {
   },
   created() {
     this.getClassList();
-    this.$store.state.registeredClassIds = classService.getRegisteredClasses(this.$store.state.memberId).then(response => {
+    this.$store.state.registeredClassIds = classService.getRegisteredClassIds().then(response => {
       this.$store.commit('SET_CLASS_IDS',response.data);
     })
   }

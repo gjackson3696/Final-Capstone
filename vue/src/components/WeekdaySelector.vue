@@ -1,4 +1,5 @@
 <template>
+<body class="main-container">
   <div>
     <!-- selector for the week goes here tied to variable in script in this file
     use that variable to get the list of classes for the classes offered in that week -->
@@ -8,6 +9,7 @@
         </li>
     </ul>
   </div>
+</body>
 </template>
 
 <script>
@@ -72,14 +74,25 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 :root {
   --active-color: #ffee93;
   --link-text-color: #f1faee;
   --menu-background-color: #1d3557;
   --active-background-color: #132238;
 }
-/* ul */
+.main-container {
+  background-image: url('../assets/Schedule.jpg');
+  position: relative;
+	min-height: 100%;
+	min-width: 100%;
+	width: 100%;
+	height: 100vh;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	background-size: cover;
+}
+
 .menu {
   padding: 0;
   margin: 0;
@@ -90,12 +103,14 @@ export default {
   list-style-type: none;
   overflow: hidden;
   justify-content: space-evenly;
+  margin-left: 100px;
+  margin-right: 150px;
 }
-/* li */
+
 .menu-item {
   display: inline-flex;
 }
-/* a */
+
 .menu-link {
   padding: 0.75rem 1rem;
   display: inline-flex;

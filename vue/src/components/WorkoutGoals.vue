@@ -1,11 +1,15 @@
 <template>
   <div class="container">
-    <h3>Enter data for a personal workout:</h3>
+    <img id="logo" src="../assets/Main-logo-cropped.png" alt="CrossFit Syntactical Logo">
+    <h2 id="goals-header">Declare Your Gains</h2>
+    <h3 v-if="!showBenchmarkMovements && !showBenchmarkWorkouts"
+    >Enter data for a personal workout:</h3>
     <button
       class="btn btn-light"
       v-on:click="showPersonalWorkouts = !showPersonalWorkouts"
+      v-if="!showBenchmarkMovements && !showBenchmarkWorkouts"
+      v-text="showPersonalWorkouts === true ? 'Close' : 'Add Personal Workout'"
     >
-      Add Personal Workout
     </button>
     <form
       id="frmAddNewWorkout"
@@ -79,12 +83,14 @@
       </button>
     </form>
 
-    <h3>Enter goals for a standardized CrossFit Workout</h3>
+    <h3 v-if="!showBenchmarkMovements && !showPersonalWorkouts"
+    >Enter goals for a standardized CrossFit Workout</h3>
     <button
       class="btn btn-light"
       v-on:click="showBenchmarkWorkouts = !showBenchmarkWorkouts"
+      v-if="!showBenchmarkMovements && !showPersonalWorkouts"
+      v-text="showBenchmarkWorkouts === true ? 'Close' : 'Enter Desired Score'"
     >
-      Enter Score
     </button>
 
     <form
@@ -117,12 +123,15 @@
       <button type="submit" class="btn btn-primary">Save Workout</button>
     </form>
 
-    <h3>Enter goals for individual movements (squats, olympic lifts, etc.)</h3>
+    <h3 v-if="!showBenchmarkWorkouts && !showPersonalWorkouts"
+    >Enter goals for individual movements (squats, olympic lifts, etc.)</h3>
     <button
       class="btn btn-light"
       v-on:click="showBenchmarkMovements = !showBenchmarkMovements"
+      v-if="!showBenchmarkWorkouts && !showPersonalWorkouts"
+      v-text="showBenchmarkMovements === true ? 'Close' : 'Enter Goals for Individual Movements'"
     >
-      Enter Goals for Individual Movements
+      
     </button>
     <h4 v-if="showBenchmarkMovements === true">
       Enter one rep max for each movement
@@ -174,7 +183,7 @@
         </div>
       </div>
       <div id="deadlifts">
-        <h4>Deadlift Goals</h4>
+        <h5>Deadlift Goals</h5>
         <div>
           <input
             type="text"
@@ -192,7 +201,6 @@
           />
         </div>
       </div>
-      
       <div id="presses">
         <h5>Pressing Goals</h5>
         <div>
@@ -294,8 +302,10 @@
             placeholder="Snatch Balance"
           />
         </div>
-      </div>
+        <div id="annoying-button">
             <button type="submit" class="btn btn-primary">Save Movements</button>
+      </div>
+      </div>
     </form>
   </div>
 </template>
@@ -366,20 +376,20 @@ export default {
     //these are just placeholders
 
     saveWorkout() {
-      workoutService.saveWorkout(this.$store.state.memberId,this.personalWorkout).then((response) => {
+      workoutService.saveWorkout(this.personalWorkout).then((response) => {
         this.personalWorkout = response.data;
       });
       this.resetForm();
     },
 
     saveBenchmarkWorkout() {
-      workoutService.saveWorkout.then((response) => {
+      workoutService.saveWorkout(this.crossfitWorkouts).then((response) => {
         this.crossfitWorkouts = response.data;
       });
     },
 
     saveBenchmarkMovements() {
-      workoutService.saveWorkout.then((response) => {
+      workoutService.saveWorkout(this.benchmarkMovements).then((response) => {
         this.benchmarkMovements = response.data;
       });
     },
@@ -410,9 +420,9 @@ export default {
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
     ),
-    url(../assets/goals_page.jpg);
+    url(../assets/goals-page.png);
   background-position: 0px 0px, 50% 50%;
-  background-size: auto, cover;
+  background-size: auto;
   background-attachment: scroll, fixed;
   color: #fff;
   justify-content: center;
@@ -422,7 +432,6 @@ export default {
   display: flex;
   height: 100vh;
   text-align: center;
-  margin-bottom: 100px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
 }
@@ -439,15 +448,33 @@ export default {
 
 #frmSaveBenchmarkMovements {
   display: flex;
-  flex-direction: row;
-  align-content: space-between;
+  margin: 0 auto 0 auto;
   gap: 10px;
 }
 
-#frmSaveBenchmarkMovements > .btn {
+#frmSaveBenchmarkWorkout > .btn {
+  margin-top: 5px;
+}
+
+#frmAddNewWorkout > .btn {
+  margin-top: 5px;
+}
+
+#logo {
   position: absolute;
-  bottom: 0;
-  justify-content: center;
+  max-width: 200px;
+  top: 0;
+}
+
+#goals-header {
+  position: relative;
+  top: 0;
+}
+
+  #annoying-button {
+  margin-top: 5px;
+  width: 100%;
+
   }
 
 </style>
