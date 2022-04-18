@@ -102,6 +102,20 @@ public class JdbcClassDao implements ClassDao{
         }
     }
 
+    @Override
+    public List<Class> getRegisteredClasses(Long memberId) {
+        List<Class> classList = new ArrayList<>();
+        String sql = "SELECT * FROM classes " +
+                "JOIN class_members ON classes.class_id = class_members.class_id " +
+                "WHERE class_members.member_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql,memberId);
+        while(results.next()) {
+            Class registeredClass = mapRowToClass(results);
+            classList.add(registeredClass);
+        }
+        return classList;
+    }
+
     private Class mapRowToClass(SqlRowSet results) {
         Class newClass = new Class();
         newClass.setId(results.getLong("class_id"));

@@ -64,7 +64,7 @@
       </div>
 
       <div id="deadlifts">
-        <h4>Deadlift Profile</h4>
+        <h5>Deadlift Profile</h5>
         <div>
           <input
             type="text"

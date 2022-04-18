@@ -76,4 +76,16 @@ public class ScheduleController {
         }
     }
 
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(value = "/registered/details", method = RequestMethod.GET)
+    public List<Class> getRegisteredClassDetails(Principal principal) {
+        String username = principal.getName();
+        try {
+            Long memberId = memberDao.findMemberIdByUsername(username);
+            return classDao.getRegisteredClasses(memberId);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 }
