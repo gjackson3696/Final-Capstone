@@ -6,8 +6,8 @@
 		<div class="navigation-icons">
 			<router-link v-bind:to="$store.state.token === '' ? '/' : '/dashboard'" class="material-icons">home</router-link>
 			<router-link v-bind:to="{ name: 'schedule' }" class="material-icons">schedule</router-link>
-			<router-link v-bind:to="{ name: 'workoutGoals' }" class="material-icons">work</router-link>
-			<router-link v-bind:to="{ name: 'accountDetails' }" class="material-icons">view_list </router-link>
+			<router-link v-bind:to="{ name: 'workoutGoals' }" class="material-icons" v-if="$store.state.token !== ''">work</router-link>
+			<router-link v-bind:to="{ name: 'accountDetails' }" class="material-icons" v-if="$store.state.token !== ''">view_list </router-link>
 			<router-link v-bind:to="$store.state.token === '' ? '/login' : '/logout'" class="material-icons">login</router-link>
 		</div>
 		<div class="navigation-links">
@@ -24,12 +24,12 @@
 						>Schedule</router-link
 					>
 				</div>
-				<div v-show="showLink" key="3">
+				<div v-show="showLink" key="3" v-if="$store.state.token !== ''">
 					<router-link class="router-btn" v-bind:to="{ name: 'workoutGoals' }"
 						>My Goals</router-link
 					>
 				</div>
-				<div v-show="showLink" key="4">
+				<div v-show="showLink" key="4" v-if="$store.state.token !== ''">
 					<router-link class="router-btn" v-bind:to="{ name: 'accountDetails' }"
 						>My Details</router-link
 					>
