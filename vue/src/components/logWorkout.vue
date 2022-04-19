@@ -78,7 +78,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .field, h3 {
   display: flex;
   justify-content: center;

@@ -44,8 +44,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .class-card-container {
+  position: relative;
+  margin-left: 150px;
   border: 5px solid rgb(90, 153, 255);
   border-radius: 20px;
   width: 250px;

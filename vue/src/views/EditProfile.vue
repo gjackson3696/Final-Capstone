@@ -12,7 +12,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .main-container {
   background-image: linear-gradient(
 			180deg,

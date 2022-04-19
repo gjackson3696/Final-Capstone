@@ -52,38 +52,30 @@ export default {
   margin: 1rem;
   align-items: center;
 }
-
-
-.calendar {
-  display: grid;
-  text-align: center;
-  grid-area: schedule;
-  min-height: 100px;
-  padding: 1rem;
-}
-
 .tableCells {
   border: 1;
   padding: 2;
 }
-body {
+ body {
   height: 100%;
 }
-body {
+ body {
   display: grid;
   grid-auto-columns: 2fr 2fr 2fr;
 
 }
 
 .card-container {
+  position: relative;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 5fr);
     padding: 20px;
+    margin-left: 80px;
 }
 
 .class-card {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     padding: 20px;
-}
+} 
 </style>
