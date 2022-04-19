@@ -23,8 +23,9 @@
 						</div>
 					</div>
 				</div>
+				<log-workout class="log-workout-form" />
 			</div>
-		<log-workout />
+		
 	</body>
 </template>
 
@@ -72,6 +73,9 @@ body::before {
 		rgba(1, 187, 255, 0.3) 0px 18px 36px -18px inset;
 	background-repeat: no-repeat;
 	background-size: cover;
+}
+.log-workout-form {
+	position: relative;
 }
 .about-card {
 	background: darkgrey;

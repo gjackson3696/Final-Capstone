@@ -1,14 +1,14 @@
 <template>
   <div>
     <h3>Log Workout</h3>
-    <form id="logWorkoutForm" v-on:submit.prevent="logWorkout">
+    <form class="logWorkoutForm" v-on:submit.prevent="logWorkout">
       <div class="field">
         <label for="name">Name:</label>
         <input type="text" name="name" placeholder="Name of workout" v-model="workout.name" />
       </div>
       <div class="field">
         <label for="domain">Domain:</label>
-        <input type="text" name="dmain" placeholder="i.e. ARMAP, Time, EMOM, etc." v-model="workout.domain" />
+        <input type="text" name="domain" placeholder="i.e. ARMAP, Time, EMOM, etc." v-model="workout.domain" />
       </div>
       <div class="field">
         <label for="structure">Structure:</label>
@@ -111,7 +111,7 @@
         <label for="snatchBalance">Snatch Balance Max:</label>
         <input type="text" name="snatchBalance" placeholder="Snatch Balance" v-model="workout.snatchBalance" />
       </div>
-      <div class="button">
+      <div class="btn">
         <button id="logWorkoutButton" type="submit">Log Workout</button>
       </div>
     </form>
@@ -198,9 +198,7 @@ export default {
 </script>
 
 <style scoped>
-.field, h3 {
-  display: flex;
-  justify-content: center;
-  margin: 10px 0 0 0;
+.logWorkoutForm {
+  position: relative;
 }
 </style>
