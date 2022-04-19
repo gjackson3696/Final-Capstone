@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
     <div class="weekday-selector">
-        <weekday-selector @click="getClassList"/>
+        <weekday-selector />
     </div>
         <div class="card-container">
           <class-card class="class-card" v-bind:classItem="item" v-for="item in classFilter" :key="item.id" />
@@ -29,15 +29,8 @@ export default {
       })
     }
   },
-  methods: {
-    getClassList() {
-      classService.getClasses().then(response => {
-        this.classList = response.data;
-      })
-    }
-  },
   created() {
-    this.getClassList();
+    this.classList = this.$store.state.classList;
   },
   beforeDestroy() {
     classService.getRegisteredClassIds().then(response => {
