@@ -200,5 +200,15 @@ export default {
 <style scoped>
 .logWorkoutForm {
   position: relative;
+  border: 5px solid red;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: white;
+}
+.logWorkoutForm > div > input {
+  display: flex;
+  
 }
 </style>
