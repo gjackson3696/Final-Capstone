@@ -107,7 +107,7 @@ body::before {
 #welcome {
 	font-size: 50px;
 	text-shadow: 1px 1px  #03ffc0 ;
-
+    font-family: Stencil;
 }
 #login {
 	text-decoration: none;

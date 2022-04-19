@@ -257,25 +257,4 @@ export default {
 
 <style scoped>
 
-.profile {
-  text-align: center;
-  font-size: 20px;
-  padding: 40px;
-  border: 1px ;
-  text-align: center;
-}
-
-#frmSaveBenchmarkMovements {
-  display: flex;
-  flex-direction: row;
-  align-content: space-between;
-  gap: 10px;
-}
-
-#frmSaveBenchmarkMovements > .btn {
-  position: absolute;
-  bottom: 0;
-  justify-content: center;
-}
-
 </style>

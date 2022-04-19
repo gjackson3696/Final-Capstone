@@ -1,16 +1,8 @@
 <template>
   <div class="main-container">
-    <h2 class="calendar">Schedule of Classes</h2>
-
- 
-<select name="dropdown" id="btn">
-  <option value="Mont view">Mont view</option>
-  <option value="Weekly view">Weekly view</option>
-  <option value="2 Week view">2 Week view</option>
-</select>
-
+    <div class="weekday-selector">
         <weekday-selector @click="getClassList"/>
-
+    </div>
         <div class="card-container">
           <class-card class="class-card" v-bind:classItem="item" v-for="item in classFilter" :key="item.id" />
         </div>
