@@ -15,7 +15,6 @@ public class JdbcClassDaoTest extends FinalCapstoneDaoTests{
     private JdbcClassDao sut;
 
     @Before
-
     public void setup() {
         DataSource dataSource = this.getDataSource();
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
