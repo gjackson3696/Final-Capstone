@@ -208,7 +208,61 @@ export default {
   background-color: white;
 }
 .logWorkoutForm > div > input {
-  display: flex;
-  
+position:relative;
+display: flex;
+font-size: 1.5em;
+background: linear-gradient(21deg, #10abff34, #1beabdae);
+padding: 3px;
+border-radius: 5px;
+
+transform: scale(.993, .94);
+/* transition: transform .5s, opacity .25s;
+opacity: 0; */
+margin:4px;
+		left:0;
+		top:0;
+		right:0;
+		bottom:0;
+		pointer-events: none;
+
+		box-shadow: inset 0 0 0 1px #fff,
+			0 0 0 1px #fff,
+			3px -3px 3px #1beabd, 
+			-3px 3px 3px #10abff;
+
 }
+
+html {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	line-height:1.5;
+	font-size:1em;
+}
+
+body {
+	text-align: center;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+
+html, body {
+	height:100%;
+}
+
+input {
+	font-family: inherit;
+	line-height:inherit;
+	color:#2e3750;
+	min-width:10em;
+}
+html::after {
+	content:'';
+	background: linear-gradient(21deg, #10abff, #1beabd);
+	height:3px;
+	width:100%;
+	position:absolute;
+	left:0;
+	top:0;
+}
+
 </style>
