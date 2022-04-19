@@ -23,9 +23,8 @@
 						</div>
 					</div>
 				</div>
-				<log-workout class="log-workout-form" />
 			</div>
-		
+		<log-workout />
 	</body>
 </template>
 
@@ -52,7 +51,7 @@ body {
 	min-height: 100%;
 	min-width: 100%;
 	width: 100%;
-	height: 100vh;
+	height: 200vh;
 }
 body::before {
 	content: '';
@@ -73,9 +72,6 @@ body::before {
 		rgba(1, 187, 255, 0.3) 0px 18px 36px -18px inset;
 	background-repeat: no-repeat;
 	background-size: cover;
-}
-.log-workout-form {
-	position: relative;
 }
 .about-card {
 	background: darkgrey;

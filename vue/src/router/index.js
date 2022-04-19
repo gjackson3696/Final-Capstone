@@ -29,7 +29,7 @@ const router = new Router({
       name: 'dashboard',
       component: Dashboard,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -69,7 +69,7 @@ const router = new Router({
       name: "accountDetails",
       component: EditProfile,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -77,7 +77,7 @@ const router = new Router({
       name: "workoutGoals",
       component: WorkoutGoals,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {

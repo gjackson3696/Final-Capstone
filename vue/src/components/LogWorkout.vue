@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <h3>Log Workout</h3>
-    <form class="logWorkoutForm" v-on:submit.prevent="logWorkout">
+  <div class="body">
+    <div class="showForm">
+      <button class="showFormBtn" @click="showForm = !showForm" v-text="showForm ? 'Close' : 'Log Workout'"></button>
+    </div>
+    <form class="logWorkoutForm" v-on:submit.prevent="logWorkout" v-if="showForm">
       <div class="main-field">
         <div class="field">
           <label for="name">Name:</label>
@@ -164,7 +166,8 @@ export default {
         powerSnatch: "",
         snatchBalance: "",
         completed: true
-      }
+      },
+      showForm: false
     }
   },
   methods: {
@@ -210,6 +213,17 @@ export default {
 </script>
 
 <style scoped>
+.body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.showForm{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
 .logWorkoutForm {
   position: relative;
   border: 5px solid red;
