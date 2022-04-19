@@ -31,7 +31,7 @@ public class JdbcLoggedWorkoutDao implements LoggedWorkoutDao {
 
     @Override
     public void logWorkout(LoggedWorkout workout) {
-        String logWorkout = "INSERT INTO workouts (user_id,name,domain,structure," +
+        String logWorkout = "INSERT INTO logged_workouts (user_id,name,domain,structure," +
                 "weights,workoutTime,rounds,completed) VALUES (?,?,?,?,?,?,?,?);";
         jdbcTemplate.update(logWorkout,workout.getUserId(),workout.getName(),
                 workout.getDomain(),workout.getStructure(),workout.getWeights(),
