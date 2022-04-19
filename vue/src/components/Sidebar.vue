@@ -4,12 +4,11 @@
 			<i class="material-icons" @click="showNav">double_arrow</i>
 		</div>
 		<div class="navigation-icons">
-			<i class="material-icons">home</i>
-			<i class="material-icons">schedule</i>
-			<i class="material-icons">work</i>
-			<i class="material-icons">view_list </i>
-			<i class="material-icons">login</i>
-	
+			<router-link v-bind:to="$store.state.token === '' ? '/' : '/dashboard'" class="material-icons">home</router-link>
+			<router-link v-bind:to="{ name: 'schedule' }" class="material-icons">schedule</router-link>
+			<router-link v-bind:to="{ name: 'workoutGoals' }" class="material-icons">work</router-link>
+			<router-link v-bind:to="{ name: 'accountDetails' }" class="material-icons">view_list </router-link>
+			<router-link v-bind:to="$store.state.token === '' ? '/login' : '/logout'" class="material-icons">login</router-link>
 		</div>
 		<div class="navigation-links">
 			<transition-group name="fade">
@@ -115,7 +114,6 @@ export default {
 	color: rgb(0, 247, 255);
 }
 .navigation-icons {
-	color: rgb(0, 255, 251);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -123,14 +121,15 @@ export default {
 	width: 50px;
 	float: left;
 }
-.navigation-icons > i {
+.navigation-icons > .material-icons {
+	color: rgb(0, 255, 251);
 	font-size: 3rem;
 	padding: 10px 0;
 	cursor: pointer;
 	transition: all 0.5s ease-in-out;
 
 }
-.navigation-icons > i:hover {
+.navigation-icons > .material-icons:hover {
 	color: rgb(181, 0, 205);
 }
 .navigation-links {
