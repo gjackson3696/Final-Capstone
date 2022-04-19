@@ -24,19 +24,17 @@
 					</div>
 				</div>
 			</div>
-			<radar-graph />
 		
 	</body>
 </template>
 
 <script>
-import RadarGraph from '../components/RadarGraph.vue'
+
 export default {
 	name: 'dashboard',
   components: {
-	RadarGraph
-
-  }
+ 
+	}
 };
 </script>
 
