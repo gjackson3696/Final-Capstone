@@ -90,7 +90,7 @@ export default {
 	border-width: 0 1px 0 0;
 	z-index: 999;
 	transition: all 0.5s ease-in-out;
-	background:rgba(128, 128, 128, 0.208);
+	background:rgba(128, 128, 128, 0);
 	
 }
 .control {
