@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
     <div class="weekday-selector">
-        <weekday-selector />
+        <weekday-selector @click="getClassList"/>
     </div>
         <div class="card-container">
           <class-card class="class-card" v-bind:classItem="item" v-for="item in classFilter" :key="item.id" />
@@ -29,14 +29,18 @@ export default {
       })
     }
   },
-  created() {
-    this.classList = this.$store.state.classList;
+  methods: {
+    getClassList() {
+      classService.getClasses().then(response => {
+        this.classList = response.data;
+      })
+    }
   },
-  beforeDestroy() {
-    classService.getRegisteredClassIds().then(response => {
+  created() {
+    this.getClassList();
+    this.$store.state.registeredClassIds = classService.getRegisteredClassIds().then(response => {
       this.$store.commit('SET_CLASS_IDS',response.data);
-    });
-    this.$store.commit('RESET_WEEKDAY_SELECTOR');
+    })
   }
 }
 </script>
@@ -62,11 +66,12 @@ export default {
 }
 
 .card-container {
-  position: relative;
+    position: relative;
     display: grid;
     grid-template-columns: repeat(4, 5fr);
     padding: 20px;
-    margin-left: 80px;
+    margin-left: 15px;
+    margin-top: -20%
 }
 
 .class-card {
