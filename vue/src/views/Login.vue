@@ -1,43 +1,68 @@
 <template>
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+      
+      <div class="card shadow p-5">
+        
+       <h3 class="text-center text-uppercase mb-4">Please Sign In</h3>
+     
+      <hr>
       <div
         class="alert alert-danger"
         role="alert"
         v-if="invalidCredentials"
       >Invalid username and password!</div>
+     
+     
       <div
         class="alert alert-success"
         role="alert"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
-      <label for="username" class="sr-only">Username</label>
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        placeholder="Username"
-        v-model="user.username"
-        required
-        autofocus
-      />
-      <label for="password" class="sr-only">Password</label>
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
+
+
+      <label for="username" class="sr-only"></label>
+
+      <div class="form-group">
+            <label>Username</label>
+            <input type="text"
+            id="username"
+            placeholder="Username"
+            class="form-control"
+            v-model="user.username"
+            required
+            autofocus
+            />
+          </div>
+
+          <label for="Password">Password</label>
+          <div class="input-group mb-3">
+            <input
+           type="password"
+           id="password"
+           class="form-control"
+           placeholder="Password"
+           v-model="user.password"
+           required
+           >
+              
+            </div>
+              <button class="btn btn-block btn-secondary rounded-pill mt-3">Login
+              </button>
+              <router-link :to="{ name: 'register' }">Need an account?</router-link> 
+          </div>
+
+
+           
   
     </form>
   </div>
   
 </template>
+
+
+
+
 
 <script>
 import authService from "../services/AuthService";
@@ -82,13 +107,40 @@ export default {
   }
 };
 </script>
+
+
+
+
+
 <style scoped>
+body {
+  height: 100%;
+}
 
 .form-signin {
+	background-image: url(../assets/goals-page.png);
+    background-color: #151515;
     text-align: center;
     font-size: 20px;
-      padding: 40px;
-  border: 1px ;
-  text-align: center;
+    padding: 500px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
 }
+.btn {
+  background: #151515;
+  background : -webkit-linear-gradient(to right,)
+}
+body {
+
+  background: -webkit-linear-gradient(
+   
+  );}
+  hr {
+  border-bottom: solid white 5px;}
+
 </style>

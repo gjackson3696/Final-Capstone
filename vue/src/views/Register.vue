@@ -95,7 +95,17 @@ export default {
 
 
 <style scoped>
+.form-register {
+  
+    background-color: #151515;
+    text-align: center;
+    font-size: 20px;
+    padding: 100px;
+    text-align: center;
+}
+h1{ 
 
+}
 .text-center {
     text-align: center;
     font-size: 20px;
