@@ -237,4 +237,21 @@ export default {
   display: flex;
   
 }
+
+input {
+	font-family: inherit;
+	line-height:inherit;
+	color:#2e3750;
+	min-width:10em;
+}
+html::after {
+	content:'';
+	background: linear-gradient(21deg, #10abff, #1beabd);
+	height:3px;
+	width:100%;
+	position:absolute;
+	left:0;
+	top:0;
+}
+
 </style>

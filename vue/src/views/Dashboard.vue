@@ -47,6 +47,7 @@ export default {
 
 <style scoped>
 body {
+
 	position: relative;
 	min-height: 100%;
 	min-width: 100%;
