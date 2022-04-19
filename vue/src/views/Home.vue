@@ -27,7 +27,14 @@
 </template>
 
 <script>
-export default {};
+import classService from '../services/ClassService';
+export default {
+	created() {
+		classService.getClasses().then(response => {
+			this.$store.commit('SET_CLASS_LIST',response.data);
+		});
+	}
+};
 </script>
 
 <style scoped>

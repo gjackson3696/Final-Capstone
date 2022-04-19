@@ -29,11 +29,17 @@
 </template>
 
 <script>
+import classService from '../services/ClassService';
 
 export default {
 	name: 'dashboard',
-  components: {
+	components: {
  
+	},
+	created() {
+	classService.getRegisteredClassIds().then(response => {
+      this.$store.commit('SET_CLASS_IDS',response.data);
+    });
 	}
 };
 </script>

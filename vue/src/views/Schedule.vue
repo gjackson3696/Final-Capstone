@@ -38,9 +38,12 @@ export default {
   },
   created() {
     this.getClassList();
-    this.$store.state.registeredClassIds = classService.getRegisteredClassIds().then(response => {
+  },
+  beforeDestroy() {
+    classService.getRegisteredClassIds().then(response => {
       this.$store.commit('SET_CLASS_IDS',response.data);
-    })
+    });
+    this.$store.commit('RESET_WEEKDAY_SELECTOR');
   }
 }
 </script>
