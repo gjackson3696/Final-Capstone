@@ -132,7 +132,6 @@ export default {
         weights: "",
         workoutTime: "",
         rounds: "",
-        completed: true,
         backSquat: "",
         frontSquat: "",
         zercherSquat: "",
@@ -151,7 +150,8 @@ export default {
         squatJerk: "",
         squatSnatch: "",
         powerSnatch: "",
-        snatchBalance: ""
+        snatchBalance: "",
+        completed: true
       }
     }
   },

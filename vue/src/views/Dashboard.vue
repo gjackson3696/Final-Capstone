@@ -24,17 +24,18 @@
 					</div>
 				</div>
 			</div>
-		
+		<log-workout />
 	</body>
 </template>
 
 <script>
 import classService from '../services/ClassService';
+import LogWorkout from '../components/LogWorkout';
 
 export default {
 	name: 'dashboard',
 	components: {
- 
+		LogWorkout
 	},
 	created() {
 	classService.getRegisteredClassIds().then(response => {

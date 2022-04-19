@@ -38,7 +38,7 @@ public class JdbcLoggedWorkoutDao implements LoggedWorkoutDao {
                 "overhead_press,military_press,push_press," +
                 "squat_clean,power_clean,split_jerk,push_jerk,squat_jerk," +
                 "squat_snatch,power_snatch,snatch_balance) " +
-                "VALUES (?,?,?,?,?,?,?,?);";
+                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
         jdbcTemplate.update(logWorkout,workout.getUserId(),workout.getName(),
                 workout.getDomain(),workout.getStructure(),workout.getWeights(),
                 workout.getTime(),workout.getRounds(),workout.isCompleted(),

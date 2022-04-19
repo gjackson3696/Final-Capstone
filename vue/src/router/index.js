@@ -9,7 +9,6 @@ import EditProfile from '../views/EditProfile.vue'
 import WorkoutGoals from '../views/ProfileGoals.vue'
 import Schedule from '../views/Schedule.vue'
 import Dashboard from '../views/Dashboard.vue'
-import LogWorkout from '../components/LogWorkout.vue'
 
 Vue.use(Router)
 
@@ -89,14 +88,6 @@ const router = new Router({
         requiresAuth: false
       }
     },
-    {
-      path: '/log',
-      name: 'log',
-      component: LogWorkout,
-      meta: {
-        requiresAuth: false
-      }
-    }
   ]
 })
 
