@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     registered() {
-      return this.$store.state.registeredClassIds.includes(this.classItem.id);
+      return this.$store.state.registeredClassIds.includes(this.classItem.id) && this.$store.state.token !== '';
     },
   },
   methods: {
