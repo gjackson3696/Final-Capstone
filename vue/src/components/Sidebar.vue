@@ -6,10 +6,10 @@
 		<div class="navigation-icons">
 			<i class="material-icons">home</i>
 			<i class="material-icons">schedule</i>
-			<i class="material-icons">settings_accessibility</i>
-			<i class="material-icons">view_list</i>
+			<i class="material-icons">work</i>
+			<i class="material-icons">view_list </i>
 			<i class="material-icons">login</i>
-			<i class="material-icons">logout</i>
+	
 		</div>
 		<div class="navigation-links">
 			<transition-group name="fade">
@@ -88,7 +88,6 @@ export default {
 	width: 100px;
 	padding: 10px;
 	min-height: calc(100vh - 20px);
-	/* border: solid rgb(0, 255, 247); */
 	border-width: 0 1px 0 0;
 	z-index: 999;
 	transition: all 0.5s ease-in-out;
@@ -123,7 +122,6 @@ export default {
 	flex-direction: column;
 	width: 50px;
 	float: left;
-    /* margin-top: 140px; */
 }
 .navigation-icons > i {
 	font-size: 3rem;
@@ -138,7 +136,6 @@ export default {
 .navigation-links {
 	padding-top: 14px;
 	float: left;
-    /* margin-top: 140px; */
 }
 .navigation-links div {
 	font-size: 2rem;
@@ -152,10 +149,13 @@ export default {
 .navigation-links div:hover {
 	color: aquamarine;
 }
-.router-btn {
+.router-btn, .material-icons{
 	text-decoration: none;
-	/* color: rgb(255, 255, 255); */
     font-weight: bold;
-    text-shadow: 2px 2px rgb(123, 0, 161);
+    text-shadow: 1px 1px rgb(123, 0, 161);
+}
+.material-icons{
+	text-decoration: none;
+
 }
 </style>
