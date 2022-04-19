@@ -3,7 +3,7 @@
   <div class="main-header">
     <header class="header">
       <img class="small-logo" src="../assets/Small-logo.png" />
-      <h2 class="h2-header">Classes We Offer</h2>
+      <h2 class="h2-header">Syntax Line Up</h2>
     </header>
   </div>
   <div>
