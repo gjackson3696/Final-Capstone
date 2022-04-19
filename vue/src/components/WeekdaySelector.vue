@@ -1,8 +1,6 @@
 <template>
 <body class="main-container">
   <div>
-    <!-- selector for the week goes here tied to variable in script in this file
-    use that variable to get the list of classes for the classes offered in that week -->
     <ul class="menu" :style="{ left: positionToMove, sliderWidth }">
         <li v-for="link in links" :key="link.id" @click="sliderIndicator(link.id)" v-bind:class="link.id == selectedIndex ? 'active menu-link' : '' ">
               <div class="menu-link">{{ link.text }}</div>
@@ -82,7 +80,7 @@ export default {
   --active-background-color: #132238;
 }
 .main-container {
-  background-image: url('../assets/Schedule.jpg');
+  /* background-image: url('../assets/Schedule.jpg'); */
   position: relative;
 	min-height: 100%;
 	min-width: 100%;
