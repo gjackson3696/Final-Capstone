@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-container">
       <profile-details />
   </div>
 </template>
@@ -13,5 +13,12 @@ export default {
 </script>
 
 <style>
-
+.main-container {
+  background-image: linear-gradient(
+			180deg,
+			rgba(0, 0, 0, 0.5),
+			rgba(0, 0, 0, 0.5)
+		),
+		url('../assets/profile-details.jpg');
+}
 </style>

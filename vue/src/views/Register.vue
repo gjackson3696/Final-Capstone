@@ -103,9 +103,7 @@ export default {
     padding: 100px;
     text-align: center;
 }
-h1{ 
 
-}
 .text-center {
     text-align: center;
     font-size: 20px;
