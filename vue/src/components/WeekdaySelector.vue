@@ -84,8 +84,8 @@ export default {
   margin-left: 110px;
 }
 .h2-header{
-  position: relative;
-  color: white;
+ position: relative;
+ color: white;
  display: flex;
  justify-content: center;
  font-size: 70px;
@@ -126,8 +126,8 @@ export default {
   list-style-type: none;
   overflow: hidden;
   justify-content: space-evenly;
-  margin-left: 150px;
-  margin-right: 150px;
+  margin-left: 60px;
+  /* margin-right: 120px; */
 }
 
 .menu-link {
