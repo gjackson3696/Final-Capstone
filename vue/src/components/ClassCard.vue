@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="class-card">
     <div :class="[registered ? 'purple-container' : 'blue-container']">
       <!-- <p class="class-items">
         Change to Add Generic Workout Photos or Icons ASK PRODUCT OWNER
       </p> -->
-      <p class="class-items">Class name: {{ classItem.name }}</p>
+      <h5 class="class-items">{{ classItem.name }}</h5>
       <p class="class-items">Instructor: {{ classItem.instructor }}</p>
       <p class="class-items">Start Time: {{ classItem.time }}</p>
       <p class="class-items">Length of Class: {{ classItem.lengthMinutes }} mins.</p>
@@ -66,8 +66,9 @@ export default {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	box-shadow: rgba(0, 229, 255, 0.279) 0px 100px 100px -12px inset,
-		rgba(1, 187, 255, 0.3) 0px 18px 36px -18px inset;
+  background-color: rgba(0, 229, 255, 0.279);
+	box-shadow: rgba(0, 229, 255, 0.279) 0px 100px 100px 75px inset,
+		rgba(1, 187, 255, 0.3) 0px 18px 36px 75px inset;
 	background-repeat: no-repeat;
 	background-size: cover;
   border-radius: 5%;
