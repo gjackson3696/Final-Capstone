@@ -5,16 +5,17 @@
       src="../assets/Small-logo.png"
       alt="CrossFit Syntactical Logo"
     />
-    <h2 id="goals-header">Set Goals, Crush Them!</h2>
+    <h2 id="goals-header" v-if="showBenchmarkMovements || showBenchmarkWorkouts || !showPersonalWorkouts">Set Goals, Crush Them!</h2>
     <h3 v-if="!showBenchmarkMovements && !showBenchmarkWorkouts">
       Enter data for a personal workout:
     </h3>
     <button
-      class="btn btn-light"
+      class="btn btn-light"  id="personal-workout-btn"
       v-on:click="showPersonalWorkouts = !showPersonalWorkouts"
       v-if="!showBenchmarkMovements && !showBenchmarkWorkouts"
       v-text="showPersonalWorkouts === true ? 'Close' : 'Add Personal Workout'"
     ></button>
+    <div class="personal-workout"  v-if="showPersonalWorkouts">
     <form
       id="frmAddNewWorkout"
       v-on:submit.prevent="saveWorkout"
@@ -92,7 +93,7 @@
         Save Workout
       </button>
     </form>
-
+  </div>
     <h3 v-if="!showBenchmarkMovements && !showPersonalWorkouts">
       Enter goals for a standardized CrossFit Workout
     </h3>
@@ -159,7 +160,8 @@
       v-if="showBenchmarkMovements === true"
     >
       <div>
-        <div id="squats">
+        <div  id="squats">
+        <div>
           <h5>Squat Goals</h5>
           <label for="backSquat">Back Squat:</label>
 
@@ -213,7 +215,9 @@
           />
         </div>
       </div>
+      </div>
       <div id="deadlifts">
+      <div >
         <h5>Deadlift Goals</h5>
         <label for="conventionalDeadlift">Conventional Deadlift:</label>
 
@@ -236,7 +240,9 @@
           />
         </div>
       </div>
+      </div>
       <div id="presses">
+      <div >
         <h5>Pressing Goals</h5>
         <label for="overheadPress">Overhead Press:</label>
 
@@ -269,7 +275,9 @@
           />
         </div>
       </div>
+      </div>
       <div id="olympic">
+      <div>
         <h5>Olympic Lifting Goals</h5>
         <label for="squatClean">Squat Clean:</label>
 
@@ -362,9 +370,12 @@
           />
         </div>
       </div>
-	<button type="submit" class="btn btn-primary">Save Movements</button>
-    </form>
+      </div>
+      <div id="last-save-button">
+	<button type="submit" class="btn btn-primary" >Save Movements</button>
   </div>
+    </form>
+    </div>
 </template>
 
 <script>
@@ -469,7 +480,7 @@ export default {
 	min-height: 100%;
 	min-width: 100%;
 	width: 100%;
-	height: 100vh;
+	height: 140vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -495,12 +506,24 @@ export default {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
-
-#frmAddNewWorkout > .field {
-	position: relative;
-	display: flex;
-	justify-content: center;
-	margin: 10px 0 0 0;
+.personal-workout {
+  position: relative;
+	border-radius: 10px;
+	width: 500px;
+	height: 560px;
+	text-align: center;
+	display: grid;
+  position: relative;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	box-shadow: rgb(0, 229, 255) 0px 30px 100px -12px inset,
+		rgb(1, 183, 255) 0px 18px 36px -18px inset;
+}
+#personal-workout-btn {
+margin-top: 4px;
+margin-bottom: 40px;
 }
 
 #checkboxRx {
@@ -509,14 +532,18 @@ export default {
 }
 
 label {
-	color: white;
+	color: rgb(255, 255, 255);
 	font-family: Stencil;
+  font-size: 20px;
+  margin: 5px;
+  text-shadow: 1px 1px black;
 }
 
 p {
 	color: white;
 	font-family: Stencil;
 }
+
 
 .btn-light {
 	position: relative;
@@ -525,12 +552,20 @@ p {
 	justify-content: center;
 	font-family: Stencil;
 }
-
-#frmSaveBenchmarkMovements {
+.btn-primary {
 	position: relative;
 	display: flex;
-	margin: auto;
-	gap: 10px;
+	width: 700px;
+	justify-content: center;
+	font-family: Stencil;
+}
+
+#frmSaveBenchmarkMovements {
+  position: relative;
+	display: grid;
+	justify-content: center;
+	grid-auto-flow: column;
+	color: white;
 }
 
 #frmAddNewWorkout, #frmSaveBenchmarkWorkout {
@@ -549,8 +584,68 @@ p {
 	height: 50px;
 	
 }
+#squats {
+  position: relative;
+	border-radius: 10px;
+	height: 800px;
+	text-align: center;
+	display: grid;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	box-shadow: rgba(0, 229, 255, 0.733) 0px 30px 100px -12px inset,
+		rgb(1, 183, 255) 0px 18px 36px -18px inset;
+}
+#deadlifts {
+position: relative;
+	border-radius: 10px;
+	height: 800px;
+	text-align: center;
+	display: grid;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	box-shadow: rgba(0, 229, 255, 0.733) 0px 30px 100px -12px inset,
+		rgb(1, 183, 255) 0px 18px 36px -18px inset;
+}
+#presses {
+position: relative;
+	border-radius: 10px;
+	height: 800px;
+	text-align: center;
+	display: grid;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	box-shadow: rgba(0, 229, 255, 0.733) 0px 30px 100px -12px inset,
+		rgb(1, 183, 255) 0px 18px 36px -18px inset;
+}
+#olympic {
+  position: relative;
+	border-radius: 10px;
+	height: 800px;
+	text-align: center;
+	display: grid;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	box-shadow: rgba(0, 229, 255, 0.733) 0px 30px 100px -12px inset,
+		rgb(1, 183, 255) 0px 18px 36px -18px inset;
+}
+#last-save-button {
+position: absolute;
+display: grid;
+align-content: center;
+margin-top: 840px;
+margin-left: 360px;
+}
 
-.btn {
+
+.btn{
 	position: relative;
 	color: rgb(20, 255, 247);
 	display: inline-block;
@@ -564,9 +659,9 @@ p {
 		inset 0px -3px 0px rgb(58 65 111 / 50%);
 	padding: 0 32px;
 	border-radius: 6px;
-	color: #fff;
-	width: fit-content;
-	height: 40px;
+	color: rgb(0, 0, 0);
+	width: 400px;
+	height: 60px;
 	font-size: 18px;
 	text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
 	transition: box-shadow 0.15s ease, transform 0.15s ease;
@@ -592,11 +687,14 @@ p {
 	position: absolute;
 	top: 0;
 	font-family: Stencil;
-	font-size: 50px;
+	font-size: 70px;
 	font-weight: 800;
 	color: white;
 	display: flex;
 	justify-content: center;
+  text-shadow: 2px 2px 2px black;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 #annoying-button {
@@ -604,11 +702,31 @@ p {
 	width: 100%;
 }
 
-h3, h4, h5 {
+h5 {
+  margin: 0px 8px 8px;
 	position: relative;
 	font-family: Stencil;
 	color: white;
 	display: flex;
 	justify-content: center;
+  font-size: 30px;
+  text-shadow: 1px 1px black;
+}
+h3 {
+	position: relative;
+	font-family: Stencil;
+	color: white;
+	display: flex;
+	justify-content: center;
+  font-size: 50px;
+  text-shadow: 1px 1px black;
+}
+h4{
+	position: relative;
+	font-family: Stencil;
+	color: white;
+	display: flex;
+	justify-content: center;
+  font-size: 40px;
 }
 </style>
