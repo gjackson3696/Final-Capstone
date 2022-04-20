@@ -4,6 +4,10 @@ import App from './App.vue'
 import router from './router/index'
 import store from './store/index'
 import axios from 'axios'
+import VueGoogleCharts from 'vue-google-charts'
+
+
+Vue.use(VueGoogleCharts)
 
 Vue.config.productionTip = false
 

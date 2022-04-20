@@ -138,7 +138,7 @@ border: 4px double #39A9DB;
 border-radius: 8px;
 box-sizing: border-box;
 cursor: pointer;
- margin-bottom: 1rem;
+margin-bottom: 1rem;
 }
 div.container {
 border-radius: 10px;

@@ -106,12 +106,21 @@ export default {
 	transition: all 0.5s ease-in-out;
 }
 .show{
+		background-image: linear-gradient(
+			180deg,
+			rgba(0, 0, 0, 0.5),
+			rgba(0, 0, 0, 0.5)
+		),url('../assets/Sidebar-img.png');
 	width: 300px;
-	background-image: url('../assets/Sidebar-img.png');
+	
 	opacity: .9;
+		box-shadow: rgba(131, 0, 143, 0.11) 0px 100px 100px -12px inset,
+		rgba(1, 187, 255, 0.3) 0px 18px 36px -18px inset;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 .control > i {
-	color: rgb(0, 247, 255);
+color: rgb(20, 255, 247);
 }
 .navigation-icons {
 	display: flex;
@@ -122,7 +131,7 @@ export default {
 	float: left;
 }
 .navigation-icons > .material-icons {
-	color: rgb(0, 255, 251);
+	color: rgb(20, 255, 247);
 	font-size: 3rem;
 	padding: 10px 0;
 	cursor: pointer;
@@ -142,19 +151,24 @@ export default {
 	margin-bottom: 18px;
 	cursor: pointer;
 	text-decoration: none;
-	color: rgb(242, 0, 255);
+	color: rgba(242, 0, 255, 0.336);
 }
 
 .navigation-links div:hover {
-	color: aquamarine;
+		color: rgb(20, 255, 247);
 }
 .router-btn, .material-icons{
 	text-decoration: none;
     font-weight: bold;
-    text-shadow: 1px 1px rgb(123, 0, 161);
+    text-shadow: 1px 1px rgba(123, 0, 161, 0.582);
 }
 .material-icons{
 	text-decoration: none;
-
+}
+.router-btn {
+		color: rgb(20, 255, 247);
+}
+.router-btn:hover {
+color: rgba(242, 0, 255, 0.336);
 }
 </style>

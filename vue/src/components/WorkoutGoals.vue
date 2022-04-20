@@ -416,25 +416,31 @@ export default {
 
 <style scoped>
 .container {
+	position: relative;
+	min-height: 100%;
+	min-width: 100%;
+	width: 100%;
+	height: 100vh;
+}
+.container::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 	background-image: linear-gradient(
 			180deg,
 			rgba(0, 0, 0, 0.5),
 			rgba(0, 0, 0, 0.5)
 		),
 		url('../assets/goals-page.png');
-	background-position: 0px 0px, 50% 50%;
-	background-size: auto;
-	background-attachment: scroll, fixed;
-	color: #fff;
-	justify-content: center;
-	-webkit-box-align: center;
-	flex-direction: column;
-	-webkit-box-pack: center;
-	display: flex;
-	height: 100vh;
-	text-align: center;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
+	background-position: top center;
+	opacity: 0.9;
+	box-shadow: rgba(0, 229, 255, 0.279) 0px 100px 100px -12px inset,
+		rgba(1, 187, 255, 0.3) 0px 18px 36px -18px inset;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 #frmAddNewWorkout > .field {

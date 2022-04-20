@@ -1,146 +1,160 @@
 <template>
-  <div id="login" class="text-center">
-    <form class="form-signin" @submit.prevent="login">
-      
-      <div class="card shadow p-5">
-        
-       <h3 class="text-center text-uppercase mb-4">Please Sign In</h3>
-     
-      <hr>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        v-if="invalidCredentials"
-      >Invalid username and password!</div>
-     
-     
-      <div
-        class="alert alert-success"
-        role="alert"
-        v-if="this.$route.query.registration"
-      >Thank you for registering, please sign in.</div>
+	<div id="login" class="text-center">
+		<form class="form-signin" @submit.prevent="login">
+			<div class="card p-5">
+				<h3 class="text-center text-uppercase mb-4">Please Sign In</h3>
 
+				<hr />
+				<div class="alert alert-danger" role="alert" v-if="invalidCredentials">
+					Invalid username and password!
+				</div>
 
-      <label for="username" class="sr-only"></label>
+				<div
+					class="alert alert-success"
+					role="alert"
+					v-if="this.$route.query.registration"
+				>
+					Thank you for registering, please sign in.
+				</div>
 
-      <div class="form-group">
-            <label>Username</label>
-            <input type="text"
-            id="username"
-            placeholder="Username"
-            class="form-control"
-            v-model="user.username"
-            required
-            autofocus
-            />
-          </div>
+				<label for="username" class="sr-only"></label>
 
-          <label for="Password">Password</label>
-          <div class="input-group mb-3">
-            <input
-           type="password"
-           id="password"
-           class="form-control"
-           placeholder="Password"
-           v-model="user.password"
-           required
-           >
-              
-            </div>
-              <button class="btn btn-block btn-secondary rounded-pill mt-3">Login
-              </button>
-              <router-link :to="{ name: 'register' }">Need an account?</router-link> 
-          </div>
+				<div class="form-group">
+					<label>Username</label>
+					<input
+						type="text"
+						id="username"
+						placeholder="Username"
+						class="form-control"
+						v-model="user.username"
+						required
+						autofocus
+					/>
+				</div>
 
-
-           
-  
-    </form>
-  </div>
-  
+				<label for="Password">Password</label>
+				<div class="input-group mb-3">
+					<input
+						type="password"
+						id="password"
+						class="form-control"
+						placeholder="Password"
+						v-model="user.password"
+						required
+					/>
+				</div>
+				<button class="btn btn-block btn-secondary rounded-pill mt-3">
+					Login
+				</button>
+				<router-link :to="{ name: 'register' }">Need an account?</router-link>
+			</div>
+		</form>
+	</div>
 </template>
 
-
-
-
-
 <script>
-import authService from "../services/AuthService";
-import memberService from "../services/MemberService";
+import authService from '../services/AuthService';
+import memberService from '../services/MemberService';
 
 export default {
-  name: "login",
-  components: {},
-  data() {
-    return {
-      user: {
-        username: "",
-        password: ""
-      },
-      invalidCredentials: false
-    };
-  },
-  methods: {
-    login() {
-      authService
-        .login(this.user)
-        .then(response => {
-          if (response.status == 200) {
-            this.$store.commit("SET_AUTH_TOKEN", response.data.token);
-            this.$store.commit("SET_USER", response.data.user);
-            memberService.getMember().then(response => {
-              if(!response.data) {
-                this.$router.push("/accountDetails");
-              }
-            })
-            this.$router.push("/dashboard");
-          }
-        })
-        .catch(error => {
-          const response = error.response;
+	name: 'login',
+	components: {},
+	data() {
+		return {
+			user: {
+				username: '',
+				password: '',
+			},
+			invalidCredentials: false,
+		};
+	},
+	methods: {
+		login() {
+			authService
+				.login(this.user)
+				.then((response) => {
+					if (response.status == 200) {
+						this.$store.commit('SET_AUTH_TOKEN', response.data.token);
+						this.$store.commit('SET_USER', response.data.user);
+						memberService.getMember().then((response) => {
+							if (!response.data) {
+								this.$router.push('/accountDetails');
+							}
+						});
+						this.$router.push('/dashboard');
+					}
+				})
+				.catch((error) => {
+					const response = error.response;
 
-          if (response.status === 401) {
-            this.invalidCredentials = true;
-          }
-        });
-    }
-  }
+					if (response.status === 401) {
+						this.invalidCredentials = true;
+					}
+				});
+		},
+	},
 };
 </script>
 
-
-
-
-
 <style scoped>
 body {
-  height: 100%;
+	height: 100%;
 }
 
 .form-signin {
-	background-image: url(../assets/goals-page.png);
-    background-color: #151515;
-    text-align: center;
-    font-size: 20px;
-    padding: 500px;
-    text-align: center;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100%;
-    margin-top: 50px;
-    margin-bottom: 50px;
-
+	text-align: center;
+	font-size: 20px;
+	padding: 500px;
+  padding-top: 300px;
+  padding-bottom: 0;
+	text-align: center;
+	background-repeat: no-repeat;
+	background-position: center;
+  width: 100%;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
 }
+.form-signin::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-image: linear-gradient(
+			180deg,
+			rgba(0, 0, 0, 0.5),
+			rgba(0, 0, 0, 0.5)
+		),
+		url('../assets/goals-page.png');
+	background-position: center;
+	opacity: 0.9;
+	box-shadow: rgba(0, 229, 255, 0.279) 0px 100px 100px -12px inset,
+		rgba(1, 187, 255, 0.3) 0px 18px 36px -18px inset;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+div.card.p-5{
+  background-image: linear-gradient(
+			180deg,
+			rgba(0, 0, 0, 0.5),
+			rgba(0, 0, 0, 0.5)
+		);
+	background-position: center;
+	box-shadow: rgba(0, 229, 255, 0.281) 0px 100px 100px -12px inset,
+		rgba(1, 187, 255, 0.3) 0px 18px 36px -18px inset;
+}
+
 .btn {
-  background: #151515;
-  background : -webkit-linear-gradient(to right,)
+	background: #151515;
+	/* background: -webkit-linear-gradient(to right); */
 }
 body {
-
-  background: -webkit-linear-gradient(
-   
-  );}
-  hr {
-  border-bottom: solid white 5px;}
-
+	/* background: -webkit-linear-gradient(); */
+}
+hr {
+	border-bottom: solid white 5px;
+}
 </style>
