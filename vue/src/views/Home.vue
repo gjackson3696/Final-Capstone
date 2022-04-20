@@ -5,7 +5,7 @@
 				<img src="../assets/Main-logo.png" />
 			</div>
 			<div class="greeting">
-				<h2 id="welcome">Making Stronger Bodies One Syntax at a time</h2>
+				<h2 id="welcome">Making Stronger Bodies, One Syntax At a Time</h2>
 				<p class="about-text">
 					CrossFit Syntactical is your one-stop-shop for CrossFit (and other)
 					fitness classes! At CrossFit Syntactical, you're a member of a
@@ -15,6 +15,10 @@
 					shapes how we eat, sleep, move, and think. There are no gaps - we
 					train for whatever the world has to throw at us! Sign up and start
 					training with us today!
+
+					CrossFit Syntactical members can use this space to set fitness goals 
+					for themselves, log their workouts, and track progress towards goals 
+					via individualized metrics!
 				</p>
 				<button class="btn">
 					<router-link
@@ -77,7 +81,7 @@ body::before {
 	color: rgb(255, 255, 255);
 	display: flex;
 	justify-content: center;
-	margin: 150px;
+	margin: 20px 40px 20px 40px;
 	flex-direction: column;
 	align-items: center;
 	padding: 10px;

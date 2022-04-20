@@ -53,6 +53,9 @@ body {
 	min-width: 100%;
 	width: 100%;
 	height: 160vh;
+	/* display: flex;
+	align-items: center;
+	justify-content: center; */
 }
 
 body::before {

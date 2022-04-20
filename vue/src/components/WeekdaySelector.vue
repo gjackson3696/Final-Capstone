@@ -85,8 +85,10 @@ export default {
 
 <style scoped>
 .small-logo {
-	position: relative;
-	margin-left: 110px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	max-width: 100px;
 }
 .h2-header {
 	position: relative;

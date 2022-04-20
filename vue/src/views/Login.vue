@@ -99,20 +99,23 @@ export default {
 <style scoped>
 body {
 	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.text-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .form-signin {
-	text-align: center;
 	font-size: 20px;
-	padding: 500px;
-  padding-top: 300px;
-  padding-bottom: 0;
 	text-align: center;
-	background-repeat: no-repeat;
-	background-position: center;
   width: 100%;
-  background-size: cover;
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 .form-signin::before {
@@ -137,6 +140,7 @@ body {
 }
 
 div.card.p-5{
+	margin-top: 150px;
   background-image: linear-gradient(
 			180deg,
 			rgba(0, 0, 0, 0.5),
@@ -145,6 +149,8 @@ div.card.p-5{
 	background-position: center;
 	box-shadow: rgba(0, 229, 255, 0.281) 0px 100px 100px -12px inset,
 		rgba(1, 187, 255, 0.3) 0px 18px 36px -18px inset;
+	min-width: 350px;
+	word-wrap:normal;
 }
 
 .btn {
