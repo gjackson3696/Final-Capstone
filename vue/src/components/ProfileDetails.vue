@@ -1,26 +1,29 @@
 <template>
   <div class="profile">
-    <h2>Edit Profile Information</h2>
+    <div id="profile-header">
+    <h1>Edit Profile Information</h1>
+    </div>
     <form class="profile" v-on:submit.prevent="save">
       <label for="firstName">First Name:</label>
-      <input type="text" name="firstName" v-model="member.firstName" placeholder="First Name" />
+      <input type="text" name="firstName" v-model="member.firstName" placeholder="First Name" required />
       <label for="lastName">Last Name:</label>
-      <input type="text" name="lastName" v-model="member.lastName" placeholder="Last Name" />
+      <input type="text" name="lastName" v-model="member.lastName" placeholder="Last Name" required />
       <label for="email">Email:</label>
-      <input type="text" name="email" v-model="member.email" placeholder="Email" />
+      <input type="text" name="email" v-model="member.email" placeholder="Email" required />
       <button type="submit">Save</button>
     </form>
-    <h3>Enter current max for individual movements (squats, olympic lifts, etc.)</h3>
-    <h4>
-      Enter one rep max for each movement
-    </h4>
+    <div id="maximums-header">
+    <h3>
+      Enter Your One Rep Max for Each Movement:
+    </h3>
+    </div>
     <div id="form-container">
     <form
       id="frmSaveBenchmarkMovements"
       v-on:submit.prevent="saveBenchmarkMovements"
     >
-      <div>
-        <div id="squats">
+      <div id="squats">
+        <div>
           <h5>Squat Profile</h5>
           <input
             type="text"
@@ -64,8 +67,8 @@
       </div>
 
       <div id="deadlifts">
-        <h5>Deadlift Profile</h5>
         <div>
+        <h5>Deadlift Profile</h5>
           <input
             type="text"
             name="conventionalDeadlift"
@@ -256,5 +259,32 @@ export default {
 </script>
 
 <style scoped>
+body {
+  position: relative;
+}
+
+h1, h2, h3, h4, h5, p, label {
+  color: white;
+  font-family: Stencil;
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    ". profile-header profile-header ."
+    ". profile profile ."
+    ". maximums-header maximums-header ."
+    ". movementsForm movementsForm .";
+}
+
+#profile-header {
+  grid-area: profile-header;
+}
+
+.profile {
+  grid-area: profile;
+}
+
 
 </style>

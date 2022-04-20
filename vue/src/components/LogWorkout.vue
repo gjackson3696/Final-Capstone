@@ -1,7 +1,7 @@
 <template>
 	<div class="body">
 		<div class="enter-text">
-			<h1>Enter one rep max for each movement</h1>
+			<h1>Log Your Progress, Track Your Fitness!</h1>
 		</div>
 		<div class="showForm">
 			<button
