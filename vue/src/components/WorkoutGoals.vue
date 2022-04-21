@@ -121,7 +121,6 @@
         <p>{{ workout.workoutDomain }}</p>
         <p>{{ workout.workoutStructure }}</p>
         <p>{{ workout.workoutWeights }}</p>
-        <p>{{ workout.workoutRounds }}</p>
         <div class="label">
         <label for="time">Time:</label>
         </div>
