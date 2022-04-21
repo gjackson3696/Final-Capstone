@@ -109,11 +109,14 @@
       v-on:submit.prevent="saveBenchmarkWorkout"
       v-if="showBenchmarkWorkouts === true"
     >
+    <div class="main-benchmark">
       <div
         class="benchmark-workouts"
         v-for="workout in crossfitWorkouts"
         v-bind:key="workout.workoutName"
       >
+      <div class="benchmark-card">
+        <div class="girl-card">
         <h4>{{ workout.workoutName }}</h4>
         <p>{{ workout.workoutDomain }}</p>
         <p>{{ workout.workoutStructure }}</p>
@@ -134,8 +137,14 @@
           name="reps"
           placeholder="# rounds/# reps"
         />
+        </div>
+        </div>
       </div>
+      </div>
+    
+      <div class="standardized-goals">
       <button type="submit" class="btn btn-primary">Save Workout</button>
+    </div>
     </form>
     <div class="movements-title">
     <h3 class="benchmark-movements-title" v-if="!showBenchmarkWorkouts && !showPersonalWorkouts">
@@ -416,6 +425,15 @@ export default {
           workoutRounds: "",
           completedAsPrescribed: false,
         },
+                {
+          workoutName: "Eva",
+          workoutDomain: "5 rounds for time of:",
+          workoutStructure: "Run 800 meters, 30 kettlebell swings, 30 pull ups",
+          workoutWeights: "♀95 lb ♂135 lb",
+          workoutTime: "",
+          workoutRounds: "",
+          completedAsPrescribed: false,
+        },
       ],
       benchmarkMovements: {
         backSquat: "",
@@ -552,6 +570,7 @@ p {
 	width: 700px;
 	justify-content: center;
 	font-family: Stencil;
+  margin-bottom: 30px;
 }
 .btn-primary {
 	position: relative;
@@ -575,8 +594,9 @@ p {
 
 #frmSaveBenchmarkWorkout {
 	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
+	flex-direction: column;
+	align-items: center;
+
 }
 
 #frmSaveBenchmarkWorkout > .btn, #frmAddNewWorkout > .btn {
@@ -734,7 +754,55 @@ h4{
 	justify-content: center;
   font-size: 40px;
 }
-.movements-title {
-  margin: 25px 75px;
+.benchmark-workouts {
+  position: relative;
+	border-radius: 10px;
+	height: 400px;
+  width: 17.5rem;
+	text-align: center;
+	display: flex;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	box-shadow: rgba(0, 229, 255, 0.904) 0px 30px 100px -12px inset,
+		rgb(1, 183, 255) 0px 18px 36px -18px inset;
 }
+.benchmark-workouts  > input {
+  margin-bottom: 20px;
+  width: 250px;
+  margin-left: 40px;
+}
+.standardized-goals {
+
+    position: relative;
+    display: flex;
+    margin-top: 30px
+}
+
+.benchmark > input {
+  display:grid;
+
+
+}
+div.main-benchmark {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+div.benchmark-card {
+
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+div.girl-card {
+    position: relative;
+    display: inline-block;
+    flex-direction: column;
+  
+}
+
 </style>

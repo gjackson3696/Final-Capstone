@@ -43,10 +43,10 @@
 						required
 					/>
 				</div>
-				<button class="btn btn-block btn-secondary rounded-pill mt-3">
+				<button class="login-btn">
 					Login
 				</button>
-				<router-link :to="{ name: 'register' }">Need an account?</router-link>
+				<router-link :to="{ name: 'register' }"><button class="btn btn-block btn-secondary rounded-pill mt-3">Need an account?</button></router-link>
 			</div>
 		</form>
 	</div>
@@ -150,29 +150,60 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
-
+#username, #password {
+	width: 300px;
+}
 div.card.p-5{
 	margin-top: 150px;
-  background-image: linear-gradient(
-			180deg,
-			rgba(0, 0, 0, 0.5),
-			rgba(0, 0, 0, 0.5)
-		);
 	background-position: center;
-	box-shadow: rgba(0, 229, 255, 0.281) 0px 100px 100px -12px inset,
-		rgba(1, 187, 255, 0.3) 0px 18px 36px -18px inset;
-	min-width: 350px;
 	word-wrap:normal;
+	background-color: rgba(0, 229, 255, 0.1);
+	box-shadow: rgba(0, 229, 255, 0.5) 0px 100px 100px -18px inset,
+		rgba(1, 187, 255, 0.3) 0px 18px 36px -18px inset;
+	background-repeat: no-repeat;
+	background-size: cover;
+    border-radius: 5%;
+	color: #fff;
 }
 
 .btn {
 	background: #151515;
-	/* background: -webkit-linear-gradient(to right); */
-}
-body {
-	/* background: -webkit-linear-gradient(); */
 }
 hr {
 	border-bottom: solid white 5px;
+}
+.login-btn {
+	position: relative;
+	color: rgb(20, 255, 247);
+	display: inline-block;
+	outline: 0;
+	border: 0;
+	cursor: pointer;
+	will-change: box-shadow, transform;
+	background: radial-gradient(100% 100% at 100% 0%, #03ffc0f3 0%, #00e0fe 100%);
+	box-shadow: 0px 2px 4px rgb(45 35 66 / 40%),
+		0px 7px 13px -3px rgb(45 35 66 / 30%),
+		inset 0px -3px 0px rgb(58 65 111 / 50%);
+	padding: 0 32px;
+	border-radius: 6px;
+	color: rgb(0, 0, 0);
+    font-weight: 400;
+	width: 300px;
+	height: 50px;
+	font-size: 18px;
+	text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+	transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.login-btn:hover {
+	box-shadow: 0px 4px 8px rgb(45 35 66 / 40%),
+		0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 30px #f700ff88;
+	transform: translateY(-2px);
+}
+.login-btn:active {
+	box-shadow: inset 0px 3px 7px #000000;
+	transform: translateY(2px);
+}
+#login {
+	font-family: Stencil;
 }
 </style>
