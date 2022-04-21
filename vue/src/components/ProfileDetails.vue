@@ -1,5 +1,10 @@
 <template>
   <div class="main-div">
+    <img
+      id="logo"
+      src="../assets/Small-logo.png"
+      alt="CrossFit Syntactical Logo"
+    />
     <div id="profile-header">
     <h1>Edit Profile Information</h1>
     </div>
@@ -17,7 +22,7 @@
       <br>
       <input type="text" name="email" v-model="member.email" placeholder="Email" size=50 required />
       <br />
-      <button type="submit">Save</button>
+      <button class="btn btn-primary" type="submit">Save</button>
     </form>
     </div>
     <div id="maximums-header">
@@ -216,7 +221,6 @@
           />
         </div>
       </div>
-      <br>
       <button type="submit" class="btn btn-primary">Save Profile</button>
     </form>
     </div>
@@ -291,6 +295,13 @@ body {
   position: relative;
 }
 
+#logo {
+	position: absolute;
+	max-width: 100px;
+	top: 0;
+	right: 0;
+}
+
 h1, h2, h3, h4, h5, p, label {
   color: white;
   font-family: Stencil;
@@ -298,7 +309,6 @@ h1, h2, h3, h4, h5, p, label {
 
 .main-div {
   display: grid;
-  grid-template-rows: 5% 20% 5% 60%;
   grid-template-areas:
     ". profile-header profile-header ."
     ". profile profile ."
@@ -328,11 +338,60 @@ h1, h2, h3, h4, h5, p, label {
   justify-content: center;
 }
 
+.btn-primary {
+	position: relative;
+	display: flex;
+	width: 700px;
+	justify-content: center;
+	font-family: Stencil;
+}
+
+.btn{
+	position: relative;
+	color: rgb(20, 255, 247);
+	display: inline-block;
+	outline: 0;
+	border: 0;
+	cursor: pointer;
+	will-change: box-shadow, transform;
+	background: radial-gradient(100% 100% at 100% 0%, #03ffc0f3 0%, #00e0fe 100%);
+	box-shadow: 0px 2px 4px rgb(45 35 66 / 40%),
+		0px 7px 13px -3px rgb(45 35 66 / 30%),
+		inset 0px -3px 0px rgb(58 65 111 / 50%);
+	margin: 10px auto auto auto;
+	border-radius: 6px;
+	color: rgb(0, 0, 0);
+	width: 410px;
+	height: 60px;
+	font-size: 18px;
+	text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+	transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.btn:hover {
+	box-shadow: 0px 4px 8px rgb(45 35 66 / 40%),
+		0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 30px #f700ff;
+	transform: translateY(-2px);
+}
+.btn :active {
+	box-shadow: inset 0px 3px 7px #000000;
+	transform: translateY(2px);
+}
+
 #form-container {
   grid-area: movementsForm;
+}
+
+#frmSaveBenchmarkMovements > .btn {
+  width: 260px;
+}
+
+#frmSaveBenchmarkMovements {
   display: flex;
-  flex-direction: row;
   justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0px 60px 0px 60px;
+
 }
 
 
