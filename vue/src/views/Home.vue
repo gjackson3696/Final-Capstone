@@ -130,9 +130,12 @@ color: rgb(20, 255, 247);
 	color: black;
 }
 .about-text {
-	font-size: 25px;
+	font-size: 20px;
 	text-align: center;
 	background-color: rgba(49, 49, 49, 0.422);
 	text-shadow: 2px 2px black;
+}
+body {
+	font-family: Stencil;
 }
 </style>

@@ -23,6 +23,7 @@ export default new Vuex.Store({
     weekdaySelector: 7,
     registeredClassIds: [],
     classList: [],
+    registeredClassList: [],
     member: {}
     },
   mutations: {
@@ -62,6 +63,15 @@ export default new Vuex.Store({
     },
     SET_MEMBER(state,member) {
       state.member = member;
+    },
+    SET_REGISTERED_CLASS_LIST(state,classList) {
+      state.registeredClassList = classList;
+    },
+    ADD_REGISTERED_CLASS(state,registeredClass) {
+      state.registeredClassList.push(registeredClass);
+    },
+    REMOVE_REGISTERED_CLASS(state,registeredClass) {
+      state.registeredClassList.filter(item => item.id != registeredClass.id);
     }
   }
 })

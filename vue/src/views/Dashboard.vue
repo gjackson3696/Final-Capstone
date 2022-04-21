@@ -23,16 +23,29 @@
 				</div>
 			</div>
 		</div>
+		<div class="schedule">
+			<div class="schedule-title">
+				<h3 id="schedule-title">My Classes</h3>
+			</div>
+			<div class="card-container">
+				<class-card
+					class="class-card"
+					v-bind:classItem="item"
+					v-for="item in this.$store.state.registeredClassList"
+					:key="item.id"
+				/>
+			</div>
+		</div>
 		<div>
 			<log-workout />
 		</div>
-		<div></div>
 	</body>
 </template>
 
 <script>
 import classService from '../services/ClassService';
 import LogWorkout from '../components/LogWorkout';
+import ClassCard from '../components/ClassCard';
 
 export default {
 	name: 'dashboard',
@@ -42,12 +55,21 @@ export default {
 	},
 	components: {
 		LogWorkout,
+		ClassCard
 	},
 	created() {
 		classService.getRegisteredClassIds().then((response) => {
 			this.$store.commit('SET_CLASS_IDS', response.data);
 		});
 	},
+	beforeDestroy() {
+		classService.getRegisteredClassIds().then((response) => {
+			this.$store.commit('SET_CLASS_IDS', response.data);
+		});
+		classService.getRegisteredClasses().then(response => {
+			this.$store.commit('SET_REGISTERED_CLASS_LIST', response.data);
+		});
+	}
 };
 </script>
 
@@ -126,5 +148,14 @@ h4 {
 }
 body {
 	font-family: Stencil;
+}
+.card-container {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.class-card {
 }
 </style>

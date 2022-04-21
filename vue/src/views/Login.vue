@@ -54,6 +54,7 @@
 
 <script>
 import authService from '../services/AuthService';
+import classService from '../services/ClassService';
 import memberService from '../services/MemberService';
 
 export default {
@@ -83,6 +84,15 @@ export default {
 								this.$store.commit('SET_MEMBER',response.data);
 							}
 						});
+						classService.getRegisteredClasses().then(response => {
+							this.$store.commit('SET_REGISTERED_CLASS_LIST',response.data);
+						})
+						classService.getRegisteredClassIds().then(response => {
+							this.$store.commit('SET_REGISTERED_IDS',response.data);
+						})
+						classService.getClasses().then(response => {
+							this.$store.commit('SET_CLASS_LIST',response.data);
+						})
 						this.$router.push('/dashboard');
 					}
 				})
