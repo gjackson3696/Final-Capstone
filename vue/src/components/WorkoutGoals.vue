@@ -556,6 +556,7 @@ label {
   font-size: 20px;
   margin: 5px;
   text-shadow: 1px 1px black;
+
 }
 
 p {
@@ -772,12 +773,13 @@ h4{
   margin-bottom: 20px;
   width: 250px;
   margin-left: 40px;
+  
 }
 .standardized-goals {
-
     position: relative;
     display: flex;
-    margin-top: 30px
+    margin-top: 30px;
+    text-align: center;
 }
 
 .benchmark > input {
@@ -802,7 +804,7 @@ div.girl-card {
     position: relative;
     display: inline-block;
     flex-direction: column;
-  
+    
 }
 
 </style>
