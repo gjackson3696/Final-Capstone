@@ -20,14 +20,15 @@
 					for themselves, log their workouts, and track progress towards goals 
 					via individualized metrics!
 				</p>
-				<button class="btn">
-					<router-link
+				<router-link
 						id="login"
 						v-if="$store.state.token === ''"
 						v-bind:to="{ name: 'login' }"
-						>Lets Get Started</router-link
-					>
+						>
+				<button class="btn">
+					Lets Get Started
 				</button>
+				</router-link>
 			</div>
 		</div>
 	</body>
@@ -101,7 +102,7 @@ color: rgb(20, 255, 247);
 		inset 0px -3px 0px rgb(58 65 111 / 50%);
 	padding: 0 32px;
 	border-radius: 6px;
-	color: #fff;
+	color: #000;
 	width: 350px;
 	height: 80px;
 	font-size: 18px;
