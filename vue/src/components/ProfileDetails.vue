@@ -1,17 +1,25 @@
 <template>
-  <div class="profile">
+  <div class="main-div">
     <div id="profile-header">
     <h1>Edit Profile Information</h1>
     </div>
+    <div id="profile-form">
     <form class="profile" v-on:submit.prevent="save">
       <label for="firstName">First Name:</label>
-      <input type="text" name="firstName" v-model="member.firstName" placeholder="First Name" required />
+      <br>
+      <input type="text" name="firstName" v-model="member.firstName" placeholder="First Name" size=50 required />
+      <br />
       <label for="lastName">Last Name:</label>
-      <input type="text" name="lastName" v-model="member.lastName" placeholder="Last Name" required />
+      <br>
+      <input type="text" name="lastName" v-model="member.lastName" placeholder="Last Name" size=50 required />
+      <br />
       <label for="email">Email:</label>
-      <input type="text" name="email" v-model="member.email" placeholder="Email" required />
+      <br>
+      <input type="text" name="email" v-model="member.email" placeholder="Email" size=50 required />
+      <br />
       <button type="submit">Save</button>
     </form>
+    </div>
     <div id="maximums-header">
     <h3>
       Enter Your One Rep Max for Each Movement:
@@ -30,6 +38,7 @@
             name="backSquat"
             v-model="benchmarkMovements.backSquat"
             placeholder="Back Squat"
+            size=30
           />
         </div>
         <div>
@@ -38,6 +47,7 @@
             name="frontSquat"
             v-model="benchmarkMovements.frontSquat"
             placeholder="Front Squat"
+            size=30
           />
         </div>
         <div>
@@ -46,6 +56,7 @@
             name="zercherSquat"
             v-model="benchmarkMovements.zercherSquat"
             placeholder="Zercher Squat"
+            size=30
           />
         </div>
         <div>
@@ -54,6 +65,7 @@
             name="overheadSquat"
             v-model="benchmarkMovements.overheadSquat"
             placeholder="Overhead Squat"
+            size=30
           />
         </div>
         <div>
@@ -62,6 +74,7 @@
             name="bulgarianSplitSquat"
             v-model="benchmarkMovements.bulgarianSplitSquat"
             placeholder="Bulgarian Split Squat"
+            size=30
           />
         </div>
       </div>
@@ -74,6 +87,7 @@
             name="conventionalDeadlift"
             v-model="benchmarkMovements.conventionalDeadlift"
             placeholder="Conventional Deadlift"
+            size=30
           />
         </div>
         <div>
@@ -82,6 +96,7 @@
             name="sumoDeadlift"
             v-model="benchmarkMovements.sumoDeadlift"
             placeholder="Sumo Deadlift"
+            size=30
           />
         </div>
       </div>
@@ -94,6 +109,7 @@
             name="overheadPress"
             v-model="benchmarkMovements.overheadPress"
             placeholder="Overhead Press"
+            size=30
           />
         </div>
         <div>
@@ -102,6 +118,7 @@
             name="pushPress"
             v-model="benchmarkMovements.militaryPress"
             placeholder="Military Press"
+            size=30
           />
         </div>
         <div>
@@ -110,6 +127,7 @@
             name="pushPress"
             v-model="benchmarkMovements.pushPress"
             placeholder="Push Press"
+            size=30
           />
         </div>
       </div>
@@ -122,6 +140,7 @@
             name="squatClean"
             v-model="benchmarkMovements.squatClean"
             placeholder="Squat Clean"
+            size=30
           />
         </div>
         <div>
@@ -130,6 +149,7 @@
             name="powerClean"
             v-model="benchmarkMovements.powerClean"
             placeholder="Power Clean"
+            size=30
           />
         </div>
         <div>
@@ -138,6 +158,7 @@
             name="cleanJerk"
             v-model="benchmarkMovements.cleanJerk"
             placeholder="Clean & Jerk"
+            size=30
           />
         </div>
         <div>
@@ -146,6 +167,7 @@
             name="splitJerk"
             v-model="benchmarkMovements.splitJerk"
             placeholder="Split Jerk"
+            size=30
           />
         </div>
         <div>
@@ -154,6 +176,7 @@
             name="pushJerk"
             v-model="benchmarkMovements.pushJerk"
             placeholder="Push Jerk"
+            size=30
           />
         </div>
         <div>
@@ -162,6 +185,7 @@
             name="squatJerk"
             v-model="benchmarkMovements.squatJerk"
             placeholder="Squat Jerk"
+            size=30
           />
         </div>
         <div>
@@ -170,6 +194,7 @@
             name="squatSnatch"
             v-model="benchmarkMovements.squatSnatch"
             placeholder="Squat Snatch"
+            size=30
           />
         </div>
         <div>
@@ -178,6 +203,7 @@
             name="powerSnatch"
             v-model="benchmarkMovements.powerSnatch"
             placeholder="Power Snatch"
+            size=30
           />
         </div>
         <div>
@@ -186,9 +212,11 @@
             name="snatchBalance"
             v-model="benchmarkMovements.snatchBalance"
             placeholder="Snatch Balance"
+            size=30
           />
         </div>
       </div>
+      <br>
       <button type="submit" class="btn btn-primary">Save Profile</button>
     </form>
     </div>
@@ -268,9 +296,9 @@ h1, h2, h3, h4, h5, p, label {
   font-family: Stencil;
 }
 
-.profile {
+.main-div {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 5% 20% 5% 60%;
   grid-template-areas:
     ". profile-header profile-header ."
     ". profile profile ."
@@ -280,10 +308,31 @@ h1, h2, h3, h4, h5, p, label {
 
 #profile-header {
   grid-area: profile-header;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-.profile {
+#profile-form {
   grid-area: profile;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px auto;
+}
+
+#maximums-header {
+  grid-area: maximums-header;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#form-container {
+  grid-area: movementsForm;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 
