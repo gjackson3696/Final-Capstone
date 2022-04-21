@@ -5,7 +5,7 @@
       src="../assets/Small-logo.png"
       alt="CrossFit Syntactical Logo"
     />
-    <h2 id="goals-header" v-if="showBenchmarkMovements || showBenchmarkWorkouts || !showPersonalWorkouts">Set Goals, Crush Them!</h2>
+    <h2 id="goals-header" v-if="!showBenchmarkMovements && !showBenchmarkWorkouts && !showPersonalWorkouts">Set Goals, Crush Them!</h2>
     <h3 v-if="!showBenchmarkMovements && !showBenchmarkWorkouts">
       Enter data for a personal workout:
     </h3>
@@ -480,7 +480,7 @@ export default {
 	min-height: 100%;
 	min-width: 100%;
 	width: 100%;
-	height: 140vh;
+	height: 170vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -588,6 +588,7 @@ p {
   position: relative;
 	border-radius: 10px;
 	height: 800px;
+  width: 17.5rem;
 	text-align: center;
 	display: grid;
 	top: 0;
@@ -601,6 +602,7 @@ p {
 position: relative;
 	border-radius: 10px;
 	height: 800px;
+  width: 17.5rem;
 	text-align: center;
 	display: grid;
 	top: 0;
@@ -614,6 +616,7 @@ position: relative;
 position: relative;
 	border-radius: 10px;
 	height: 800px;
+  width: 17.5rem;
 	text-align: center;
 	display: grid;
 	top: 0;
@@ -627,6 +630,7 @@ position: relative;
   position: relative;
 	border-radius: 10px;
 	height: 800px;
+  width: 17.5rem;
 	text-align: center;
 	display: grid;
 	top: 0;
@@ -641,7 +645,7 @@ position: absolute;
 display: grid;
 align-content: center;
 margin-top: 840px;
-margin-left: 360px;
+margin-left: 350px;
 }
 
 

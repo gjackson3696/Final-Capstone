@@ -10,8 +10,9 @@
 				<div>
 					<div class="about-card">
 						<div class="title-context">
-							<p>About Me</p>
-							<h2>{{member.firstName}} {{member.lastName}}</h2>
+							<h3>About Me</h3>
+							<h2>{{$store.state.member.firstName}} {{$store.state.member.lastName}}</h2>
+							<h4>{{$store.state.member.email}}</h4>
 						</div>
 						<div class="profile-picture">
 							<img class="main-img" src="../assets/no-profilepic.jpg" />
@@ -37,18 +38,12 @@ export default {
 	name: 'dashboard',
 	data() {
 		return {
-			member: {
-				firstName: '',
-				lastName: '',
-				email: ''
-			}
 		}
 	},
 	components: {
 		LogWorkout,
 	},
 	created() {
-		this.member = this.$store.state.member;
 		classService.getRegisteredClassIds().then((response) => {
 			this.$store.commit('SET_CLASS_IDS', response.data);
 		});
@@ -90,37 +85,46 @@ body::before {
 	padding: 3em;
 	border-radius: 10px;
 	color: white;
+	display: flex;
+	justify-content: center;
 }
 .about-card > .card-title {
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
+	justify-content: center;
 }
 .profile-picture {
 	height: 140px;
 	border-radius: 50%;
-	position: relative;
-	display: flex;
-	justify-content: flex-end;
+	margin-left: 750px;
+	position: absolute;
 }
 .profile-picture .main-img {
 	border-radius: 50%;
 }
 
-p {
+h3 {
 	color: white;
 	position: relative;
 	display: flex;
 	justify-content: center;
+	font-size: 3em;
 }
 h2 {
 	color: white;
 	position: relative;
 	display: flex;
 	justify-content: center;
-	margin-right: 70px;
+	font-size: 4em;
 }
-h3 {
+h4 {
+	color: white;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	font-size: em;
+}
+body {
 	font-family: Stencil;
 }
 </style>
