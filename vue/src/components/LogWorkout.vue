@@ -8,7 +8,6 @@
 				class="showFormBtn"
 				@click="showForm = !showForm"
 				v-text="showForm ? 'Close' : 'Log Workout'"
-				v-show="!sh"
 			></button>
 		</div>
 		<form
@@ -520,8 +519,6 @@ margin-bottom: 65px;
 margin-top: 60px;
 display: grid;
 align-content: center;
-margin-left: 750px
-
 }
 button#logWorkoutButton {
 position: absolute;
@@ -550,5 +547,8 @@ label {
 	color: white;
 	text-shadow: 1px 1px black;
 }
-
+.showForm {
+	display: flex;
+	justify-content: center;
+}
 </style>
