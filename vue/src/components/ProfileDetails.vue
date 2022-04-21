@@ -45,10 +45,11 @@
           />
           <br />
         </div>
-      </form>
-      <div>
-        <button class="btn btn-primary" type="submit">Save</button>
+        <div>
+        <button class="btn btn-primary" type="button" @click="save">Save</button>
       </div>
+      </form>
+      
     </div>
     <div id="maximums-header">
       <h3>Enter Your One Rep Max for Each Movement:</h3>

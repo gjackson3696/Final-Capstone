@@ -43,14 +43,14 @@ public class JdbcProfileDao implements ProfileDao {
                 "back_squat,front_squat,zercher_squat,overhead_squat,bulgarian_split_squat,"+
                 "conventional_deadlift,sumo_deadlift,"+
                 "overhead_press,military_press,push_press,"+
-                "squat_clean,power_clean,split_jerk,push_jerk,squat_jerk,"+
+                "squat_clean,power_clean,clean_jerk,split_jerk,push_jerk,squat_jerk,"+
                 "squat_snatch,power_snatch,snatch_balance) "+
-                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING profile_id;";
+                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING profile_id;";
         Long profileId = jdbcTemplate.queryForObject(insertProfile,Long.class,profile.getUserId(),
                 profile.getBackSquat(),profile.getFrontSquat(),profile.getZercherSquat(),profile.getOverheadSquat(),profile.getBulgarianSplitSquat(),
                 profile.getConventionalDeadlift(),profile.getSumoDeadlift(),
                 profile.getOverheadPress(),profile.getMilitaryPress(),profile.getPushPress(),
-                profile.getSquatClean(),profile.getPowerClean(),profile.getSplitJerk(),profile.getPushJerk(),profile.getSquatJerk(),
+                profile.getSquatClean(),profile.getPowerClean(),profile.getCleanJerk(),profile.getSplitJerk(),profile.getPushJerk(),profile.getSquatJerk(),
                 profile.getSquatSnatch(),profile.getPowerSnatch(),profile.getSnatchBalance()
                 );
         profile.setProfileId(profileId);
@@ -63,7 +63,7 @@ public class JdbcProfileDao implements ProfileDao {
                 "back_squat = ?,front_squat = ?,zercher_squat = ?,overhead_squat = ?,bulgarian_split_squat = ?,"+
                 "conventional_deadlift = ?,sumo_deadlift = ?,"+
                 "overhead_press = ?,military_press = ?,push_press = ?,"+
-                "squat_clean = ?,power_clean = ?,split_jerk = ?,push_jerk = ?,squat_jerk = ?,"+
+                "squat_clean = ?,power_clean = ?,clean_jerk = ?,split_jerk = ?,push_jerk = ?,squat_jerk = ?,"+
                 "squat_snatch = ?,power_snatch = ?,snatch_balance = ? "+
                 "WHERE user_id = ?;";
         try {
@@ -71,7 +71,7 @@ public class JdbcProfileDao implements ProfileDao {
                     profile.getBackSquat(), profile.getFrontSquat(), profile.getZercherSquat(), profile.getOverheadSquat(), profile.getBulgarianSplitSquat(),
                     profile.getConventionalDeadlift(), profile.getSumoDeadlift(),
                     profile.getOverheadPress(), profile.getMilitaryPress(), profile.getPushPress(),
-                    profile.getSquatClean(), profile.getPowerClean(), profile.getSplitJerk(), profile.getPushJerk(), profile.getSquatJerk(),
+                    profile.getSquatClean(), profile.getPowerClean(), profile.getCleanJerk(), profile.getSplitJerk(), profile.getPushJerk(), profile.getSquatJerk(),
                     profile.getSquatSnatch(), profile.getPowerSnatch(), profile.getSnatchBalance(),
                     profile.getUserId()
             );

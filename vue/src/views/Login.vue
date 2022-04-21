@@ -56,6 +56,7 @@
 import authService from '../services/AuthService';
 import classService from '../services/ClassService';
 import memberService from '../services/MemberService';
+import goalsService from '../services/GoalsService';
 
 export default {
 	name: 'login',
@@ -92,6 +93,14 @@ export default {
 						})
 						classService.getClasses().then(response => {
 							this.$store.commit('SET_CLASS_LIST',response.data);
+						})
+						goalsService.getGoals().then(response => {
+							if(response.data.length !== 0) {
+								this.$store.commit('SET_GOALS',response.data);
+							} else {
+								goalsService.create(this.$store.state.goals);
+							}
+							
 						})
 						this.$router.push('/dashboard');
 					}
@@ -145,8 +154,8 @@ body {
 		url('../assets/goals-page.png');
 	background-position: center;
 	opacity: 0.9;
-	box-shadow: rgba(0, 229, 255, 0.279) 0px 100px 100px -12px inset,
-		rgba(1, 187, 255, 0.3) 0px 18px 36px -18px inset;
+	box-shadow: rgba(0, 229, 255, 0.1) 0px 100px 100px -12px inset,
+		rgba(1, 187, 255, 0.1) 0px 18px 36px -18px inset;
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -158,8 +167,8 @@ div.card.p-5{
 	background-position: center;
 	word-wrap:normal;
 	background-color: rgba(0, 229, 255, 0.1);
-	box-shadow: rgba(0, 229, 255, 0.5) 0px 100px 100px -18px inset,
-		rgba(1, 187, 255, 0.3) 0px 18px 36px -18px inset;
+	box-shadow: rgba(0, 229, 255, 0.1) 0px 100px 100px -18px inset,
+		rgba(1, 187, 255, 0.1) 0px 18px 36px -18px inset;
 	background-repeat: no-repeat;
 	background-size: cover;
     border-radius: 5%;

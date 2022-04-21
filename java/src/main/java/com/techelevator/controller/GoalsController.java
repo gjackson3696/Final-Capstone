@@ -48,7 +48,7 @@ public class GoalsController {
         populateUserId(principal,goals);
         try {
             goalsDao.updateGoals(goals);
-        } catch(GoalsNotFoundException e) {
+        } catch(Exception e) {
             return false;
         }
         return true;

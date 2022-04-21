@@ -24,7 +24,28 @@ export default new Vuex.Store({
     registeredClassIds: [],
     classList: [],
     registeredClassList: [],
-    member: {}
+    member: {},
+    goals: {
+      backSquat: "",
+      frontSquat: "",
+      zercherSquat: "",
+      overheadSquat: "",
+      bulgarianSplitSquat: "",
+      conventionalDeadlift: "",
+      sumoDeadlift: "",
+      overheadPress: "",
+      militaryPress: "",
+      pushPress: "",
+      squatClean: "",
+      powerClean: "",
+      cleanJerk: "",
+      splitJerk: "",
+      pushJerk: "",
+      squatJerk: "",
+      squatSnatch: "",
+      powerSnatch: "",
+      snatchBalance: ""
+    }
     },
   mutations: {
     //need a mutator that will mutate the memberId to populate it.
@@ -72,6 +93,9 @@ export default new Vuex.Store({
     },
     REMOVE_REGISTERED_CLASS(state,registeredClass) {
       state.registeredClassList.filter(item => item.id != registeredClass.id);
+    },
+    SET_GOALS(state,goals) {
+      state.goals = goals;
     }
   }
 })

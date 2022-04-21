@@ -10,7 +10,7 @@ public class LoggedWorkout extends Workout {
     @NotNull
     private String overheadPress, militaryPress, pushPress;
     @NotNull
-    private String squatClean, powerClean, splitJerk, pushJerk, squatJerk, squatSnatch, powerSnatch, snatchBalance;
+    private String squatClean, powerClean, cleanJerk, splitJerk, pushJerk, squatJerk, squatSnatch, powerSnatch, snatchBalance;
 
     public LoggedWorkout() {
         super();
@@ -110,6 +110,14 @@ public class LoggedWorkout extends Workout {
 
     public void setPowerClean(String powerClean) {
         this.powerClean = powerClean;
+    }
+
+    public String getCleanJerk() {
+        return cleanJerk;
+    }
+
+    public void setCleanJerk(String cleanJerk) {
+        this.cleanJerk = cleanJerk;
     }
 
     public String getSplitJerk() {

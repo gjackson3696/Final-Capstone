@@ -36,16 +36,16 @@ public class JdbcLoggedWorkoutDao implements LoggedWorkoutDao {
                 "back_squat,front_squat,zercher_squat,overhead_squat,bulgarian_split_squat," +
                 "conventional_deadlift,sumo_deadlift,"+
                 "overhead_press,military_press,push_press," +
-                "squat_clean,power_clean,split_jerk,push_jerk,squat_jerk," +
+                "squat_clean,power_clean,clean_jerk, split_jerk,push_jerk,squat_jerk," +
                 "squat_snatch,power_snatch,snatch_balance) " +
-                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
         jdbcTemplate.update(logWorkout,workout.getUserId(),workout.getName(),
                 workout.getDomain(),workout.getStructure(),workout.getWeights(),
                 workout.getTime(),workout.getRounds(),workout.isCompleted(),
                 workout.getBackSquat(),workout.getFrontSquat(),workout.getZercherSquat(),workout.getOverheadSquat(),workout.getBulgarianSplitSquat(),
                 workout.getConventionalDeadlift(),workout.getSumoDeadlift(),
                 workout.getOverheadPress(),workout.getMilitaryPress(),workout.getPushPress(),
-                workout.getSquatClean(),workout.getPowerClean(),workout.getSplitJerk(),workout.getPushJerk(),workout.getSquatJerk(),
+                workout.getSquatClean(),workout.getPowerClean(),workout.getCleanJerk(),workout.getSplitJerk(),workout.getPushJerk(),workout.getSquatJerk(),
                 workout.getSquatSnatch(),workout.getPowerSnatch(),workout.getSnatchBalance()
                 );
     }

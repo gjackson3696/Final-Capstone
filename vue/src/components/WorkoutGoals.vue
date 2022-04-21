@@ -472,10 +472,8 @@ export default {
 
     saveBenchmarkMovements() {
       goalsService.update(this.benchmarkMovements).then((response) => {
-        if(response.data == false) {
-          goalsService.create(this.benchmarkMovements).then(response => {
-            this.benchmarkMovements = response.data;
-          })
+        if(response.data.length !== 0) {
+          goalsService.create(this.benchmarkMovements);
         } else {
           this.benchmarkMovements = response.data;
         }
@@ -495,7 +493,9 @@ export default {
   },
   created() {
     goalsService.getGoals().then(response => {
-      this.benchmarkMovements = response.data;
+      if(response.data.length !== 0) {
+        this.benchmarkMovements = response.data;
+      }
     })
   }
 };

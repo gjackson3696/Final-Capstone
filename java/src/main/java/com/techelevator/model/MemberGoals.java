@@ -14,7 +14,7 @@ public class MemberGoals {
     @NotNull
     private String overheadPress, militaryPress, pushPress;
     @NotNull
-    private String squatClean, powerClean, splitJerk, pushJerk, squatJerk, squatSnatch, powerSnatch, snatchBalance;
+    private String squatClean, powerClean, cleanJerk, splitJerk, pushJerk, squatJerk, squatSnatch, powerSnatch, snatchBalance;
     private Map<String,String> goals;
 
     public MemberGoals() {
@@ -213,6 +213,14 @@ public class MemberGoals {
     public void setPowerClean(String powerClean) {
         this.powerClean = powerClean;
         this.goals.put("powerClean",powerClean);
+    }
+
+    public String getCleanJerk() {
+        return cleanJerk;
+    }
+
+    public void setCleanJerk(String cleanJerk) {
+        this.cleanJerk = cleanJerk;
     }
 
     public String getSplitJerk() {
