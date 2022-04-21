@@ -82,7 +82,7 @@ public class JdbcGoalsDao implements GoalsDao {
 
     private MemberGoals mapRowToGoals(SqlRowSet rs) {
         MemberGoals goals = new MemberGoals();
-        goals.setGoalsId(rs.getLong("profile_id"));
+        goals.setGoalsId(rs.getLong("goals_id"));
         goals.setUserId(rs.getLong("user_id"));
         goals.setBackSquat(rs.getString("back_squat"));
         goals.setFrontSquat(rs.getString("front_squat"));
