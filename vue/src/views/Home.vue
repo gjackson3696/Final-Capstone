@@ -6,20 +6,20 @@
 			</div>
 			<div class="greeting">
 				<h2 id="welcome">Making Stronger Bodies, One Syntax At a Time</h2>
+				<div class="about-container">
 				<p class="about-text">
 					CrossFit Syntactical is your one-stop-shop for CrossFit (and other)
-					fitness classes! At CrossFit Syntactical, you're a member of a
-					community where camaraderie, accountability, and avoiding the status
-					quo by developing comfort in being uncomfortable are every day
-					patterns. Our culture is one that prioritizes the whole person and
-					shapes how we eat, sleep, move, and think. There are no gaps - we
-					train for whatever the world has to throw at us! Sign up and start
-					training with us today!
-
-					CrossFit Syntactical members can use this space to set fitness goals 
+					fitness classes!
+				</p>
+					
+				<p class="about-text">CrossFit Syntactical members can use this space to set fitness goals 
 					for themselves, log their workouts, and track progress towards goals 
 					via individualized metrics!
 				</p>
+
+				<p class="about-text">Sign up and get started today!
+				</p>
+				</div>
 				<router-link
 						id="login"
 						v-if="$store.state.token === ''"
@@ -133,9 +133,14 @@ color: rgb(20, 255, 247);
 .about-text {
 	font-size: 20px;
 	text-align: center;
-	background-color: rgba(49, 49, 49, 0.422);
 	text-shadow: 2px 2px black;
 }
+
+.about-container {
+	background-color: rgba(49, 49, 49, 0.422);
+	border-radius: 20px;
+}
+
 body {
 	font-family: Stencil;
 }
