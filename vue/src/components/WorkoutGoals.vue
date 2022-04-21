@@ -465,8 +465,11 @@ export default {
     },
 
     saveBenchmarkWorkout() {
-      workoutService.saveWorkout(this.crossfitWorkouts).then((response) => {
-        this.crossfitWorkouts = response.data;
+      workoutService.saveWorkout(this.crossfitWorkouts[0]).then((response) => {
+        this.crossfitWorkouts[0] = response.data;
+      });
+      workoutService.saveWorkout(this.crossfitWorkouts[1]).then((response) => {
+        this.crossfitWorkouts[1] = response.data;
       });
     },
 
