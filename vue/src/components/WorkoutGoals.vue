@@ -5,7 +5,7 @@
       src="../assets/Small-logo.png"
       alt="CrossFit Syntactical Logo"
     />
-    <h2 id="goals-header" v-if="showBenchmarkMovements || showBenchmarkWorkouts || !showPersonalWorkouts">Set Goals, Crush Them!</h2>
+    <h2 id="goals-header" v-if="!showBenchmarkMovements && !showBenchmarkWorkouts && !showPersonalWorkouts">Set Goals, Crush Them!</h2>
     <h3 v-if="!showBenchmarkMovements && !showBenchmarkWorkouts">
       Enter data for a personal workout:
     </h3>
