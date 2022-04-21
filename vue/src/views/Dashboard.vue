@@ -11,7 +11,7 @@
 					<div class="about-card">
 						<div class="title-context">
 							<p>About Me</p>
-							<h2>dynamically insert name here</h2>
+							<h2>{{member.firstName}} {{member.lastName}}</h2>
 						</div>
 						<div class="profile-picture">
 							<img class="main-img" src="../assets/no-profilepic.jpg" />
@@ -35,10 +35,20 @@ import LogWorkout from '../components/LogWorkout';
 
 export default {
 	name: 'dashboard',
+	data() {
+		return {
+			member: {
+				firstName: '',
+				lastName: '',
+				email: ''
+			}
+		}
+	},
 	components: {
 		LogWorkout,
 	},
 	created() {
+		this.member = this.$store.state.member;
 		classService.getRegisteredClassIds().then((response) => {
 			this.$store.commit('SET_CLASS_IDS', response.data);
 		});

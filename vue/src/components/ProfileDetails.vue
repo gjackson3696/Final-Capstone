@@ -262,6 +262,7 @@ export default {
   methods: {
       save() {
           memberService.update(this.member);
+          this.$store.commit('SET_MEMBER',this.member);
       },
       saveBenchmarkMovements() {
           profileService.update(this.benchmarkMovements);

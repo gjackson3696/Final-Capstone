@@ -21,9 +21,9 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     weekdaySelector: 7,
-    memberId: 1001,
     registeredClassIds: [],
-    classList: []
+    classList: [],
+    member: {}
     },
   mutations: {
     //need a mutator that will mutate the memberId to populate it.
@@ -59,6 +59,9 @@ export default new Vuex.Store({
     },
     SET_CLASS_LIST(state,classList) {
       state.classList = classList;
+    },
+    SET_MEMBER(state,member) {
+      state.member = member;
     }
   }
 })

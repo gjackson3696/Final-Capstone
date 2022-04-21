@@ -79,6 +79,8 @@ export default {
 						memberService.getMember().then((response) => {
 							if (!response.data) {
 								this.$router.push('/accountDetails');
+							} else {
+								this.$store.commit('SET_MEMBER',response.data);
 							}
 						});
 						this.$router.push('/dashboard');
