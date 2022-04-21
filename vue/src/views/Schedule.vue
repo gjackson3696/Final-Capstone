@@ -51,6 +51,9 @@ export default {
 		classService.getRegisteredClassIds().then((response) => {
 			this.$store.commit('SET_CLASS_IDS', response.data);
 		});
+		classService.getRegisteredClasses().then(response => {
+			this.$store.commit('SET_REGISTERED_CLASS_LIST', response.data);
+		});
 		this.$store.commit('RESET_WEEKDAY_SELECTOR');
 	},
 };
