@@ -331,14 +331,9 @@ export default {
 				squatSnatch: '',
 				powerSnatch: '',
 				snatchBalance: '',
-				completed: false
+				completed: true
 			},
-			showForm: false,
-			member: {
-				firstName: '',
-				lastName: '',
-				email: ''
-			}
+			showForm: false
 		};
 	},
 	methods: {
@@ -376,9 +371,9 @@ export default {
 				squatJerk: '',
 				squatSnatch: '',
 				powerSnatch: '',
-				snatchBalance: '',
+				snatchBalance: ''
 			};
-		},
+		}
 	},
 	created() {
 		this.member = this.$store.state.member;
