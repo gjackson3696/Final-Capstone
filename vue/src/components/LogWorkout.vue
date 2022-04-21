@@ -531,8 +531,7 @@ input {
 	width: 200px;
 	height: 30px;
 	padding: 5px;
-	font-size: 10px;
-	color: rgb(20, 255, 247);
+	font-size: 12px;
 	border-radius: 5px;
 }
 h3 {
