@@ -126,7 +126,7 @@
         </div>
         <input
           type="text"
-          v-bind="workout.workoutTime"
+          v-model="workout.workoutTime"
           name="time"
           placeholder="Desired completion time"
         />
@@ -137,7 +137,7 @@
         <div class="input">
         <input
           type="text"
-          v-bind="workout.workoutRounds"
+          v-model="workout.workoutRounds"
           name="reps"
           placeholder="# rounds/# reps"
         />
