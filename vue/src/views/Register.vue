@@ -4,6 +4,7 @@
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+      <hr>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -13,7 +14,7 @@
         id="username"
         class="form-control"
         placeholder="Username"
-        size=30
+        size=20
         v-model="user.username"
         required
         autofocus
@@ -24,7 +25,7 @@
         id="password"
         class="form-control"
         placeholder="Password"
-        size=30
+        size=20
         v-model="user.password"
         required
       />
@@ -33,15 +34,16 @@
         id="confirmPassword"
         class="form-control"
         placeholder="Confirm Password"
-        size=30
+        size=20
         v-model="user.confirmPassword"
         required
       />
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <button id="login-btn" class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
       <br>
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
+      <router-link :to="{ name: 'login' }"><button class="btn btn-block btn-secondary rounded-pill mt-3">Have an account?</button></router-link>
+
 
 
     </form>
@@ -108,7 +110,11 @@ export default {
     background-position: 0px 0px, 50% 50%;
     background-size: auto, cover;
     background-attachment: scroll, fixed;
+    height: 100vh;
     box-shadow: rgb(0 229 255 / 35%) 0px 100px 100px -12px inset, rgb(1 187 255 / 30%) 0px 18px 36px -18px inset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #logo {
@@ -119,12 +125,16 @@ export default {
 }
 
 .form-register {
+  box-shadow: rgba(0, 229, 255, 0.4) 0px 30px 100px -12px inset,
+		rgb(1, 183, 255) 0px 18px 36px -18px inset;
+    border-radius: 20px;
   font-family: Stencil;
     color: white;
     text-align: center;
     font-size: 20px;
-    padding: 100px;
+    padding: 10px;
     text-align: center;
+    max-width: 500px;
 }
 
 .text-center {
@@ -135,7 +145,11 @@ export default {
   text-align: center;
 }
 
-button {
+input {
+  padding: 0.375rem 0.75rem;
+}
+
+#login-btn {
 	position: relative;
 	color: rgb(20, 255, 247);
 	display: inline-block;
@@ -158,21 +172,24 @@ button {
 	transition: box-shadow 0.15s ease, transform 0.15s ease;
     font-family: Stencil;
 }
-button:hover {
+#login-btn:hover {
 	box-shadow: 0px 4px 8px rgb(45 35 66 / 40%),
 		0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 30px #f700ff88;
 	transform: translateY(-2px);
 }
-button:active {
+#login-btn:active {
 	box-shadow: inset 0px 3px 7px #000000;
 	transform: translateY(2px);
+}
+
+.btn {
+	background: #151515;
 }
 
 body {
 font-family: Stencil;
 }
 input[type=text], select {
-padding: 5px 0px;
 margin-left: auto;
 margin-right: auto;
 display: list-item;
@@ -183,7 +200,6 @@ cursor: pointer;
 }
 input[type=password] {
 display: list-item;
-padding: 5px 0px;
 margin-left: auto;
 margin-right: auto;
 border-radius: 8px;
