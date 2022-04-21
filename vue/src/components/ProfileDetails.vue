@@ -10,6 +10,7 @@
     </div>
     <div id="profile-form">
     <form class="profile" v-on:submit.prevent="save">
+      <div class="profile-info">
       <label for="firstName">First Name:</label>
       <br>
       <input type="text" name="firstName" v-model="member.firstName" placeholder="First Name" size=50 required />
@@ -23,6 +24,7 @@
       <input type="text" name="email" v-model="member.email" placeholder="Email" size=50 required />
       <br />
       <button class="btn btn-primary" type="submit">Save</button>
+    </div>
     </form>
     </div>
     <div id="maximums-header">
@@ -221,7 +223,9 @@
           />
         </div>
       </div>
-      <button type="submit" class="btn btn-primary">Save Profile</button>
+      <div>
+      <button type="submit" class="btn btn-primary" >Save Profile</button>
+      </div>    
     </form>
     </div>
   </div>
@@ -295,6 +299,14 @@ export default {
 body {
   position: relative;
 }
+label {
+  display:flex;
+  justify-content: center;
+}
+button, input {
+    display:flex;
+  justify-content: center;
+}
 
 #logo {
 	position: absolute;
@@ -309,14 +321,19 @@ h1, h2, h3, h4, h5, p, label {
 }
 
 .main-div {
+  position: relative;
   display: grid;
   grid-template-areas:
     ". profile-header profile-header ."
     ". profile profile ."
     ". maximums-header maximums-header ."
     ". movementsForm movementsForm .";
+  padding: 30px;
 }
-
+ /* .profile-info{
+display:grid;
+align-content: center;
+} */
 #profile-header {
   grid-area: profile-header;
   display: flex;
@@ -339,12 +356,13 @@ h1, h2, h3, h4, h5, p, label {
   justify-content: center;
 }
 
-.btn-primary {
+.btn.btn-primary {
 	position: relative;
 	display: flex;
-	width: 700px;
+	width: 750px;
 	justify-content: center;
 	font-family: Stencil;
+  align-items: center;
 }
 
 .btn{
@@ -359,7 +377,7 @@ h1, h2, h3, h4, h5, p, label {
 	box-shadow: 0px 2px 4px rgb(45 35 66 / 40%),
 		0px 7px 13px -3px rgb(45 35 66 / 30%),
 		inset 0px -3px 0px rgb(58 65 111 / 50%);
-	margin: 10px auto auto auto;
+	margin: 10px;
 	border-radius: 6px;
 	color: rgb(0, 0, 0);
 	width: 410px;
