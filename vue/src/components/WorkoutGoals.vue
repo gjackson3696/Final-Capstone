@@ -137,10 +137,11 @@
       </div>
       <button type="submit" class="btn btn-primary">Save Workout</button>
     </form>
-
-    <h3 v-if="!showBenchmarkWorkouts && !showPersonalWorkouts">
+    <div class="movements-title">
+    <h3 class="benchmark-movements-title" v-if="!showBenchmarkWorkouts && !showPersonalWorkouts">
       Enter goals for individual movements (squats, olympic lifts, etc.)
     </h3>
+    </div>
     <button
       class="btn btn-light"
       v-on:click="showBenchmarkMovements = !showBenchmarkMovements"
@@ -480,7 +481,7 @@ export default {
 	min-height: 100%;
 	min-width: 100%;
 	width: 100%;
-	height: 170vh;
+	height: 180vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -691,13 +692,13 @@ margin-left: 350px;
 	position: absolute;
 	top: 0;
 	font-family: Stencil;
-	font-size: 70px;
+	font-size: 5em;
 	font-weight: 800;
 	color: white;
 	display: flex;
 	justify-content: center;
   text-shadow: 2px 2px 2px black;
-  margin-top: 40px;
+  margin-top: 80px;
   margin-bottom: 40px;
 }
 
@@ -732,5 +733,8 @@ h4{
 	display: flex;
 	justify-content: center;
   font-size: 40px;
+}
+.movements-title {
+  margin: 25px 75px;
 }
 </style>
