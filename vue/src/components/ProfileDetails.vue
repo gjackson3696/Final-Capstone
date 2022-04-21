@@ -23,9 +23,11 @@
       <br>
       <input type="text" name="email" v-model="member.email" placeholder="Email" size=50 required />
       <br />
-      <button class="btn btn-primary" type="submit">Save</button>
     </div>
     </form>
+      <div>
+      <button class="btn btn-primary" type="submit">Save</button>
+    </div>
     </div>
     <div id="maximums-header">
     <h3>
@@ -37,6 +39,7 @@
       id="frmSaveBenchmarkMovements"
       v-on:submit.prevent="saveBenchmarkMovements"
     >
+    <div id="squats">
       <div id="squats">
         <div>
           <h5>Squat Profile</h5>
@@ -84,9 +87,10 @@
             size=30
           />
         </div>
+        </div>
       </div>
-
       <div id="deadlifts">
+      <div>
         <div>
         <h5>Deadlift Profile</h5>
           <input
@@ -106,9 +110,10 @@
             size=30
           />
         </div>
+        </div>
       </div>
-      
       <div id="presses">
+      <div>
         <h5>Pressing Profile</h5>
         <div>
           <input
@@ -137,9 +142,11 @@
             size=30
           />
         </div>
+        </div>
       </div>
 
       <div id="olympic">
+      <div >
         <h5>Olympic Lifting Profile</h5>
         <div>
           <input
@@ -223,6 +230,7 @@
           />
         </div>
       </div>
+      </div>
       <div>
       <button type="submit" class="btn btn-primary" >Save Profile</button>
       </div>    
@@ -299,14 +307,6 @@ export default {
 body {
   position: relative;
 }
-label {
-  display:flex;
-  justify-content: center;
-}
-button, input {
-    display:flex;
-  justify-content: center;
-}
 
 #logo {
 	position: absolute;
@@ -318,6 +318,7 @@ button, input {
 h1, h2, h3, h4, h5, p, label {
   color: white;
   font-family: Stencil;
+  text-shadow: 1px 1px black;
 }
 
 .main-div {
@@ -330,10 +331,21 @@ h1, h2, h3, h4, h5, p, label {
     ". movementsForm movementsForm .";
   padding: 30px;
 }
- /* .profile-info{
-display:grid;
-align-content: center;
-} */
+ .profile-info{
+   text-shadow: 1px 1px black;
+   margin-left: 140px;
+   width: 500px;
+   height: 200px;
+  position: relative;
+  border-radius: 10px;
+  text-align: center;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	box-shadow: rgba(0, 229, 255, 0.788) 0px 30px 100px -12px inset,
+		rgb(1, 183, 255) 0px 18px 36px -18px inset;
+}
 #profile-header {
   grid-area: profile-header;
   display: flex;
@@ -363,6 +375,7 @@ align-content: center;
 	justify-content: center;
 	font-family: Stencil;
   align-items: center;
+  margin-top: 30px;
 }
 
 .btn{
@@ -410,7 +423,58 @@ align-content: center;
   flex-direction: row;
   flex-wrap: wrap;
   margin: 0px 60px 0px 60px;
-
+}
+ #olympic {
+  position: relative;
+	border-radius: 10px;
+	height: 350px;
+  width: 17.5rem;
+	text-align: center;
+  top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	box-shadow: rgba(0, 229, 255, 0.733) 0px 30px 100px -12px inset,
+		rgb(1, 183, 255) 0px 18px 36px -18px inset;
+}
+ #squats {
+  position: relative;
+	border-radius: 10px;
+		height: 350px;
+  width: 17.5rem;
+	text-align: center;
+  top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	box-shadow: rgba(0, 229, 255, 0.733) 0px 30px 100px -12px inset,
+		rgb(1, 183, 255) 0px 18px 36px -18px inset;
+}
+ #presses {
+  position: relative;
+	border-radius: 10px;
+	height: 350px;
+  width: 17.5rem;
+	text-align: center;
+  top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	box-shadow: rgba(0, 229, 255, 0.733) 0px 30px 100px -12px inset,
+		rgb(1, 183, 255) 0px 18px 36px -18px inset;
+}
+ #deadlifts {
+  position: relative;
+	border-radius: 10px;
+	height: 350px;
+  width: 17.5rem;
+	text-align: center;
+  top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	box-shadow: rgba(0, 229, 255, 0.733) 0px 30px 100px -12px inset,
+		rgb(1, 183, 255) 0px 18px 36px -18px inset;
 }
 
 
