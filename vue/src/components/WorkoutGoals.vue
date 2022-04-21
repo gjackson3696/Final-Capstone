@@ -395,7 +395,8 @@
 </template>
 
 <script>
-import workoutService from "@/services/WorkoutService.js";
+import workoutService from "../services/WorkoutService.js";
+import goalsService from '../services/GoalsService.js';
 export default {
   name: "workout-goals",
   data() {
@@ -470,11 +471,16 @@ export default {
     },
 
     saveBenchmarkMovements() {
-      workoutService.saveWorkout(this.benchmarkMovements).then((response) => {
-        this.benchmarkMovements = response.data;
+      goalsService.update(this.benchmarkMovements).then((response) => {
+        if(response.data == false) {
+          goalsService.create(this.benchmarkMovements).then(response => {
+            this.benchmarkMovements = response.data;
+          })
+        } else {
+          this.benchmarkMovements = response.data;
+        }
       });
     },
-
     resetForm() {
       this.personalWorkout = {
         workoutName: "",
@@ -487,6 +493,11 @@ export default {
       };
     },
   },
+  created() {
+    goalsService.getGoals().then(response => {
+      this.benchmarkMovements = response.data;
+    })
+  }
 };
 </script>
 
@@ -496,7 +507,7 @@ export default {
 	min-height: 100%;
 	min-width: 100%;
 	width: 100%;
-	height: 130vh;
+	height: 210vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -803,5 +814,9 @@ div.girl-card {
     flex-direction: column;
   
 }
-
+.movements-title {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 100px;
+}
 </style>
