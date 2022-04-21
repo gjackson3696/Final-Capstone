@@ -8,7 +8,6 @@
 				class="showFormBtn"
 				@click="showForm = !showForm"
 				v-text="showForm ? 'Close' : 'Log Workout'"
-				v-show="!sh"
 			></button>
 		</div>
 		<form
@@ -332,9 +331,14 @@ export default {
 				squatSnatch: '',
 				powerSnatch: '',
 				snatchBalance: '',
-				completed: false,
+				completed: false
 			},
 			showForm: false,
+			member: {
+				firstName: '',
+				lastName: '',
+				email: ''
+			}
 		};
 	},
 	methods: {
@@ -376,6 +380,9 @@ export default {
 			};
 		},
 	},
+	created() {
+		this.member = this.$store.state.member;
+	}
 };
 </script>
 
@@ -520,8 +527,6 @@ margin-bottom: 65px;
 margin-top: 60px;
 display: grid;
 align-content: center;
-margin-left: 750px
-
 }
 button#logWorkoutButton {
 position: absolute;
@@ -534,8 +539,7 @@ input {
 	width: 200px;
 	height: 30px;
 	padding: 5px;
-	font-size: 10px;
-	color: rgb(20, 255, 247);
+	font-size: 12px;
 	border-radius: 5px;
 }
 h3 {
@@ -550,5 +554,8 @@ label {
 	color: white;
 	text-shadow: 1px 1px black;
 }
-
+.showForm {
+	display: flex;
+	justify-content: center;
+}
 </style>

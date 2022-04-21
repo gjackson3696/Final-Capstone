@@ -47,7 +47,7 @@ export default {
 .blue-container {
   position: relative;
   border-radius: 20px;
-  width: 250px;
+  width: 300px;
   height: 300px;
   margin: 10px;
   text-align: center;
@@ -79,7 +79,7 @@ export default {
 .purple-container {
   position: relative;
   border-radius: 20px;
-  width: 250px;
+  width: 300px;
   height: 300px;
   margin: 10px;
   text-align: center;
@@ -106,55 +106,36 @@ export default {
   color: white;
 }
 .register-btn {
-  margin-left: 130px;
-  margin-top: 40px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 200px;
-  height: 40px;
-  text-align: center;
-  color: rgb(0, 0, 0);
-  font-size: 24px;
-  font-family: Stencil;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-family: sans-serif;
-  box-sizing: border-box;
-  background: linear-gradient(90deg, rgb(0, 238, 255), rgb(0, 225, 255), rgb(247, 0, 255), rgb(13, 223, 195));
-  background-size: 400%;
-  border-radius: 30px;
-  z-index: 1;
-  opacity: .7;
+	position: relative;
+	color: rgb(20, 255, 247);
+	display: inline-block;
+	outline: 0;
+	border: 0;
+	cursor: pointer;
+	will-change: box-shadow, transform;
+	background: radial-gradient(100% 100% at 100% 0%, #03ffc0f3 0%, #00e0fe 100%);
+	box-shadow: 0px 2px 4px rgb(45 35 66 / 40%),
+		0px 7px 13px -3px rgb(45 35 66 / 30%),
+		inset 0px -3px 0px rgb(58 65 111 / 50%);
+	padding: 0 32px;
+	border-radius: 6px;
+	color: rgb(0, 0, 0);
+    font-weight: 400;
+	width: 250px;
+	height: 50px;
+	font-size: 18px;
+	text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+	transition: box-shadow 0.15s ease, transform 0.15s ease;
+    font-family: Stencil;
 }
 .register-btn:hover {
-  animation: animate 8s linear infinite
+	box-shadow: 0px 4px 8px rgb(45 35 66 / 40%),
+		0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 30px #f700ff88;
+	transform: translateY(-2px);
 }
-@keyframes animate {
-  0% {
-    background-position: 0%
-  }
-  100% {
-    background-position: 400%;
-  }
-}
-.register-btn:before {
-  content: "";
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  z-index: -1;
-  background: linear-gradient(45deg, #00d9ff, #d501ffd8, #2de0ff);
-  background-size: 400%;
-  border-radius: 40px;
-  opacity: 0;
-  transition: 0.5%;
-}
-.register-btn:hover:before{
-  filter: blur(20px);
-  opacity: 1;
-  animation: animate 8s linear infinite;
+.register-btn:active {
+	box-shadow: inset 0px 3px 7px #000000;
+	transform: translateY(2px);
 }
 
 .lightView {
