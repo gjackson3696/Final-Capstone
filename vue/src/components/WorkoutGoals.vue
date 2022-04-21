@@ -122,7 +122,9 @@
         <p>{{ workout.workoutStructure }}</p>
         <p>{{ workout.workoutWeights }}</p>
         <p>{{ workout.workoutRounds }}</p>
+        <div class="label">
         <label for="time">Time:</label>
+        </div>
         <input
           type="text"
           v-bind="workout.workoutTime"
@@ -130,13 +132,17 @@
           placeholder="Desired completion time"
         />
         <br />
+        <div class="label">
         <label for="reps">Reps:</label>
+        </div>
+        <div class="input">
         <input
           type="text"
           v-bind="workout.workoutRounds"
           name="reps"
           placeholder="# rounds/# reps"
         />
+        </div>
         </div>
         </div>
       </div>
@@ -425,15 +431,6 @@ export default {
           workoutRounds: "",
           completedAsPrescribed: false,
         },
-                {
-          workoutName: "Eva",
-          workoutDomain: "5 rounds for time of:",
-          workoutStructure: "Run 800 meters, 30 kettlebell swings, 30 pull ups",
-          workoutWeights: "♀95 lb ♂135 lb",
-          workoutTime: "",
-          workoutRounds: "",
-          completedAsPrescribed: false,
-        },
       ],
       benchmarkMovements: {
         backSquat: "",
@@ -499,7 +496,7 @@ export default {
 	min-height: 100%;
 	min-width: 100%;
 	width: 100%;
-	height: 180vh;
+	height: 130vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -773,7 +770,7 @@ h4{
   margin-bottom: 20px;
   width: 250px;
   margin-left: 40px;
-  
+
 }
 .standardized-goals {
     position: relative;
@@ -804,7 +801,7 @@ div.girl-card {
     position: relative;
     display: inline-block;
     flex-direction: column;
-    
+  
 }
 
 </style>

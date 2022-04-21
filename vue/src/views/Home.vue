@@ -120,6 +120,7 @@ color: rgb(20, 255, 247);
 }
 
 #welcome {
+	margin-top: 150px;
 	font-size: 50px;
 	text-shadow: 1px 1px #03ffc0;
 	font-family: Stencil;
