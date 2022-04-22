@@ -36,8 +36,9 @@
 				/>
 			</div>
 		</div>
+		<div><log-workout /></div>
 		<div>
-			<log-workout />
+			<combo-chart />
 		</div>
 	</body>
 </template>
@@ -46,6 +47,7 @@
 import classService from '../services/ClassService';
 import LogWorkout from '../components/LogWorkout';
 import ClassCard from '../components/ClassCard';
+import ComboChart from '../components/ComboChart.vue'
 
 export default {
 	name: 'dashboard',
@@ -55,7 +57,8 @@ export default {
 	},
 	components: {
 		LogWorkout,
-		ClassCard
+		ClassCard,
+		ComboChart,
 	},
 	created() {
 		classService.getRegisteredClassIds().then((response) => {
@@ -156,6 +159,4 @@ body {
 	justify-content: space-evenly;
 }
 
-.class-card {
-}
 </style>
