@@ -7,7 +7,7 @@
     />
     <h2 id="goals-header" v-if="!showBenchmarkMovements && !showBenchmarkWorkouts && !showPersonalWorkouts">Set Goals, Crush Them!</h2>
     <h3 v-if="!showBenchmarkMovements && !showBenchmarkWorkouts">
-      Enter data for a personal workout:
+      Make Your Own Workout
     </h3>
     <button
       class="btn btn-light"  id="personal-workout-btn"
@@ -95,13 +95,13 @@
     </form>
   </div>
     <h3 v-if="!showBenchmarkMovements && !showPersonalWorkouts">
-      Enter goals for a standardized CrossFit Workout
+      CrossFit Goals
     </h3>
     <button
       class="btn btn-light"
       v-on:click="showBenchmarkWorkouts = !showBenchmarkWorkouts"
       v-if="!showBenchmarkMovements && !showPersonalWorkouts"
-      v-text="showBenchmarkWorkouts === true ? 'Close' : 'Enter Desired Score'"
+      v-text="showBenchmarkWorkouts === true ? 'Close' : 'Enter Score Goal'"
     ></button>
 
     <form
@@ -152,20 +152,22 @@
     </div>
     </form>
     <div class="movements-title">
-    <h3 class="benchmark-movements-title" v-if="!showBenchmarkWorkouts && !showPersonalWorkouts">
-      Enter goals for individual movements (squats, olympic lifts, etc.)
+    <h3 class="benchmark-movements-title-strength" v-if="!showBenchmarkWorkouts && !showPersonalWorkouts">
+      Strength goals
     </h3>
     </div>
     <button
       class="btn btn-light"
+      id="strength-button"
       v-on:click="showBenchmarkMovements = !showBenchmarkMovements"
       v-if="!showBenchmarkWorkouts && !showPersonalWorkouts"
       v-text="
         showBenchmarkMovements === true
           ? 'Close'
-          : 'Enter Goals for Individual Movements'
+          : 'Enter Goals for Strength Movements'
       "
     ></button>
+    <div id="strength-div">
     <h4 v-if="showBenchmarkMovements === true">
       Enter one rep max for each movement
     </h4>
@@ -391,6 +393,7 @@
   </div>
     </form>
     </div>
+    </div>
 </template>
 
 <script>
@@ -509,7 +512,7 @@ export default {
 	min-height: 100%;
 	min-width: 100%;
 	width: 100%;
-	height: 210vh;
+	height: 130vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -581,7 +584,7 @@ p {
 	width: 700px;
 	justify-content: center;
 	font-family: Stencil;
-  margin-bottom: 30px;
+  margin-bottom: 5px;
 }
 .btn-primary {
 	position: relative;
@@ -729,8 +732,7 @@ margin-left: 350px;
 	display: flex;
 	justify-content: center;
   text-shadow: 2px 2px 2px black;
-  margin-top: 80px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
 #annoying-button {
@@ -820,5 +822,14 @@ div.girl-card {
   display: flex;
   flex-wrap: wrap;
   margin: 100px;
+}
+.benchmark-movements-title-strength {
+  transform: translate(0, -70px);
+}
+#strength-button {
+  transform: translate(0, -160px);
+}
+#strength-div {
+  transform: translate(0, -160px);
 }
 </style>
