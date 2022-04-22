@@ -18,17 +18,17 @@ export default {
 		return {
 
 			chartData: [
-				['Year', 'Blog', 'Maximum Effort' ],
-				['2018', 180, 200],
-				['2019', 300, 200],
-				['2020', 250, 200],
-				['2021', 300, 200],
+				['Month', 'Back Squat', 'Front Squat', 'Zercher Squat', 'Overhead Squat', 'Bulgarian Split Squat'],
+				['January', 160, 150, 160, 160, 150],
+				['February', 180, 160, 170, 150, 160],
+				['March', 170, 180, 170, 170, 150],
+				['April', 180, 170, 180, 170, 170],
 			],
             
 			chartOptions: {
 				chart: {
-					title: 'Company Performance',
-					subtitle: 'blog in total: year',
+					title: 'Logged Workouts',
+					subtitle: '',
 				},
 			},
 		};
