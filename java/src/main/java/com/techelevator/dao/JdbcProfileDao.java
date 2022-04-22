@@ -96,6 +96,7 @@ public class JdbcProfileDao implements ProfileDao {
         profile.setPushPress(rs.getString("push_press"));
         profile.setSquatClean(rs.getString("squat_clean"));
         profile.setPowerClean(rs.getString("power_clean"));
+        profile.setCleanJerk(rs.getString("clean_jerk"));
         profile.setSplitJerk(rs.getString("split_jerk"));
         profile.setPushJerk(rs.getString("push_jerk"));
         profile.setSquatJerk(rs.getString("squat_jerk"));
